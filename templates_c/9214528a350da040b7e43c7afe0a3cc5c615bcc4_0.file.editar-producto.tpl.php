@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:32:25
+/* Smarty version 3.1.34-dev-7, created on 2020-09-26 23:35:21
   from 'C:\xampp\htdocs\web2\lubricentro\templates\editar-producto.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa559a6ec23_84958651',
+  'unifunc' => 'content_5f6fb4190b0cf8_04300961',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9214528a350da040b7e43c7afe0a3cc5c615bcc4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\editar-producto.tpl',
-      1 => 1601152343,
+      1 => 1601156003,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f6fa559a6ec23_84958651 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6fb4190b0cf8_04300961 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 

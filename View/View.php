@@ -67,7 +67,7 @@ class View
         $this->smarty->display('templates/admin.tpl');
     }
 
-    function showEditarProducto($producto_id, $marcas)
+    function showEditarProducto($producto_id, $marcas, $producto)
     {
         $user = "public";
         $this->title = "Editar Producto | Lubricentro";
@@ -76,6 +76,7 @@ class View
         $current2 = "Catálogo";
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('user', $user);
+        $this->smarty->assign('producto', $producto);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -84,7 +85,7 @@ class View
         $this->smarty->display('templates/editar-producto.tpl');
     }
 
-    function showEditarMarca($marca_id)
+    function showEditarMarca($marca_id, $marca)
     {
         $user = "public";
         $this->title = "Editar Marca | Lubricentro";
@@ -93,6 +94,7 @@ class View
         $current2 = "Catálogo";
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('user', $user);
+        $this->smarty->assign('marca', $marca);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);

@@ -8,10 +8,10 @@
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nombre</label>
-            <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" required>
+            <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" value="{$marca[0]->nombre}" required>
         </div>
     </div>
     <input type="number" class="oculto" name="id_marca" value="{$marca_id}">
     <button class="btn btn-primary" type="submit">Editar</button>
-    <button type="button" id="cancelar_edicion" class="btn btn-danger">Cancelar</button>
+    <button type="button" id="cancelar_edicion" class="btn btn-danger" onclick="window.location='{$url}Administrar'">Cancelar</button>
 </form>

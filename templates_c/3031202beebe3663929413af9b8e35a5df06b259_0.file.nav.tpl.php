@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:28:00
+/* Smarty version 3.1.34-dev-7, created on 2020-09-26 23:12:27
   from 'C:\xampp\htdocs\web2\lubricentro\templates\nav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa450936010_45295849',
+  'unifunc' => 'content_5f6faebb25c6c3_73450209',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3031202beebe3663929413af9b8e35a5df06b259' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\nav.tpl',
-      1 => 1601152080,
+      1 => 1601154746,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fa450936010_45295849 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6faebb25c6c3_73450209 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <img src="./images/logo.png" alt="logo">
@@ -41,17 +41,19 @@ echo $_smarty_tpl->tpl_vars['current1']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current1']->value;?>
 </a>
           </li>
-          <li class="nav-item">
           <?php if ($_smarty_tpl->tpl_vars['user']->value == 'root') {?>
+          <li class="nav-item active">
               <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
 echo $_smarty_tpl->tpl_vars['current2']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current2']->value;?>
 </a>
+          </li>
           <?php } else { ?>
+          <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo $_smarty_tpl->tpl_vars['current2']->value;?>
 </a>
-          <?php }?>
           </li>
+          <?php }?>
         </ul>
         <button type="button" class="btn btn-secondary">Iniciar Sesión</button>
         <button type="button" class="btn btn-secondary">Registrarse</button>

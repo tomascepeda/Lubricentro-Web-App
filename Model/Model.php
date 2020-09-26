@@ -24,6 +24,13 @@ class Model
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function getProductoPorID($id_producto)
+    {
+        $sentencia = $this->db->prepare("SELECT * FROM producto WHERE id=?");
+        $sentencia->execute(array($id_producto));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
     function getProductosPorMarca($marca)
     {
         $sentencia = $this->db->prepare("SELECT * FROM producto WHERE id_marca=?");
@@ -35,6 +42,13 @@ class Model
     {
         $sentencia = $this->db->prepare("SELECT * FROM marca");
         $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function getMarcaPorID($id_marca)
+    {
+        $sentencia = $this->db->prepare("SELECT * FROM marca WHERE id=?");
+        $sentencia->execute(array($id_marca));
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 

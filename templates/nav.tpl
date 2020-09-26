@@ -12,13 +12,15 @@
           <li class="nav-item active">
             <a class="nav-link" href="{$url}{$current1}">{$current1}</a>
           </li>
-          <li class="nav-item">
           {if $user eq 'root'}
+          <li class="nav-item active">
               <a class="nav-link" href="{$url}{$current2}">{$current2}</a>
-          {else}
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{$current2}</a>
-          {/if}
           </li>
+          {else}
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{$current2}</a>
+          </li>
+          {/if}
         </ul>
         <button type="button" class="btn btn-secondary">Iniciar Sesión</button>
         <button type="button" class="btn btn-secondary">Registrarse</button>

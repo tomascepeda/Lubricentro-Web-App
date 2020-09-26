@@ -8,24 +8,33 @@
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nombre</label>
-            <input type="text" name="edit_nombre" class="form-control" id="validationCustom01" required>
+            <input type="text" name="edit_nombre" class="form-control" id="validationCustom01" value="{$producto[0]->nombre}" required>
         </div>
         <div class="col-md-6 mb-3">
             <label for="validationCustom02">Detalle</label>
-            <input type="text" name="edit_descrip" class="form-control" id="validationCustom02" required>
+            <input type="text" name="edit_descrip" class="form-control" id="validationCustom02" value="{$producto[0]->descripcion}" required>
         </div>
     </div>
     <div class="form-row">
         <div class=" col-md-6 mb-3">
             <label for="validationCustom03">Precio</label>
-            <input type="number" name="edit_precio" class="form-control" id="validationCustom03" required>
+            <input type="number" name="edit_precio" class="form-control" id="validationCustom03" value="{$producto[0]->precio}" required>
         </div>
         <div class="col-md-6 mb-3">
             <label for="validationCustom04">Marca</label>
             <select name="edit_marca" class="custom-select" id="validationCustom04" required>
-                <option selected disabled>Seleccionar</option>
+                {$nombre_marca = null}
                 {foreach from=$marcas item=marca}
-                    <option value="{$marca->id}">{$marca->nombre}</option>
+                    {if $marca->id eq $producto[0]->id_marca}
+                        {$nombre_marca = $marca->nombre}
+                        {break} 
+                    {/if}
+                {/foreach}
+                <option value="{$producto[0]->id_marca}">{$nombre_marca}</option>
+                {foreach from=$marcas item=marca}
+                    {if $marca->nombre ne $nombre_marca}
+                        <option value="{$marca->id}">{$marca->nombre}</option>
+                    {/if}
                 {/foreach}
             </select>
         </div>

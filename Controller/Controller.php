@@ -118,8 +118,9 @@ class Controller
 
     function showEditarProducto($params = null){
         $producto_id = $params[':ID'];
+        $producto = $this->model->getProductoPorID($producto_id);
         $marcas = $this->model->getMarcas();
-        $this->view->showEditarProducto($producto_id, $marcas);
+        $this->view->showEditarProducto($producto_id, $marcas, $producto);
     }
 
     function editarMarca()
@@ -136,6 +137,7 @@ class Controller
 
     function showEditarMarca($params = null){
         $marca_id = $params[':ID'];
-        $this->view->showEditarMarca($marca_id);
+        $marca = $this->model->getMarcaPorID($marca_id);
+        $this->view->showEditarMarca($marca_id, $marca);
     }
 }
