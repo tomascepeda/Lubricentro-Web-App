@@ -3,7 +3,7 @@ body{
 }
 
 .portada{
-    background: url("images/backg2.jpg");
+    background: url("../images/backg2.jpg");
     -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
@@ -14,7 +14,7 @@ body{
 }
 
 .portada h3{
-    margin: 4% auto;
+    margin: 8% auto;
     color: white !important;
     text-shadow: 5px 5px 15px black;
     width: auto;
@@ -23,10 +23,12 @@ body{
     border-radius: 10px;
 }
 
+/*
 .portada form{
     margin: 0 auto;
     width: 40%;
 }
+*/
 
 footer{
     margin-top: auto;

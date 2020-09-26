@@ -14,10 +14,10 @@
       <tbody>
         {foreach from=$marcas item=marca}
         <tr>
-          <td>$marca->nombre</td>
-          {if $user eq root}
-            <td> <button type="button" class="btn btn-primary">Editar</button> <button type="button"
-              class="btn btn-danger">Borrar</button> </td>
+          <td>{$marca->nombre}</td>
+          {if $user eq 'root'}
+            <td> <button type="button" id="editar_marca" class="btn btn-primary" onclick="window.location='{$url}editarMarca/{$marca->id}'">Editar</button> <button type="button"
+              class="btn btn-danger" onclick="window.location='{$url}eliminarMarca/{$marca->id}'">Borrar</button> </td>
           {/if}
         </tr>
       {/foreach}

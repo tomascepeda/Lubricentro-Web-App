@@ -17,13 +17,18 @@
       <tbody>
         {foreach from=$productos item=producto}
         <tr>
-          <td>$producto->nombre</td>
-          <td>$producto->marca</td>
-          <td>$producto->detalle</td>
-          <th scope="col">$producto->precio</th>
-          {if $user eq root}
-            <td> <button type="button" class="btn btn-primary">Editar</button> <button type="button"
-              class="btn btn-danger">Borrar</button> </td>
+          <td>{$producto->nombre}</td>
+          {foreach from=$marcas item=marca}
+            {if $marca->id eq $producto->id_marca}
+              <td>{$marca->nombre}</td>
+            {/if}
+          {/foreach}
+          <td>{$producto->descripcion}</td>
+          <th scope="col">{$producto->precio}</th>
+          {if $user eq 'root'}
+            <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='{$url}editarProducto/{$producto->id}'">Editar</button> <button type="button"
+              class="btn btn-danger" onclick="window.location='{$url}eliminarProducto/{$producto->id}'">Borrar</button> 
+            </td>
           {/if}
         </tr>
       {/foreach}

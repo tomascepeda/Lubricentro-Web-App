@@ -8,15 +8,19 @@
     $r = new Router();
 
     // rutas
-    $r->addRoute("home", "GET", "Controller", "Home");
-    $r->addRoute("", "GET", "Controller", "Home");
-    $r->addRoute(" ", "GET", "Controller", "Home");
-
-    //Esto lo veo en View
-    $r->addRoute("insert", "POST", "Controller", "InsertTask");
-
-    $r->addRoute("borrar/:ID", "GET", "Controller", "DeleteTask");
-    $r->addRoute("completar/:ID", "GET", "Controller", "UpdateTask");
+    $r->addRoute("Inicio", "GET", "Controller", "Home");
+    $r->addRoute("buscar", "POST", "Controller", "Filtrar");
+    $r->addRoute("Catálogo", "GET", "Controller", "Catalogo");
+    $r->addRoute("Administrar", "GET", "Controller", "Administrar");
+    $r->addRoute("agregarMarca", "POST", "Controller", "agregarMarca");
+    $r->addRoute("eliminarMarca/:ID", "GET", "Controller", "eliminarMarca");
+    $r->addRoute("eliminarProducto/:ID", "GET", "Controller", "eliminarProducto");
+    $r->addRoute("agregarProducto", "POST", "Controller", "agregarProducto");
+    $r->addRoute("aumentarProductos", "POST", "Controller", "aumentarProductos");
+    $r->addRoute("editarProducto/:ID", "GET", "Controller", "showEditarProducto");
+    $r->addRoute("editarProducto/editar", "POST", "Controller", "editarProducto");
+    $r->addRoute("editarMarca/:ID", "GET", "Controller", "showEditarMarca");
+    $r->addRoute("editarMarca/editar", "POST", "Controller", "editarMarca");
 
     //Ruta por defecto.
     $r->setDefaultRoute("Controller", "Home");

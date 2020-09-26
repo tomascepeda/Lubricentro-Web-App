@@ -27,9 +27,28 @@
 }
 
 .forms{
-    background: url("images/bg.jpg");
+    background: url("../images/bg.jpg");
     -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
    background-size: cover;
+}
+
+h3{
+    text-align: center;
+}
+
+.oculto{
+    display: none;
+}
+
+.editar, .editar_marcas{
+    margin: 3% auto;
+    width: 80%;
+}
+
+.editar h6, .editar_marcas h6{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 25px;
 }
