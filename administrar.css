@@ -1,0 +1,35 @@
+
+.formularios{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.formularios form{
+    width: 45%;
+    margin-top: 3%;
+}
+
+.formularios form h6, .formulario-aumentos form h6{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.formulario-aumentos{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.formulario-aumentos form{
+    width: 50%;
+}
+
+.forms{
+    background: url("images/bg.jpg");
+    -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}

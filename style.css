@@ -1,0 +1,74 @@
+body{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+nav button{
+    margin-right: 5px;
+}
+
+nav img{
+    width: 50px;
+    height: 40px;
+    margin-right: 2%;
+}
+
+.portada{
+    background: url("images/bkgd.jpg");
+    -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   height: 300px;
+   width: auto;
+}
+
+.portada h3{
+    color: white;
+    text-shadow: 5px 5px 10px black;
+    font-size: 40px;
+    margin-left: 3%;
+    margin-top: 10%;
+}
+
+.table{
+    width: 85%;
+    margin: 3% auto !important;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.formulario-busqueda{
+    margin-top: 2%;
+    margin-left: 3%;
+    padding: 3%;
+    background-color: white;
+    width: 40%;
+    justify-content: space-around;
+}
+
+.formulario-busqueda *{
+    margin: 0 !important;
+}
+
+.formulario-busqueda h6{
+    padding-right: 20px;
+}
+
+footer{
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+}
+
+footer h5{
+    margin: 3% auto;
+}
+
+.lista h3{
+    color: #343a40;
+    font-size: 35px;
+    margin-left: 3%;
+    margin-top: 3%;
+}

@@ -1,0 +1,40 @@
+body{
+    display: flex;
+}
+
+.portada{
+    background: url("images/backg2.jpg");
+    -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   height: 300px;
+   width: auto;
+   align-items: center;
+}
+
+.portada h3{
+    margin: 4% auto;
+    color: white !important;
+    text-shadow: 5px 5px 15px black;
+    width: auto;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.portada form{
+    margin: 0 auto;
+    width: 40%;
+}
+
+footer{
+    margin-top: auto;
+}
+
+.lista h3{
+    color: #343a40 !important;
+    margin: 1% auto !important;
+    width: auto;
+    text-align: center;
+}
