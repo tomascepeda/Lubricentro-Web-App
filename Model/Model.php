@@ -28,7 +28,7 @@ class Model
     {
         $sentencia = $this->db->prepare("SELECT * FROM producto WHERE id=?");
         $sentencia->execute(array($id_producto));
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
     function getProductosPorMarca($marca)
@@ -98,5 +98,11 @@ class Model
     {
         $sentencia = $this->db->prepare("UPDATE marca SET nombre='$nombre' WHERE id=?");
         $sentencia->execute(array($marca_id));
+    }
+
+    function getUsuarioPorNombre($nombre){
+        $sentencia = $this->db->prepare("SELECT * FROM usuario WHERE nombre=?");
+        $sentencia->execute(array($nombre));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 }

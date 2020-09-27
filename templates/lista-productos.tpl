@@ -9,7 +9,7 @@
           <th scope="col">Marca</th>
           <th scope="col">Detalle</th>
           <th scope="col">Precio</th>
-          {if $user eq root}
+          {if $logueado && $current eq "Administrar"}
             <th scope="col">Editar / Borrar</th>
           {/if}
         </tr>
@@ -25,7 +25,7 @@
           {/foreach}
           <td>{$producto->descripcion}</td>
           <th scope="col">{$producto->precio}</th>
-          {if $user eq 'root'}
+          {if $logueado && $current eq "Administrar"}
             <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='{$url}editarProducto/{$producto->id}'">Editar</button> <button type="button"
               class="btn btn-danger" onclick="window.location='{$url}eliminarProducto/{$producto->id}'">Borrar</button> 
             </td>

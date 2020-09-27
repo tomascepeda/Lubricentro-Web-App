@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 18:59:06
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:39:20
   from 'C:\xampp\htdocs\web2\lubricentro\templates\portada-login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f70c4dae2f6a8_27811926',
+  'unifunc' => 'content_5f71149845c3e8_80036764',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f70c4dae2f6a8_27811926 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f71149845c3e8_80036764 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <div class="portada">
 
     <h3>Iniciar Sesión</h3>

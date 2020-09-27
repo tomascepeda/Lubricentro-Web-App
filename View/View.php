@@ -7,7 +7,6 @@ class View
 
     private $title;
     private $smarty;
-    //private $user;
 
     function __construct()
     {
@@ -15,9 +14,8 @@ class View
         $this->smarty->assign('url', '//' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/');
     }
 
-    function showHome($productos, $user, $nombre, $marcas)
+    function showHome($productos, $nombre, $marcas, $logueado)
     {
-        $user = "public";
         $this->title = "Lubricentro";
         $current = "Inicio";
         $current1 = "Catálogo";
@@ -26,16 +24,15 @@ class View
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
-        $this->smarty->assign('user', $user);
         $this->smarty->assign('current', $current); //para el nav
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->display('templates/home.tpl');
     }
 
-    function showCatalogo($productos, $marcas)
+    function showCatalogo($productos, $marcas, $logueado)
     {
-        $user = "public";
         $this->title = "Catálogo | Lubricentro";
         $current = "Catálogo";
         $current1 = "Inicio";
@@ -43,16 +40,15 @@ class View
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
-        $this->smarty->assign('user', $user);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->display('templates/catalogo.tpl');
     }
 
-    function showAdministrator($productos, $marcas)
+    function showAdministrator($productos, $marcas, $logueado)
     {
-        $user = "root";
         $this->title = "Administrar | Lubricentro";
         $current = "Administrar";
         $current1 = "Inicio";
@@ -60,22 +56,21 @@ class View
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
-        $this->smarty->assign('user', $user);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->display('templates/admin.tpl');
     }
 
-    function showEditarProducto($producto_id, $marcas, $producto)
+    function showEditarProducto($producto_id, $marcas, $producto, $logueado)
     {
-        $user = "public";
         $this->title = "Editar Producto | Lubricentro";
         $current = "Administrar";
         $current1 = "Inicio";
         $current2 = "Catálogo";
         $this->smarty->assign('titulo', $this->title);
-        $this->smarty->assign('user', $user);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('producto', $producto);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('current', $current);
@@ -85,15 +80,14 @@ class View
         $this->smarty->display('templates/editar-producto.tpl');
     }
 
-    function showEditarMarca($marca_id, $marca)
+    function showEditarMarca($marca_id, $marca, $logueado)
     {
-        $user = "public";
         $this->title = "Editar Marca | Lubricentro";
         $current = "Administrar";
         $current1 = "Inicio";
         $current2 = "Catálogo";
         $this->smarty->assign('titulo', $this->title);
-        $this->smarty->assign('user', $user);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('marca', $marca);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -102,13 +96,13 @@ class View
         $this->smarty->display('templates/editar-marca.tpl');
     }
 
-    function showLogin(){
-        $user = "public";
+    function showLogin($logueado)
+    {
         $this->title = "Iniciar Sesión | Lubricentro";
         $current = "Iniciar Sesión";
         $current1 = "Inicio";
         $current2 = "Catálogo";
-        $this->smarty->assign('user', $user);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -116,13 +110,13 @@ class View
         $this->smarty->display('templates/login.tpl');
     }
 
-    function showRegister(){
-        $user = "public";
+    function showRegister($logueado)
+    {
         $this->title = "Registrarse | Lubricentro";
         $current = "Registrarse";
         $current1 = "Inicio";
         $current2 = "Catálogo";
-        $this->smarty->assign('user', $user);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -134,5 +128,4 @@ class View
     {
         header("Location: " . BASE_URL . $page);
     }
-
 }

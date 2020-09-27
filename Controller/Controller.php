@@ -9,11 +9,13 @@ class Controller
 
     private $view;
     private $model;
+    private $logueado;
 
     function __construct()
     {
         $this->view = new View();
         $this->model = new Model();
+        $this->logueado = true; //hacer dinamico
     }
 
     function Home($busqueda = null) //nombre de la busqueda
@@ -22,19 +24,17 @@ class Controller
             $busqueda = " ";
         }
         $productos = $this->model->getProductosPorNombre($busqueda);
-        $user = null;
         $marcas = $this->model->getMarcas();
-        $this->view->showHome($productos, $user, $busqueda, $marcas);
+        $this->view->showHome($productos, $busqueda, $marcas, $this->logueado);
     }
 
     function Filtrar()
     { //muestra la lista con las coincidencias de la busqueda
-        $user = null;
         if (isset($_POST['input_buscar'])) {
             $busqueda = $_POST['input_buscar'];
             $productos = $this->model->getProductosPorNombre($busqueda);
             $marcas = $this->model->getMarcas();
-            $this->view->showHome($productos, $user, $busqueda, $marcas);
+            $this->view->showHome($productos, $busqueda, $marcas, $this->logueado);
         }
     }
 
@@ -42,14 +42,14 @@ class Controller
     {
         $productos = $this->model->getProductos();
         $marcas = $this->model->getMarcas();
-        $this->view->showCatalogo($productos, $marcas);
+        $this->view->showCatalogo($productos, $marcas, $this->logueado);
     }
 
     function Administrar()
     {
         $productos = $this->model->getProductos();
         $marcas = $this->model->getMarcas();
-        $this->view->showAdministrator($productos, $marcas);
+        $this->view->showAdministrator($productos, $marcas, $this->logueado);
     }
 
     function eliminarMarca($params = null)
@@ -116,11 +116,12 @@ class Controller
         }
     }
 
-    function showEditarProducto($params = null){
+    function showEditarProducto($params = null)
+    {
         $producto_id = $params[':ID'];
         $producto = $this->model->getProductoPorID($producto_id);
         $marcas = $this->model->getMarcas();
-        $this->view->showEditarProducto($producto_id, $marcas, $producto);
+        $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado);
     }
 
     function editarMarca()
@@ -135,28 +136,51 @@ class Controller
         }
     }
 
-    function showEditarMarca($params = null){
+    function showEditarMarca($params = null)
+    {
         $marca_id = $params[':ID'];
         $marca = $this->model->getMarcaPorID($marca_id);
-        $this->view->showEditarMarca($marca_id, $marca);
+        $this->view->showEditarMarca($marca_id, $marca, $this->logueado);
     }
 
-    function iniciarSesion(){
-        $this->view->showLogin();
+    function iniciarSesion()
+    {
+        $this->view->showLogin($this->logueado);
     }
 
-    function Registrarse(){
-        $this->view->showRegister();
+    function Registrarse()
+    {
+        $this->view->showRegister($this->logueado);
     }
 
-    function agregarUsuario(){
+    function agregarUsuario()
+    {
         if (isset($_POST['user']) && isset($_POST['password'])) {
             $nombre = $_POST['user'];
-            $contraseña = $_POST['password'];
+            $password = $_POST['password'];
+            $contraseña = password_hash($password, PASSWORD_DEFAULT);
             $this->model->addUsuario($nombre, $contraseña);
             $this->view->showLocation("Inicio");
         } else {
             $this->view->showLocation("register");
+        }
+    }
+
+    function Loguearse()
+    {
+        if (isset($_POST['user']) && isset($_POST['password'])) {
+            $nombre = $_POST['user'];
+            $password = $_POST['password'];
+            $user = $this->model->getUsuarioPorNombre($nombre);
+            if (password_verify($password, $user->contraseña)){
+                $this->view->showLocation("Inicio");
+                session_start();
+                $_SESSION["user"] = $user;
+            }
+            else
+                $this->view->showLocation("login");
+        } else {
+            $this->view->showLocation("login");
         }
     }
 }

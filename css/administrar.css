@@ -52,3 +52,11 @@ h3{
     font-size: 25px;
     margin-bottom: 25px;
 }
+
+.editar_marcas .form-row{
+    width: 100% !important;
+}
+
+.editar_marcas .form-row input{
+    width: 204% !important;
+}

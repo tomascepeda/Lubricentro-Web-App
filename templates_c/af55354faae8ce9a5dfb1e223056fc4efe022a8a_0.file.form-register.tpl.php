@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 19:36:21
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:39:24
   from 'C:\xampp\htdocs\web2\lubricentro\templates\form-register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f70cd9555b0b3_26183281',
+  'unifunc' => 'content_5f71149c1f8a48_81487953',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f70cd9555b0b3_26183281 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f71149c1f8a48_81487953 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="form_log ">
     <form action="registrarse" class="shadow-lg p-3 mb-5 bg-white rounded" method="POST">
     <div class="form-group">

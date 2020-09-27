@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 23:49:12
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:27:28
   from 'C:\xampp\htdocs\web2\lubricentro\templates\edit-marca-form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fb758f2b4d5_73080264',
+  'unifunc' => 'content_5f7111d04a8fa7_68938519',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fb758f2b4d5_73080264 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7111d04a8fa7_68938519 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="portada">
 
     <h3>Editar</h3>

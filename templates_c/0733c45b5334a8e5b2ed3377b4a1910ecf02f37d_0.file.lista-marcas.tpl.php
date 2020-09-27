@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 03:21:48
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:19:51
   from 'C:\xampp\htdocs\web2\lubricentro\templates\lista-marcas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fe92cdd3fa8_61093564',
+  'unifunc' => 'content_5f7110076d1ba5_18881109',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0733c45b5334a8e5b2ed3377b4a1910ecf02f37d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\lista-marcas.tpl',
-      1 => 1601169705,
+      1 => 1601244621,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fe92cdd3fa8_61093564 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7110076d1ba5_18881109 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="lista">
 
     <h3>Lista de Marcas:</h3>
@@ -29,7 +29,7 @@ function content_5f6fe92cdd3fa8_61093564 (Smarty_Internal_Template $_smarty_tpl)
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nombre</th>
-          <?php if ($_smarty_tpl->tpl_vars['user']->value == 'root') {?>
+          <?php if ($_smarty_tpl->tpl_vars['logueado']->value && $_smarty_tpl->tpl_vars['current']->value == "Administrar") {?>
             <th scope="col">Editar / Borrar</th>
           <?php }?>
         </tr>
@@ -44,7 +44,7 @@ $_smarty_tpl->tpl_vars['marca']->do_else = false;
         <tr>
           <td><?php echo $_smarty_tpl->tpl_vars['marca']->value->nombre;?>
 </td>
-          <?php if ($_smarty_tpl->tpl_vars['user']->value == 'root') {?>
+          <?php if ($_smarty_tpl->tpl_vars['logueado']->value && $_smarty_tpl->tpl_vars['current']->value == "Administrar") {?>
             <td> <button type="button" id="editar_marca" class="btn btn-primary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 editarMarca/<?php echo $_smarty_tpl->tpl_vars['marca']->value->id;?>
 '">Editar</button> <button type="button"

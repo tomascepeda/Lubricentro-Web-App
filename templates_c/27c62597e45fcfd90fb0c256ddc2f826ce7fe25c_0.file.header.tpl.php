@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 19:01:44
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:12:14
   from 'C:\xampp\htdocs\web2\lubricentro\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f70c578b921a9_83136385',
+  'unifunc' => 'content_5f710e3e40e396_34699925',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f70c578b921a9_83136385 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f710e3e40e396_34699925 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 

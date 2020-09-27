@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:43:48
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:28:56
   from 'C:\xampp\htdocs\web2\lubricentro\templates\editar-marca.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa804c576e7_00520468',
+  'unifunc' => 'content_5f7112284c75e9_73289275',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '35d638b3e8013ae8a0f60ce7cd2f8b06f47e4e4f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\editar-marca.tpl',
-      1 => 1601152853,
+      1 => 1601245732,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f6fa804c576e7_00520468 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7112284c75e9_73289275 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -61,41 +61,47 @@ function content_5f6fa804c576e7_00520468 (Smarty_Internal_Template $_smarty_tpl)
 <body>
 
 <nav>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="../images/logo.png" alt="logo">
-    <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="../images/logo.png" alt="logo">
+        <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
 echo $_smarty_tpl->tpl_vars['current']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current']->value;?>
 </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-        <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
 echo $_smarty_tpl->tpl_vars['current1']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current1']->value;?>
 </a>
-        </li>
-        <li class="nav-item">
-        <?php if ($_smarty_tpl->tpl_vars['user']->value == 'root') {?>
-            <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
+            </li>
+            <?php if ($_smarty_tpl->tpl_vars['logueado']->value) {?>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
 echo $_smarty_tpl->tpl_vars['current2']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current2']->value;?>
 </a>
-        <?php } else { ?>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo $_smarty_tpl->tpl_vars['current2']->value;?>
+            </li>
+            <?php } else { ?>
+            <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo $_smarty_tpl->tpl_vars['current2']->value;?>
 </a>
+            </li>
+            <?php }?>
+        </ul>
+        <?php if (!$_smarty_tpl->tpl_vars['logueado']->value) {?>
+            <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+login'">Iniciar Sesión</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+register'">Registrarse</button>
         <?php }?>
-        </li>
-    </ul>
-    <button type="button" class="btn btn-secondary">Iniciar Sesión</button>
-    <button type="button" class="btn btn-secondary">Registrarse</button>
-    </div>
-</nav>
+        </div>
+    </nav>
 </nav>
 
 <?php $_smarty_tpl->_subTemplateRender("file:edit-marca-form.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

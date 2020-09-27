@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 18:47:38
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:19:51
   from 'C:\xampp\htdocs\web2\lubricentro\templates\lista-productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f70c22a7902d0_49048054',
+  'unifunc' => 'content_5f7110075ffa85_34262690',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a22876f933a2d80da7ea14f01095e8ce07c0c280' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\lista-productos.tpl',
-      1 => 1601224793,
+      1 => 1601244602,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f70c22a7902d0_49048054 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7110075ffa85_34262690 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <div class="lista">
 
     <h3>Lista de Productos:</h3>
@@ -32,7 +32,7 @@ function content_5f70c22a7902d0_49048054 (Smarty_Internal_Template $_smarty_tpl)
           <th scope="col">Marca</th>
           <th scope="col">Detalle</th>
           <th scope="col">Precio</th>
-          <?php if ($_smarty_tpl->tpl_vars['user']->value == 'root') {?>
+          <?php if ($_smarty_tpl->tpl_vars['logueado']->value && $_smarty_tpl->tpl_vars['current']->value == "Administrar") {?>
             <th scope="col">Editar / Borrar</th>
           <?php }?>
         </tr>
@@ -64,7 +64,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </td>
           <th scope="col"><?php echo $_smarty_tpl->tpl_vars['producto']->value->precio;?>
 </th>
-          <?php if ($_smarty_tpl->tpl_vars['user']->value == 'root') {?>
+          <?php if ($_smarty_tpl->tpl_vars['logueado']->value && $_smarty_tpl->tpl_vars['current']->value == "Administrar") {?>
             <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 editarProducto/<?php echo $_smarty_tpl->tpl_vars['producto']->value->id;?>
 '">Editar</button> <button type="button"

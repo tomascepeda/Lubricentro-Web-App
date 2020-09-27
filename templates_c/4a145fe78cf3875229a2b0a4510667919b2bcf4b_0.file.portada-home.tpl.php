@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:10:28
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:12:14
   from 'C:\xampp\htdocs\web2\lubricentro\templates\portada-home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa03444d7d3_51919737',
+  'unifunc' => 'content_5f710e3e565571_55216963',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fa03444d7d3_51919737 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f710e3e565571_55216963 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <div class="portada">
 
     <h3>Nuestros productos:</h3>

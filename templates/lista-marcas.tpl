@@ -6,7 +6,7 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nombre</th>
-          {if $user eq root}
+          {if $logueado && $current eq "Administrar"}
             <th scope="col">Editar / Borrar</th>
           {/if}
         </tr>
@@ -15,7 +15,7 @@
         {foreach from=$marcas item=marca}
         <tr>
           <td>{$marca->nombre}</td>
-          {if $user eq 'root'}
+          {if $logueado && $current eq "Administrar"}
             <td> <button type="button" id="editar_marca" class="btn btn-primary" onclick="window.location='{$url}editarMarca/{$marca->id}'">Editar</button> <button type="button"
               class="btn btn-danger" onclick="window.location='{$url}eliminarMarca/{$marca->id}'">Borrar</button> </td>
           {/if}
