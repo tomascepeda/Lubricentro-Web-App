@@ -12,7 +12,7 @@ class Model
 
     function getProductos()
     {
-        $sentencia = $this->db->prepare("SELECT * FROM producto");
+        $sentencia = $this->db->prepare("SELECT * FROM producto ORDER BY `producto`.`nombre` ASC");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -40,7 +40,7 @@ class Model
 
     function getMarcas()
     {
-        $sentencia = $this->db->prepare("SELECT * FROM marca");
+        $sentencia = $this->db->prepare("SELECT * FROM marca ORDER BY `nombre` ASC");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -62,6 +62,12 @@ class Model
     {
         $sentencia = $this->db->prepare("INSERT INTO marca(nombre) VALUES(?)");
         $sentencia->execute(array($nombre));
+    }
+
+    function addUsuario($nombre, $contraseña)
+    {
+        $sentencia = $this->db->prepare("INSERT INTO usuario(nombre, contraseña) VALUES(?,?)");
+        $sentencia->execute(array($nombre, $contraseña));
     }
 
     function removeProducto($producto_id)

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:28:16
+/* Smarty version 3.1.34-dev-7, created on 2020-09-27 19:01:44
   from 'C:\xampp\htdocs\web2\lubricentro\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa460db5aa7_45715110',
+  'unifunc' => 'content_5f70c578b921a9_83136385',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '27c62597e45fcfd90fb0c256ddc2f826ce7fe25c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\header.tpl',
-      1 => 1601152096,
+      1 => 1601226041,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fa460db5aa7_45715110 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f70c578b921a9_83136385 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -33,9 +33,21 @@ function content_5f6fa460db5aa7_45715110 (Smarty_Internal_Template $_smarty_tpl)
     <link rel="stylesheet" href="./css/style.css">
     <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Catálogo') {?>
         <link rel="stylesheet" href="./css/catalogo.css">
+        <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="./main.js"><?php echo '</script'; ?>
+>
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Administrar') {?>
         <link rel="stylesheet" href="./css/administrar.css">
+    <?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Iniciar Sesión' || $_smarty_tpl->tpl_vars['current']->value == 'Registrarse') {?>
+        <link rel="stylesheet" href="./css/log.css">
     <?php }?>
     <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

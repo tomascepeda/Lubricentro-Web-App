@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:43:47
+/* Smarty version 3.1.34-dev-7, created on 2020-09-27 03:21:48
   from 'C:\xampp\htdocs\web2\lubricentro\templates\lista-marcas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa8031fae14_59950023',
+  'unifunc' => 'content_5f6fe92cdd3fa8_61093564',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0733c45b5334a8e5b2ed3377b4a1910ecf02f37d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\lista-marcas.tpl',
-      1 => 1601153010,
+      1 => 1601169705,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fa8031fae14_59950023 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6fe92cdd3fa8_61093564 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="lista">
 
     <h3>Lista de Marcas:</h3>

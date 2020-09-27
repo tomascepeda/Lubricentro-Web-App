@@ -10,9 +10,15 @@
     <link rel="stylesheet" href="./css/style.css">
     {if $current eq 'Catálogo'}
         <link rel="stylesheet" href="./css/catalogo.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+        <script src="./main.js"></script>
     {/if}
     {if $current eq 'Administrar'}
         <link rel="stylesheet" href="./css/administrar.css">
+    {/if}
+    {if $current eq 'Iniciar Sesión' or $current eq 'Registrarse'}
+        <link rel="stylesheet" href="./css/log.css">
     {/if}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

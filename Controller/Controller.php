@@ -140,4 +140,23 @@ class Controller
         $marca = $this->model->getMarcaPorID($marca_id);
         $this->view->showEditarMarca($marca_id, $marca);
     }
+
+    function iniciarSesion(){
+        $this->view->showLogin();
+    }
+
+    function Registrarse(){
+        $this->view->showRegister();
+    }
+
+    function agregarUsuario(){
+        if (isset($_POST['user']) && isset($_POST['password'])) {
+            $nombre = $_POST['user'];
+            $contraseña = $_POST['password'];
+            $this->model->addUsuario($nombre, $contraseña);
+            $this->view->showLocation("Inicio");
+        } else {
+            $this->view->showLocation("register");
+        }
+    }
 }

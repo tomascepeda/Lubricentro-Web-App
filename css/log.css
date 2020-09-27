@@ -1,0 +1,20 @@
+.portada{
+    background: url("../images/log.jpg");
+    -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}
+
+.portada h3{
+    text-align: center;
+}
+
+.form_log{
+    height: 270px !important;
+}
+
+.form_log form{
+    margin: 1% auto;
+    width: 60%;
+}

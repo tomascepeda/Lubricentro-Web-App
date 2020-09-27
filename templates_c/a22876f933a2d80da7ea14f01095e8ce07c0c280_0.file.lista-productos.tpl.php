@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 22:12:49
+/* Smarty version 3.1.34-dev-7, created on 2020-09-27 18:47:38
   from 'C:\xampp\htdocs\web2\lubricentro\templates\lista-productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fa0c1e74887_65851112',
+  'unifunc' => 'content_5f70c22a7902d0_49048054',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a22876f933a2d80da7ea14f01095e8ce07c0c280' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\lista-productos.tpl',
-      1 => 1601149683,
+      1 => 1601224793,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fa0c1e74887_65851112 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f70c22a7902d0_49048054 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <div class="lista">
 
     <h3>Lista de Productos:</h3>

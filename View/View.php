@@ -102,6 +102,34 @@ class View
         $this->smarty->display('templates/editar-marca.tpl');
     }
 
+    function showLogin(){
+        $user = "public";
+        $this->title = "Iniciar Sesión | Lubricentro";
+        $current = "Iniciar Sesión";
+        $current1 = "Inicio";
+        $current2 = "Catálogo";
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('titulo', $this->title);
+        $this->smarty->assign('current', $current);
+        $this->smarty->assign('current1', $current1);
+        $this->smarty->assign('current2', $current2);
+        $this->smarty->display('templates/login.tpl');
+    }
+
+    function showRegister(){
+        $user = "public";
+        $this->title = "Registrarse | Lubricentro";
+        $current = "Registrarse";
+        $current1 = "Inicio";
+        $current2 = "Catálogo";
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('titulo', $this->title);
+        $this->smarty->assign('current', $current);
+        $this->smarty->assign('current1', $current1);
+        $this->smarty->assign('current2', $current2);
+        $this->smarty->display('templates/register.tpl');
+    }
+
     function showLocation($page)
     {
         header("Location: " . BASE_URL . $page);

@@ -12,7 +12,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="{$url}{$current1}">{$current1}</a>
           </li>
-          {if $user eq 'root'}
+          {if $user eq 'root' or $current eq 'Iniciar Sesión' or $current eq 'Registrarse'}
           <li class="nav-item active">
               <a class="nav-link" href="{$url}{$current2}">{$current2}</a>
           </li>
@@ -22,8 +22,10 @@
           </li>
           {/if}
         </ul>
-        <button type="button" class="btn btn-secondary">Iniciar Sesión</button>
-        <button type="button" class="btn btn-secondary">Registrarse</button>
+        {if $current ne "Iniciar Sesión" and $current ne "Registrarse"}
+          <button type="button" class="btn btn-secondary" onclick="window.location='{$url}login'">Iniciar Sesión</button>
+          <button type="button" class="btn btn-secondary" onclick="window.location='{$url}register'">Registrarse</button>
+        {/if}
       </div>
     </nav>
   </nav>

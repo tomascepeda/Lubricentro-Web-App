@@ -21,6 +21,9 @@
     $r->addRoute("editarProducto/editar", "POST", "Controller", "editarProducto");
     $r->addRoute("editarMarca/:ID", "GET", "Controller", "showEditarMarca");
     $r->addRoute("editarMarca/editar", "POST", "Controller", "editarMarca");
+    $r->addRoute("login", "GET", "Controller", "iniciarSesion");
+    $r->addRoute("register", "GET", "Controller", "Registrarse");
+    $r->addRoute("registrarse", "POST", "Controller", "agregarUsuario");
 
     //Ruta por defecto.
     $r->setDefaultRoute("Controller", "Home");

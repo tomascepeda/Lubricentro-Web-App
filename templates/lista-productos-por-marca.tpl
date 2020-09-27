@@ -1,5 +1,6 @@
-<div class="lista">
+<div class="lista" id="pdf">
     <h3>Lista de Productos por marca:</h3>
+    <button class="btn btn-primary download" id="download">Descargar PDF</button>
     {foreach from=$marcas item=marca}
         <table class="table shadow-lg p-3 mb-5 bg-white rounded">
         <thead class="thead-dark">
