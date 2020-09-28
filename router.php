@@ -25,6 +25,7 @@
     $r->addRoute("register", "GET", "Controller", "Registrarse");
     $r->addRoute("registrarse", "POST", "Controller", "agregarUsuario");
     $r->addRoute("loguearse", "POST", "Controller", "Loguearse");
+    $r->addRoute("logout", "GET", "Controller", "cerrarSesion");
 
     //Ruta por defecto.
     $r->setDefaultRoute("Controller", "Home");

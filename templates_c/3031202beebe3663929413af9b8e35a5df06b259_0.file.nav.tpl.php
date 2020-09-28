@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:45:58
+/* Smarty version 3.1.34-dev-7, created on 2020-09-29 01:23:43
   from 'C:\xampp\htdocs\web2\lubricentro\templates\nav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f711626dafdf9_58130684',
+  'unifunc' => 'content_5f72707f4caa93_40517302',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3031202beebe3663929413af9b8e35a5df06b259' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\nav.tpl',
-      1 => 1601246758,
+      1 => 1601335413,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f711626dafdf9_58130684 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f72707f4caa93_40517302 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <img src="./images/logo.png" alt="logo">
@@ -60,6 +60,9 @@ echo $_smarty_tpl->tpl_vars['current2']->value;?>
 login'">Iniciar Sesión</button>
           <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 register'">Registrarse</button>
+        <?php } else { ?>
+          <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+logout'">Cerrar Sesión</button>
         <?php }?>
       </div>
     </nav>

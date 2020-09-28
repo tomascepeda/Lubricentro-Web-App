@@ -13,9 +13,14 @@ class Controller
 
     function __construct()
     {
+        session_start();
         $this->view = new View();
         $this->model = new Model();
-        $this->logueado = true; //hacer dinamico
+        if (isset($_SESSION["user"])) {
+            $this->logueado = true;
+        } else {
+            $this->logueado = false;
+        }
     }
 
     function Home($busqueda = null) //nombre de la busqueda
@@ -47,9 +52,13 @@ class Controller
 
     function Administrar()
     {
-        $productos = $this->model->getProductos();
-        $marcas = $this->model->getMarcas();
-        $this->view->showAdministrator($productos, $marcas, $this->logueado);
+        if ($this->logueado) {
+            $productos = $this->model->getProductos();
+            $marcas = $this->model->getMarcas();
+            $this->view->showAdministrator($productos, $marcas, $this->logueado);
+        }else{
+            $this->view->showLocation("Inicio");
+        }
     }
 
     function eliminarMarca($params = null)
@@ -172,15 +181,20 @@ class Controller
             $nombre = $_POST['user'];
             $password = $_POST['password'];
             $user = $this->model->getUsuarioPorNombre($nombre);
-            if (password_verify($password, $user->contraseña)){
-                $this->view->showLocation("Inicio");
-                session_start();
+            if (password_verify($password, $user->contraseña)) {
                 $_SESSION["user"] = $user;
-            }
-            else
+                $this->logueado = true;
+                $this->view->showLocation("Inicio");
+            } else
                 $this->view->showLocation("login");
         } else {
             $this->view->showLocation("login");
         }
+    }
+
+    function cerrarSesion()
+    {
+        session_destroy();
+        $this->view->showLocation("Inicio");
     }
 }

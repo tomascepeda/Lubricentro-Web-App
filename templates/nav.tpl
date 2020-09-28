@@ -25,6 +25,8 @@
         {if !$logueado and ($current ne "Iniciar Sesión") and ($current ne "Registrarse")}
           <button type="button" class="btn btn-secondary" onclick="window.location='{$url}login'">Iniciar Sesión</button>
           <button type="button" class="btn btn-secondary" onclick="window.location='{$url}register'">Registrarse</button>
+        {else}
+          <button type="button" class="btn btn-secondary" onclick="window.location='{$url}logout'">Cerrar Sesión</button>
         {/if}
       </div>
     </nav>
