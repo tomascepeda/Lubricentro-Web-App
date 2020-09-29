@@ -10,6 +10,7 @@ class Controller
     private $view;
     private $model;
     private $logueado;
+    private $user;
 
     function __construct()
     {
@@ -18,6 +19,7 @@ class Controller
         $this->model = new Model();
         if (isset($_SESSION["user"])) {
             $this->logueado = true;
+            $this->user = $_SESSION["user"];
         } else {
             $this->logueado = false;
         }
@@ -30,7 +32,7 @@ class Controller
         }
         $productos = $this->model->getProductosPorNombre($busqueda);
         $marcas = $this->model->getMarcas();
-        $this->view->showHome($productos, $busqueda, $marcas, $this->logueado);
+        $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado);
     }
 
     function Filtrar()
@@ -39,7 +41,7 @@ class Controller
             $busqueda = $_POST['input_buscar'];
             $productos = $this->model->getProductosPorNombre($busqueda);
             $marcas = $this->model->getMarcas();
-            $this->view->showHome($productos, $busqueda, $marcas, $this->logueado);
+            $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado);
         }
     }
 
@@ -47,7 +49,7 @@ class Controller
     {
         $productos = $this->model->getProductos();
         $marcas = $this->model->getMarcas();
-        $this->view->showCatalogo($productos, $marcas, $this->logueado);
+        $this->view->showCatalogo($productos, $marcas, $this->user, $this->logueado);
     }
 
     function Administrar()
@@ -55,7 +57,7 @@ class Controller
         if ($this->logueado) {
             $productos = $this->model->getProductos();
             $marcas = $this->model->getMarcas();
-            $this->view->showAdministrator($productos, $marcas, $this->logueado);
+            $this->view->showAdministrator($productos, $marcas, $this->user, $this->logueado);
         }else{
             $this->view->showLocation("Inicio");
         }

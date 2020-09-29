@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-29 01:23:43
+/* Smarty version 3.1.34-dev-7, created on 2020-09-29 18:28:01
   from 'C:\xampp\htdocs\web2\lubricentro\templates\nav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f72707f4caa93_40517302',
+  'unifunc' => 'content_5f7360918eaf41_78722698',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3031202beebe3663929413af9b8e35a5df06b259' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\nav.tpl',
-      1 => 1601335413,
+      1 => 1601396879,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f72707f4caa93_40517302 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7360918eaf41_78722698 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <img src="./images/logo.png" alt="logo">
@@ -55,14 +55,15 @@ echo $_smarty_tpl->tpl_vars['current2']->value;?>
           </li>
           <?php }?>
         </ul>
-        <?php if (!$_smarty_tpl->tpl_vars['logueado']->value && ($_smarty_tpl->tpl_vars['current']->value != "Iniciar Sesión") && ($_smarty_tpl->tpl_vars['current']->value != "Registrarse")) {?>
-          <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+        <?php if (!$_smarty_tpl->tpl_vars['logueado']->value) {?>
+          <button type="button" class="btn btn-primary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 login'">Iniciar Sesión</button>
-          <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+          <button type="button" class="btn btn-primary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 register'">Registrarse</button>
         <?php } else { ?>
-          <button type="button" class="btn btn-secondary" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
-logout'">Cerrar Sesión</button>
+          <button type="button" class="btn btn-danger" onclick="window.location='<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+logout'">Cerrar sesión de: <?php echo $_smarty_tpl->tpl_vars['user']->value->nombre;?>
+</button>
         <?php }?>
       </div>
     </nav>

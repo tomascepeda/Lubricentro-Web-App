@@ -14,7 +14,7 @@ class View
         $this->smarty->assign('url', '//' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/');
     }
 
-    function showHome($productos, $nombre, $marcas, $logueado)
+    function showHome($productos, $nombre, $marcas, $user, $logueado)
     {
         $this->title = "Lubricentro";
         $current = "Inicio";
@@ -27,11 +27,12 @@ class View
         $this->smarty->assign('current', $current); //para el nav
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->display('templates/home.tpl');
     }
 
-    function showCatalogo($productos, $marcas, $logueado)
+    function showCatalogo($productos, $marcas, $user, $logueado)
     {
         $this->title = "Catálogo | Lubricentro";
         $current = "Catálogo";
@@ -40,6 +41,7 @@ class View
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -47,7 +49,7 @@ class View
         $this->smarty->display('templates/catalogo.tpl');
     }
 
-    function showAdministrator($productos, $marcas, $logueado)
+    function showAdministrator($productos, $marcas, $user, $logueado)
     {
         $this->title = "Administrar | Lubricentro";
         $current = "Administrar";
@@ -56,6 +58,7 @@ class View
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
