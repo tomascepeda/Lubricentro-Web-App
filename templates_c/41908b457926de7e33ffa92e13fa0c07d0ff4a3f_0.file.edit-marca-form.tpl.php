@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:27:28
+/* Smarty version 3.1.34-dev-7, created on 2020-10-02 23:01:10
   from 'C:\xampp\htdocs\web2\lubricentro\templates\edit-marca-form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7111d04a8fa7_68938519',
+  'unifunc' => 'content_5f779516e4fec9_17440804',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '41908b457926de7e33ffa92e13fa0c07d0ff4a3f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\edit-marca-form.tpl',
-      1 => 1601156947,
+      1 => 1601672467,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f7111d04a8fa7_68938519 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f779516e4fec9_17440804 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="portada">
 
     <h3>Editar</h3>
@@ -31,7 +31,14 @@ function content_5f7111d04a8fa7_68938519 (Smarty_Internal_Template $_smarty_tpl)
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nombre</label>
-            <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" value="<?php echo $_smarty_tpl->tpl_vars['marca']->value[0]->nombre;?>
+            <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" value="<?php echo $_smarty_tpl->tpl_vars['marca']->value->nombre;?>
+" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">Origen</label>
+            <input type="text" name="origen_marca" class="form-control" id="validationCustom01" value="<?php echo $_smarty_tpl->tpl_vars['marca']->value->origen;?>
 " required>
         </div>
     </div>

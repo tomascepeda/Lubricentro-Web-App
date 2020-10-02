@@ -9,6 +9,11 @@
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nombre</label>
             <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" value="{$marca->nombre}" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">Origen</label>
             <input type="text" name="origen_marca" class="form-control" id="validationCustom01" value="{$marca->origen}" required>
         </div>
     </div>
