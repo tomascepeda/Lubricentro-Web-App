@@ -99,7 +99,7 @@ class View
         $this->smarty->display('templates/editar-marca.tpl');
     }
 
-    function showLogin($logueado)
+    function showLogin($logueado, $error)
     {
         $this->title = "Iniciar Sesión | Lubricentro";
         $current = "Iniciar Sesión";
@@ -110,10 +110,11 @@ class View
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('error', $error);
         $this->smarty->display('templates/login.tpl');
     }
 
-    function showRegister($logueado)
+    function showRegister($logueado, $error)
     {
         $this->title = "Registrarse | Lubricentro";
         $current = "Registrarse";
@@ -124,6 +125,7 @@ class View
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('error', $error);
         $this->smarty->display('templates/register.tpl');
     }
 

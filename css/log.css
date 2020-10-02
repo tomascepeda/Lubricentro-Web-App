@@ -11,10 +11,11 @@
 }
 
 .form_log{
-    height: 270px !important;
+    height: 60% !important;
 }
 
 .form_log form{
     margin: 1% auto;
+    margin-bottom: 1% !important;
     width: 60%;
 }

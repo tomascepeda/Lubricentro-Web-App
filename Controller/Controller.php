@@ -58,7 +58,7 @@ class Controller
             $productos = $this->model->getProductos();
             $marcas = $this->model->getMarcas();
             $this->view->showAdministrator($productos, $marcas, $this->user, $this->logueado);
-        }else{
+        } else {
             $this->view->showLocation("Inicio");
         }
     }
@@ -158,22 +158,34 @@ class Controller
 
     function iniciarSesion()
     {
-        $this->view->showLogin($this->logueado);
+        if (!$this->logueado) {
+            $this->view->showLogin($this->logueado, false);
+        } else {
+            $this->view->showLocation("Inicio");
+        }
     }
 
     function Registrarse()
     {
-        $this->view->showRegister($this->logueado);
+        if (!$this->logueado) {
+            $this->view->showRegister($this->logueado, false);
+        } else {
+            $this->view->showLocation("Inicio");
+        }
     }
 
     function agregarUsuario()
     {
         if (isset($_POST['user']) && isset($_POST['password'])) {
             $nombre = $_POST['user'];
-            $password = $_POST['password'];
-            $contraseña = password_hash($password, PASSWORD_DEFAULT);
-            $this->model->addUsuario($nombre, $contraseña);
-            $this->view->showLocation("Inicio");
+            $busqueda_usuario = $this->model->getUsuarioPorNombre($nombre);
+            if ($busqueda_usuario == false) {
+                $password = $_POST['password'];
+                $contraseña = password_hash($password, PASSWORD_DEFAULT);
+                $this->model->addUsuario($nombre, $contraseña);
+                $this->view->showLocation("Inicio");
+            }else
+                $this->view->showRegister($this->logueado, true);
         } else {
             $this->view->showLocation("register");
         }
@@ -181,18 +193,20 @@ class Controller
 
     function Loguearse()
     {
-        if (isset($_POST['user']) && isset($_POST['password'])) {
-            $nombre = $_POST['user'];
-            $password = $_POST['password'];
-            $user = $this->model->getUsuarioPorNombre($nombre);
-            if (password_verify($password, $user->contraseña)) {
-                $_SESSION["user"] = $user;
-                $this->logueado = true;
-                $this->view->showLocation("Inicio");
-            } else
-                $this->view->showLocation("login");
+        if (!$this->logueado) {
+            if (isset($_POST['user']) && isset($_POST['password'])) {
+                $nombre = $_POST['user'];
+                $password = $_POST['password'];
+                $user = $this->model->getUsuarioPorNombre($nombre);
+                if (password_verify($password, $user->contraseña)) {
+                    $_SESSION["user"] = $user;
+                    $this->logueado = true;
+                    $this->view->showLocation("Inicio");
+                } else
+                    $this->view->showLogin($this->logueado, true);
+            }
         } else {
-            $this->view->showLocation("login");
+            $this->view->showLocation("Inicio");
         }
     }
 

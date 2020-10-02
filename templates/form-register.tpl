@@ -1,5 +1,10 @@
 <div class="form_log ">
     <form action="registrarse" class="shadow-lg p-3 mb-5 bg-white rounded" method="POST">
+        {if $error}
+        <div class="alert alert-danger" role="alert">
+            El usuario ya existe, pruebe con otro nombre!
+        </div>
+    {/if}
     <div class="form-group">
         <label for="exampleInputEmail1">Nombre</label>
         <input type="text" class="form-control" name="user" id="exampleInputEmail1" required>
