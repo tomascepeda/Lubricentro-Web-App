@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:12:14
+/* Smarty version 3.1.34-dev-7, created on 2020-10-02 02:06:40
   from 'C:\xampp\htdocs\web2\lubricentro\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f710e3e40e396_34699925',
+  'unifunc' => 'content_5f766f1024f500_92182716',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '27c62597e45fcfd90fb0c256ddc2f826ce7fe25c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\header.tpl',
-      1 => 1601226041,
+      1 => 1601597199,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f710e3e40e396_34699925 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f766f1024f500_92182716 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -45,6 +45,11 @@ function content_5f710e3e40e396_34699925 (Smarty_Internal_Template $_smarty_tpl)
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Administrar') {?>
         <link rel="stylesheet" href="./css/administrar.css">
+    <?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Ver Más') {?>
+        <link rel="shortcut icon" href="../images/logo.png" />
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/catalogo.css">
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Iniciar Sesión' || $_smarty_tpl->tpl_vars['current']->value == 'Registrarse') {?>
         <link rel="stylesheet" href="./css/log.css">

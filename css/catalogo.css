@@ -45,3 +45,9 @@ footer{
     margin-left: 45%;
     margin-top: 1%;
 }
+
+.more{
+    width: 18rem;
+    margin: 1.5% auto;
+    margin-bottom: 1.5% !important;
+}

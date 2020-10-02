@@ -49,7 +49,7 @@ class Model
     {
         $sentencia = $this->db->prepare("SELECT * FROM marca WHERE id=?");
         $sentencia->execute(array($id_marca));
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
     function addProducto($nombre, $detalle, $precio, $marca)
@@ -58,10 +58,10 @@ class Model
         $sentencia->execute(array($nombre, $detalle, $precio, $marca));
     }
 
-    function addMarca($nombre)
+    function addMarca($nombre, $origen)
     {
-        $sentencia = $this->db->prepare("INSERT INTO marca(nombre) VALUES(?)");
-        $sentencia->execute(array($nombre));
+        $sentencia = $this->db->prepare("INSERT INTO marca(nombre, origen) VALUES(?,?)");
+        $sentencia->execute(array($nombre, $origen));
     }
 
     function addUsuario($nombre, $contraseña)
@@ -94,9 +94,9 @@ class Model
         $sentencia->execute(array($marca_id));
     }
 
-    function editMarca($marca_id, $nombre)
+    function editMarca($marca_id, $nombre, $origen)
     {
-        $sentencia = $this->db->prepare("UPDATE marca SET nombre='$nombre' WHERE id=?");
+        $sentencia = $this->db->prepare("UPDATE marca SET nombre='$nombre' origen='$origen' WHERE id=?");
         $sentencia->execute(array($marca_id));
     }
 

@@ -1,6 +1,10 @@
   <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <img src="./images/logo.png" alt="logo">
+      {if $current eq 'Ver Más'}
+        <img src="../images/logo.png" alt="logo">
+        {else}
+          <img src="./images/logo.png" alt="logo">
+      {/if}
       <a class="navbar-brand" href="{$url}{$current}">{$current}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +16,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="{$url}{$current1}">{$current1}</a>
           </li>
-          {if $logueado or ($current eq "Iniciar Sesión") or ($current eq "Registrarse")}
+          {if $logueado or ($current eq "Iniciar Sesión") or ($current eq "Registrarse") or ($current eq "Ver Más")}
           <li class="nav-item active">
               <a class="nav-link" href="{$url}{$current2}">{$current2}</a>
           </li>

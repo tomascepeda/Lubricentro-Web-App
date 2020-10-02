@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-28 00:20:00
+/* Smarty version 3.1.34-dev-7, created on 2020-10-02 02:57:50
   from 'C:\xampp\htdocs\web2\lubricentro\templates\portada-admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f71101095ef45_07130201',
+  'unifunc' => 'content_5f767b0e641449_69529472',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c4a6e815e0b727e5ec3f7d6cab4c4d0a853881e0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\portada-admin.tpl',
-      1 => 1601071234,
+      1 => 1601600267,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f71101095ef45_07130201 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f767b0e641449_69529472 (Smarty_Internal_Template $_smarty_tpl) {
 ?>    <div class="forms">
         <div class="formularios">
             <form action="agregarProducto" class="shadow-lg p-3 mb-5 bg-white rounded" method="POST">
@@ -67,6 +67,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <h6>Agregar Marca</h6>
                     <label for="exampleInputEmail1">Nombre</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="nombre_marca" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Origen</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="origen_marca" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </form>

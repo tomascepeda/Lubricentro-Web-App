@@ -1,5 +1,5 @@
   <div class="portada">
 
-    <h3>Registrarse</h3>
+    <h3>{$current}</h3>
 
   </div>

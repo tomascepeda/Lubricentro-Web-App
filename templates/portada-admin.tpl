@@ -36,6 +36,10 @@
                     <label for="exampleInputEmail1">Nombre</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="nombre_marca" required>
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Origen</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="origen_marca" required>
+                </div>
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
         </div>

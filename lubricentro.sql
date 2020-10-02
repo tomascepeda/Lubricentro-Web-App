@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2020 a las 03:43:13
+-- Tiempo de generación: 02-10-2020 a las 03:22:19
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -29,30 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `marca` (
   `id` int(11) NOT NULL,
-  `nombre` text NOT NULL
+  `nombre` text NOT NULL,
+  `origen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `marca`
 --
 
-INSERT INTO `marca` (`id`, `nombre`) VALUES
-(1, 'CEPSA'),
-(2, 'LAAPSA'),
-(3, 'CASTROL'),
-(4, 'ELAION'),
-(5, 'GULF'),
-(7, 'TOTAL'),
-(8, 'MOTUL'),
-(9, 'PLUSBAT'),
-(13, 'SHELL'),
-(14, 'TRICO'),
-(15, 'MICHELIN'),
-(16, 'WHIZ'),
-(17, 'MOLYKOTE'),
-(18, 'ELF'),
-(19, 'PETRONAS'),
-(20, 'WEGA');
+INSERT INTO `marca` (`id`, `nombre`, `origen`) VALUES
+(1, 'CEPSA', 'ESPAÑA'),
+(4, 'ELAION', 'ARGENTINA'),
+(5, 'GULF', 'ESTADOS UNIDOS'),
+(7, 'TOTAL', 'ARGENTINA'),
+(13, 'SHELL', 'ESTADOS UNIDOS'),
+(18, 'ELF', 'ESTADOS UNIDOS'),
+(19, 'PETRONAS', 'ITALIA'),
+(20, 'WEGA', 'ITALIA');
 
 -- --------------------------------------------------------
 
@@ -73,26 +66,28 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `id_marca`) VALUES
-(27, 'AVANT 5W30', '1L', 800, 1),
 (28, 'AVANT 5W30', '4L', 2850, 1),
-(35, 'F50E', '1L', 1100, 4),
-(36, 'F50E', '4L', 3790, 4),
+(31, 'AVANT 10W40', '1L', 590, 1),
+(33, 'AVANT 15W40', '1L', 500, 1),
 (37, 'F50', '1L', 1190, 4),
 (38, 'F50', '4L', 4120, 4),
+(39, 'F30', '1L', 690, 4),
 (44, 'GULF MAX 15W40', '1L', 410, 5),
 (45, 'GULF MAX 15W40', '4L', 1350, 5),
-(50, 'HELIX HX7', '1L', 720, 13),
+(46, 'GULF MAX  20W50', '1L', 390, 5),
+(47, 'GULF MAX  20W50', '4L', 1330, 5),
 (51, 'HELIX HX7', '4L', 2740, 13),
+(53, 'HELIX HX5', '4L', 2230, 13),
 (56, 'QUARTZ 9000', '1L', 1190, 7),
-(57, 'QUARTZ 9000', '4L', 3920, 7),
+(58, 'QUARTZ 7000', '1L', 860, 7),
 (69, 'ELF 75W80', '1L', 630, 18),
 (70, 'SELENIA K 15W40', '1L', 820, 19),
 (71, 'SELENIA K 15W40', '4L', 2430, 19),
-(72, 'GTX 20W50', '1L', 480, 3),
-(73, 'GTX 20W50', '4L', 1690, 3),
-(74, 'WO 120', 'CHEVROLET CORSA 1.7 DIESEL', 560, 20),
-(75, 'WO 130', 'CHEVROLET CORSA, BLAZER, S10 NAFTA', 480, 20),
-(90, 'WO 400', 'RENAULT 9, 11, 12, 19', 670, 20);
+(74, 'WO 120', 'CHEVROLET CORSA 1.7 DIESEL', 604.8, 20),
+(75, 'WO 130', 'CHEVROLET CORSA, BLAZER, S10 NAFTA', 518.4, 20),
+(76, 'WO 150', 'FORD FIESTA, KA', 626.4, 20),
+(208, 'AKX 1965', 'TOYOTA HILUX', 604.8, 20),
+(209, 'AKX 1993', 'CHEVROLET S10', 810, 20);
 
 -- --------------------------------------------------------
 
@@ -102,8 +97,8 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `id_marca`) VAL
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `contraseña` varchar(50) NOT NULL
+  `nombre` text NOT NULL,
+  `contraseña` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -111,7 +106,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `contraseña`) VALUES
-(1, 'root', 'root');
+(7, 'tomas', '$2y$10$gTJSBhiaKzSR6lFg1mtXr...txpWL4y0cgdyti/GK4DWXz4SFBegW');
 
 --
 -- Índices para tablas volcadas
@@ -145,19 +140,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

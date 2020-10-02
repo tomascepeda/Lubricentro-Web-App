@@ -17,6 +17,11 @@
     {if $current eq 'Administrar'}
         <link rel="stylesheet" href="./css/administrar.css">
     {/if}
+    {if $current eq 'Ver Más'}
+        <link rel="shortcut icon" href="../images/logo.png" />
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/catalogo.css">
+    {/if}
     {if $current eq 'Iniciar Sesión' or $current eq 'Registrarse'}
         <link rel="stylesheet" href="./css/log.css">
     {/if}

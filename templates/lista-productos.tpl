@@ -7,7 +7,11 @@
         <tr>
           <th scope="col">Nombre / Código</th>
           <th scope="col">Marca</th>
-          <th scope="col">Detalle</th>
+          {if $current ne 'Administrar'}
+            <th scope="col">Más Detalles</th>
+            {else}
+              <th scope="col">Detalle</th>
+          {/if}
           <th scope="col">Precio</th>
           {if $logueado && $current eq "Administrar"}
             <th scope="col">Editar / Borrar</th>
@@ -16,22 +20,26 @@
       </thead>
       <tbody>
         {foreach from=$productos item=producto}
-        <tr>
-          <td>{$producto->nombre}</td>
-          {foreach from=$marcas item=marca}
-            {if $marca->id eq $producto->id_marca}
-              <td>{$marca->nombre}</td>
+          <tr>
+            <td>{$producto->nombre}</td>
+            {foreach from=$marcas item=marca}
+              {if $marca->id eq $producto->id_marca}
+                <td>{$marca->nombre}</td>
+              {/if}
+            {/foreach}
+            {if $current ne 'Administrar'}
+              <td><button type="button" class="btn btn-primary" onclick="window.location='{$url}verMas/{$producto->id}'">Ver Más</button></td>
+              {else}
+                <td>{$producto->descripcion}</td>
             {/if}
-          {/foreach}
-          <td>{$producto->descripcion}</td>
-          <th scope="col">{$producto->precio}</th>
-          {if $logueado && $current eq "Administrar"}
-            <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='{$url}editarProducto/{$producto->id}'">Editar</button> <button type="button"
-              class="btn btn-danger" onclick="window.location='{$url}eliminarProducto/{$producto->id}'">Borrar</button> 
-            </td>
-          {/if}
-        </tr>
-      {/foreach}
+            <th scope="col">{$producto->precio}</th>
+            {if $logueado && $current eq "Administrar"}
+              <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='{$url}editarProducto/{$producto->id}'">Editar</button> <button type="button"
+                class="btn btn-danger" onclick="window.location='{$url}eliminarProducto/{$producto->id}'">Borrar</button> 
+              </td>
+            {/if}
+          </tr>
+        {/foreach}
       </tbody>
     </table>
   </div>

@@ -8,7 +8,8 @@
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nombre</label>
-            <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" value="{$marca[0]->nombre}" required>
+            <input type="text" name="nombre_marca" class="form-control" id="validationCustom01" value="{$marca->nombre}" required>
+            <input type="text" name="origen_marca" class="form-control" id="validationCustom01" value="{$marca->origen}" required>
         </div>
     </div>
     <input type="number" class="oculto" name="id_marca" value="{$marca_id}">

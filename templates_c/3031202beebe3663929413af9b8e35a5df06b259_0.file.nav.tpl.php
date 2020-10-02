@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-29 18:28:01
+/* Smarty version 3.1.34-dev-7, created on 2020-10-02 02:10:09
   from 'C:\xampp\htdocs\web2\lubricentro\templates\nav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7360918eaf41_78722698',
+  'unifunc' => 'content_5f766fe1229398_79579600',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3031202beebe3663929413af9b8e35a5df06b259' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\lubricentro\\templates\\nav.tpl',
-      1 => 1601396879,
+      1 => 1601597407,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f7360918eaf41_78722698 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f766fe1229398_79579600 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <img src="./images/logo.png" alt="logo">
+      <?php if ($_smarty_tpl->tpl_vars['current']->value == 'Ver Más') {?>
+        <img src="../images/logo.png" alt="logo">
+        <?php } else { ?>
+          <img src="./images/logo.png" alt="logo">
+      <?php }?>
       <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
 echo $_smarty_tpl->tpl_vars['current']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current']->value;?>
@@ -41,7 +45,7 @@ echo $_smarty_tpl->tpl_vars['current1']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['current1']->value;?>
 </a>
           </li>
-          <?php if ($_smarty_tpl->tpl_vars['logueado']->value || ($_smarty_tpl->tpl_vars['current']->value == "Iniciar Sesión") || ($_smarty_tpl->tpl_vars['current']->value == "Registrarse")) {?>
+          <?php if ($_smarty_tpl->tpl_vars['logueado']->value || ($_smarty_tpl->tpl_vars['current']->value == "Iniciar Sesión") || ($_smarty_tpl->tpl_vars['current']->value == "Registrarse") || ($_smarty_tpl->tpl_vars['current']->value == "Ver Más")) {?>
           <li class="nav-item active">
               <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;
 echo $_smarty_tpl->tpl_vars['current2']->value;?>

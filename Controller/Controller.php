@@ -79,9 +79,10 @@ class Controller
 
     function agregarMarca()
     {
-        if (isset($_POST['nombre_marca'])) {
+        if (isset($_POST['nombre_marca']) && isset($_POST['origen_marca'])) {
             $nombre = $_POST['nombre_marca'];
-            $this->model->addMarca($nombre);
+            $origen = $_POST['origen_marca'];
+            $this->model->addMarca($nombre, $origen);
         }
         $this->view->showLocation("Administrar");
     }
@@ -137,10 +138,11 @@ class Controller
 
     function editarMarca()
     {
-        if (isset($_POST['nombre_marca']) && isset($_POST['id_marca'])) {
+        if (isset($_POST['nombre_marca']) && isset($_POST['origen_marca']) && isset($_POST['id_marca'])) {
             $nombre = $_POST['nombre_marca'];
+            $origen = $_POST['origen_marca'];
             $marca_id = $_POST['id_marca'];
-            $this->model->editMarca($marca_id, $nombre);
+            $this->model->editMarca($marca_id, $nombre, $origen);
             $this->view->showLocation("Administrar");
         } else {
             $this->view->showLocation("Administrar");
@@ -198,5 +200,13 @@ class Controller
     {
         session_destroy();
         $this->view->showLocation("Inicio");
+    }
+
+    function showVerMas($params = null)
+    {
+        $producto_id = $params[':ID'];
+        $producto = $this->model->getProductoPorID($producto_id);
+        $marca = $this->model->getMarcaPorID($producto->id_marca);
+        $this->view->verMas($producto, $marca, $this->logueado, $this->user);
     }
 }
