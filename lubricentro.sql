@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2020 a las 22:03:07
+-- Tiempo de generación: 13-10-2020 a las 18:44:28
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -69,9 +69,9 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `id_marca`) VAL
 (28, 'AVANT 5W30', '4L', 2850, 1),
 (31, 'AVANT 10W40', '1L', 590, 1),
 (33, 'AVANT 15W40', '1L', 500, 1),
-(37, 'F50', '1L', 1190, 4),
-(38, 'F50', '4L', 4120, 4),
-(39, 'F30', '1L', 690, 4),
+(37, 'F50', '1L', 1261.4, 4),
+(38, 'F50', '4L', 4367.2, 4),
+(39, 'F30', '1L', 731.4, 4),
 (44, 'GULF MAX 15W40', '1L', 410, 5),
 (45, 'GULF MAX 15W40', '4L', 1350, 5),
 (46, 'GULF MAX  20W50', '1L', 390, 5),
