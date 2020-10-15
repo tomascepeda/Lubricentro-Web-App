@@ -105,7 +105,7 @@ class Controller
     {
         if (isset($_POST['marca_aumentar']) && isset($_POST['porcentaje_aumento'])) {
             $marca_id = $_POST['marca_aumentar'];
-            $porcentaje = $_POST['porcentaje_aumento'];;
+            $porcentaje = $_POST['porcentaje_aumento'];
             $this->model->aumentarProductos($marca_id, $porcentaje);
             $this->view->showLocation("Administrar");
         } else {
@@ -184,7 +184,7 @@ class Controller
                 $contraseña = password_hash($password, PASSWORD_DEFAULT);
                 $this->model->addUsuario($nombre, $contraseña);
                 $this->view->showLocation("Inicio");
-            }else
+            } else
                 $this->view->showRegister($this->logueado, true);
         } else {
             $this->view->showLocation("register");
@@ -198,12 +198,16 @@ class Controller
                 $nombre = $_POST['user'];
                 $password = $_POST['password'];
                 $user = $this->model->getUsuarioPorNombre($nombre);
-                if (password_verify($password, $user->contraseña)) {
-                    $_SESSION["user"] = $user;
-                    $this->logueado = true;
-                    $this->view->showLocation("Inicio");
-                } else
+                if ($user != null) {
+                    if (password_verify($password, $user->contraseña)) {
+                        $_SESSION["user"] = $user;
+                        $this->logueado = true;
+                        $this->view->showLocation("Inicio");
+                    } else
+                        $this->view->showLogin($this->logueado, true);
+                }else{
                     $this->view->showLogin($this->logueado, true);
+                }
             }
         } else {
             $this->view->showLocation("Inicio");
