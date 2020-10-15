@@ -84,8 +84,8 @@ class Model
 
     function editProducto($producto_id, $nombre, $marca, $detalle, $precio)
     {
-        $sentencia = $this->db->prepare("UPDATE producto SET nombre='$nombre', descripcion='$detalle', precio='$precio', id_marca='$marca' WHERE id=?");
-        $sentencia->execute(array($producto_id));
+        $sentencia = $this->db->prepare("UPDATE producto SET nombre=?, descripcion=?, precio=?, id_marca=? WHERE id=?");
+        $sentencia->execute(array($nombre, $detalle, $precio, $marca, $producto_id));
     }
 
     function aumentarProductos($marca_id, $porcentaje)
@@ -96,8 +96,8 @@ class Model
 
     function editMarca($marca_id, $nombre, $origen)
     {
-        $sentencia = $this->db->prepare("UPDATE marca SET nombre='$nombre', origen='$origen' WHERE id=?");
-        $sentencia->execute(array($marca_id));
+        $sentencia = $this->db->prepare("UPDATE marca SET nombre=?, origen=? WHERE id=?");
+        $sentencia->execute(array($nombre, $origen, $marca_id));
     }
 
     function getUsuarioPorNombre($nombre){
