@@ -96,7 +96,7 @@ class Model
 
     function editMarca($marca_id, $nombre, $origen)
     {
-        $sentencia = $this->db->prepare("UPDATE marca SET nombre='$nombre' origen='$origen' WHERE id=?");
+        $sentencia = $this->db->prepare("UPDATE marca SET nombre='$nombre', origen='$origen' WHERE id=?");
         $sentencia->execute(array($marca_id));
     }
 
