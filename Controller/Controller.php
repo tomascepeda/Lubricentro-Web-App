@@ -106,7 +106,7 @@ class Controller
         if (isset($_POST['marca_aumentar']) && isset($_POST['porcentaje_aumento'])) {
             $marca_id = $_POST['marca_aumentar'];
             $porcentaje = $_POST['porcentaje_aumento'];
-            $porcentaje = $porcentaje/100;
+            $porcentaje = $porcentaje / 100;
             $this->model->aumentarProductos($marca_id, $porcentaje);
             $this->view->showLocation("Administrar");
         } else {
@@ -131,10 +131,14 @@ class Controller
 
     function showEditarProducto($params = null)
     {
-        $producto_id = $params[':ID'];
-        $producto = $this->model->getProductoPorID($producto_id);
-        $marcas = $this->model->getMarcas();
-        $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado);
+        if ($this->logueado) {
+            $producto_id = $params[':ID'];
+            $producto = $this->model->getProductoPorID($producto_id);
+            $marcas = $this->model->getMarcas();
+            $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado);
+        } else {
+            $this->view->showLocation("Inicio");
+        }
     }
 
     function editarMarca()
@@ -152,9 +156,13 @@ class Controller
 
     function showEditarMarca($params = null)
     {
-        $marca_id = $params[':ID'];
-        $marca = $this->model->getMarcaPorID($marca_id);
-        $this->view->showEditarMarca($marca_id, $marca, $this->logueado);
+        if ($this->logueado) {
+            $marca_id = $params[':ID'];
+            $marca = $this->model->getMarcaPorID($marca_id);
+            $this->view->showEditarMarca($marca_id, $marca, $this->logueado);
+        } else {
+            $this->view->showLocation("Inicio");
+        }
     }
 
     function iniciarSesion()
@@ -206,7 +214,7 @@ class Controller
                         $this->view->showLocation("Inicio");
                     } else
                         $this->view->showLogin($this->logueado, true);
-                }else{
+                } else {
                     $this->view->showLogin($this->logueado, true);
                 }
             }
