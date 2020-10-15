@@ -106,6 +106,7 @@ class Controller
         if (isset($_POST['marca_aumentar']) && isset($_POST['porcentaje_aumento'])) {
             $marca_id = $_POST['marca_aumentar'];
             $porcentaje = $_POST['porcentaje_aumento'];
+            $porcentaje = $porcentaje/100;
             $this->model->aumentarProductos($marca_id, $porcentaje);
             $this->view->showLocation("Administrar");
         } else {

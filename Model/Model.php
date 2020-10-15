@@ -90,8 +90,8 @@ class Model
 
     function aumentarProductos($marca_id, $porcentaje)
     {
-        $sentencia = $this->db->prepare("UPDATE producto SET precio=precio+(precio*$porcentaje/100) WHERE id_marca=?");
-        $sentencia->execute(array($marca_id));
+        $sentencia = $this->db->prepare("UPDATE producto SET precio=precio+(precio*?) WHERE id_marca=?");
+        $sentencia->execute(array($porcentaje, $marca_id));
     }
 
     function editMarca($marca_id, $nombre, $origen)
