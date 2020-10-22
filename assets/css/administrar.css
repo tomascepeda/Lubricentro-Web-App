@@ -5,6 +5,10 @@
     justify-content: space-around;
 }
 
+nav{
+    position: unset;
+}
+
 .formularios form{
     width: 45%;
     margin-top: 3%;

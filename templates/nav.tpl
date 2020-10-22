@@ -1,9 +1,9 @@
   <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       {if $current eq 'Ver Más'}
-        <img src="../images/logo.png" alt="logo">
+        <img src="../assets/images/logo.png" alt="logo">
         {else}
-          <img src="./images/logo.png" alt="logo">
+          <img src="./assets/images/logo.png" alt="logo">
       {/if}
       <a class="navbar-brand" href="{$url}{$current}">{$current}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

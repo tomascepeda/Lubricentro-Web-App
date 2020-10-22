@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/logo.png" />
+    <link rel="shortcut icon" href="assets/images/logo.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     {if $current eq 'Catálogo'}
-        <link rel="stylesheet" href="../css/catalogo.css">
+        <link rel="stylesheet" href="../assets/css/catalogo.css">
     {/if}
     {if $current eq 'Administrar'}
-        <link rel="stylesheet" href="../css/administrar.css">
+        <link rel="stylesheet" href="../assets/css/administrar.css">
     {/if}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -30,7 +30,7 @@
 
 <nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img src="../images/logo.png" alt="logo">
+        <img src="../assets/images/logo.png" alt="logo">
         <a class="navbar-brand" href="{$url}{$current}">{$current}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
