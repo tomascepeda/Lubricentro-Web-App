@@ -41,5 +41,5 @@
     </div>
     <input type="number" class="oculto" name="id_producto" value="{$producto_id}">
     <button class="btn btn-primary" type="submit">Editar</button>
-    <button type="button" id="cancelar_edicion" class="btn btn-danger"  onclick="window.location='{$url}Administrar'">Cancelar</button>
+    <button type="button" id="cancelar_edicion" class="btn btn-danger"  onclick="window.location='{$url}administrar'">Cancelar</button>
 </form>

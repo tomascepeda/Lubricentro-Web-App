@@ -77,3 +77,12 @@ footer h5{
     margin-left: 3%;
     margin-top: 3%;
 }
+
+.lista h1{
+   height: 50px;
+   width: auto;
+   color: #343a40;
+    font-size: 35px;
+    margin: 5% auto;
+    text-align: center;
+}

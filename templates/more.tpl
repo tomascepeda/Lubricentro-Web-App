@@ -17,7 +17,7 @@
     <li class="list-group-item border-primary">Precio: ${$producto->precio}</li>
   </ul>
   <div class="card-body">
-    <button type="button" class="btn btn-primary" onclick="window.location='{$url}Catálogo'">Volver</button>
+    <button type="button" class="btn btn-primary" onclick="window.location='{$url}catalogo'">Volver</button>
   </div>
 </div>
 

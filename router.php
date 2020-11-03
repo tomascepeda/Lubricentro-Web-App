@@ -1,32 +1,44 @@
 <?php
-    require_once 'Controller/Controller.php';
+
+    require_once 'Controller/ViewController.php';
+    require_once 'Controller/ProductoController.php';
+    require_once 'Controller/MarcaController.php';
+    require_once 'Controller/UsuarioController.php';
     require_once 'RouterClass.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+    define("HOME", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/home');
+    define("CATALOGO", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/catalogo');
+    define("ADMIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/administrar');
+    define("LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
+    define("REGISTER", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/registrarse');
+    define("SHOWMORE", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/showmore');
 
     $r = new Router();
 
     // rutas
-    $r->addRoute("Inicio", "GET", "Controller", "Home");
-    $r->addRoute("buscar", "POST", "Controller", "Filtrar");
-    $r->addRoute("Catálogo", "GET", "Controller", "Catalogo");
-    $r->addRoute("Administrar", "GET", "Controller", "Administrar");
-    $r->addRoute("agregarMarca", "POST", "Controller", "agregarMarca");
-    $r->addRoute("eliminarMarca/:ID", "GET", "Controller", "eliminarMarca");
-    $r->addRoute("eliminarProducto/:ID", "GET", "Controller", "eliminarProducto");
-    $r->addRoute("agregarProducto", "POST", "Controller", "agregarProducto");
-    $r->addRoute("aumentarProductos", "POST", "Controller", "aumentarProductos");
-    $r->addRoute("editarProducto/:ID", "GET", "Controller", "showEditarProducto");
-    $r->addRoute("editarProducto/editar", "POST", "Controller", "editarProducto");
-    $r->addRoute("editarMarca/:ID", "GET", "Controller", "showEditarMarca");
-    $r->addRoute("editarMarca/editar", "POST", "Controller", "editarMarca");
-    $r->addRoute("login", "GET", "Controller", "iniciarSesion");
-    $r->addRoute("register", "GET", "Controller", "Registrarse");
-    $r->addRoute("registrarse", "POST", "Controller", "agregarUsuario");
-    $r->addRoute("loguearse", "POST", "Controller", "Loguearse");
-    $r->addRoute("logout", "GET", "Controller", "cerrarSesion");
-    $r->addRoute("verMas/:ID", "GET", "Controller", "showVerMas");
+    $r->addRoute("home", "GET", "ViewController", "Home");
+    $r->addRoute("buscar", "POST", "ViewController", "Filtrar");
+    $r->addRoute("catalogo", "GET", "ViewController", "Catalogo");
+    $r->addRoute("administrar", "GET", "ViewController", "Administrar");
+    $r->addRoute("editarproducto/:ID", "GET", "ViewController", "showEditarProducto");
+    $r->addRoute("editarmarca/:ID", "GET", "ViewController", "showEditarMarca");
+    $r->addRoute("login", "GET", "ViewController", "iniciarSesion");
+    $r->addRoute("registrarse", "GET", "ViewController", "Registrarse");
+    $r->addRoute("showmore/:ID", "GET", "ViewController", "showVerMas");
+
+    $r->addRoute("eliminarproducto/:ID", "GET", "ProductoController", "eliminarProducto");
+    $r->addRoute("agregarproducto", "POST", "ProductoController", "agregarProducto");
+    $r->addRoute("editarproducto/editar", "POST", "ProductoController", "editarProducto");
+    
+    $r->addRoute("editarmarca/editar", "POST", "MarcaController", "editarMarca");
+    $r->addRoute("agregarmarca", "POST", "MarcaController", "agregarMarca");
+    $r->addRoute("eliminarmarca/:ID", "GET", "MarcaController", "eliminarMarca");
+
+    $r->addRoute("addusuario", "POST", "UsuarioController", "agregarUsuario");
+    $r->addRoute("loguearse", "POST", "UsuarioController", "Loguearse");
+    $r->addRoute("logout", "GET", "UsuarioController", "cerrarSesion");
 
     //Ruta por defecto.
     $r->setDefaultRoute("Controller", "Home");

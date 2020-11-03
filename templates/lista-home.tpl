@@ -1,3 +1,4 @@
+{if $nombre ne ''}
 <div class="lista">
 
     <h3>Buscando productos que coincidan con: <span>{$nombre}</span></h3>
@@ -27,3 +28,8 @@
       </tbody>
     </table>
   </div>
+  {else}
+    <div class="lista">
+      <h1>¡Utilice nuestro buscador para encontrar su producto facilmente!</h1>
+    </div>
+{/if}

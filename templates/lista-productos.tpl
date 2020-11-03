@@ -28,14 +28,14 @@
               {/if}
             {/foreach}
             {if $current ne 'Administrar'}
-              <td><button type="button" class="btn btn-primary" onclick="window.location='{$url}verMas/{$producto->id}'">Ver Más</button></td>
+              <td><button type="button" class="btn btn-primary" onclick="window.location='{$url}showmore/{$producto->id}'">Ver Más</button></td>
               {else}
                 <td>{$producto->descripcion}</td>
             {/if}
             <th scope="col">{$producto->precio}</th>
             {if $logueado && $current eq "Administrar"}
-              <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='{$url}editarProducto/{$producto->id}'">Editar</button> <button type="button"
-                class="btn btn-danger" onclick="window.location='{$url}eliminarProducto/{$producto->id}'">Borrar</button> 
+              <td> <button type="button" id="editar_prod" class="btn btn-primary" onclick="window.location='{$url}editarproducto/{$producto->id}'">Editar</button> <button type="button"
+                class="btn btn-danger" onclick="window.location='{$url}eliminarproducto/{$producto->id}'">Borrar</button> 
               </td>
             {/if}
           </tr>

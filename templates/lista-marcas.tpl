@@ -18,8 +18,8 @@
           <td>{$marca->nombre}</td>
           <td>{$marca->origen}</td>
           {if $logueado && $current eq "Administrar"}
-            <td> <button type="button" id="editar_marca" class="btn btn-primary" onclick="window.location='{$url}editarMarca/{$marca->id}'">Editar</button> <button type="button"
-              class="btn btn-danger" onclick="window.location='{$url}eliminarMarca/{$marca->id}'">Borrar</button> </td>
+            <td> <button type="button" id="editar_marca" class="btn btn-primary" onclick="window.location='{$url}editarmarca/{$marca->id}'">Editar</button> <button type="button"
+              class="btn btn-danger" onclick="window.location='{$url}eliminarmarca/{$marca->id}'">Borrar</button> </td>
           {/if}
         </tr>
       {/foreach}

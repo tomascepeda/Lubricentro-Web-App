@@ -11,7 +11,7 @@ class View
     function __construct()
     {
         $this->smarty = new Smarty();
-        $this->smarty->assign('url', '//' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . '/');
+        $this->smarty->assign('url', BASE_URL);
     }
 
     function showHome($productos, $nombre, $marcas, $user, $logueado)
@@ -20,13 +20,19 @@ class View
         $current = "Inicio";
         $current1 = "Catálogo";
         $current2 = "Administrar";
+        $link1 = HOME;
+        $link2 = CATALOGO;
+        $link3 = ADMIN;
         $this->smarty->assign('nombre', $nombre); //de la busqueda
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
-        $this->smarty->assign('current', $current); //para el nav
+        $this->smarty->assign('current', $current); 
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->assign('user', $user);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->display('templates/home.tpl');
@@ -38,6 +44,9 @@ class View
         $current = "Catálogo";
         $current1 = "Inicio";
         $current2 = "Administrar";
+        $link1 = CATALOGO;
+        $link2 = HOME;
+        $link3 = ADMIN;
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
@@ -46,6 +55,9 @@ class View
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/catalogo.tpl');
     }
 
@@ -55,6 +67,9 @@ class View
         $current = "Administrar";
         $current1 = "Inicio";
         $current2 = "Catálogo";
+        $link1 = ADMIN;
+        $link2 = HOME;
+        $link3 = CATALOGO;
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
@@ -63,6 +78,9 @@ class View
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/admin.tpl');
     }
 
@@ -72,6 +90,9 @@ class View
         $current = "Administrar";
         $current1 = "Inicio";
         $current2 = "Catálogo";
+        $link1 = ADMIN;
+        $link2 = HOME;
+        $link3 = CATALOGO;
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('producto', $producto);
@@ -80,6 +101,9 @@ class View
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->assign('producto_id', $producto_id);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/editar-producto.tpl');
     }
 
@@ -89,6 +113,9 @@ class View
         $current = "Administrar";
         $current1 = "Inicio";
         $current2 = "Catálogo";
+        $link1 = ADMIN;
+        $link2 = HOME;
+        $link3 = CATALOGO;
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('marca', $marca);
@@ -96,6 +123,9 @@ class View
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->assign('marca_id', $marca_id);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/editar-marca.tpl');
     }
 
@@ -105,12 +135,18 @@ class View
         $current = "Iniciar Sesión";
         $current1 = "Inicio";
         $current2 = "Catálogo";
+        $link1 = LOGIN;
+        $link2 = HOME;
+        $link3 = CATALOGO;
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->assign('error', $error);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/login.tpl');
     }
 
@@ -120,12 +156,18 @@ class View
         $current = "Registrarse";
         $current1 = "Inicio";
         $current2 = "Catálogo";
+        $link1 = REGISTER; 
+        $link2 = HOME;
+        $link3 = CATALOGO;
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->assign('error', $error);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/register.tpl');
     }
 
@@ -135,6 +177,9 @@ class View
         $current = "Ver Más";
         $current1 = "Inicio";
         $current2 = "Catálogo";
+        $link1 = SHOWMORE . "/" . $producto->id;
+        $link2 = HOME;
+        $link3 = CATALOGO;
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('logueado', $logueado);
         $this->smarty->assign('producto', $producto);
@@ -143,11 +188,10 @@ class View
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
         $this->smarty->assign('user', $user);
+        $this->smarty->assign('link1', $link1); 
+        $this->smarty->assign('link2', $link2);
+        $this->smarty->assign('link3', $link3);
         $this->smarty->display('templates/more.tpl');
     }
-
-    function showLocation($page)
-    {
-        header("Location: " . BASE_URL . $page);
-    }
+    
 }

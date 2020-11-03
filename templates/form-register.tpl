@@ -1,5 +1,5 @@
 <div class="form_log ">
-    <form action="registrarse" class="shadow-lg p-3 mb-5 bg-white rounded" method="POST">
+    <form action="addusuario" class="shadow-lg p-3 mb-5 bg-white rounded" method="POST">
         {if $error}
         <div class="alert alert-danger" role="alert">
             El usuario ya existe, pruebe con otro nombre!
