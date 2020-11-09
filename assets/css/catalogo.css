@@ -2,6 +2,10 @@ body{
     display: flex;
 }
 
+nav{
+    position: unset;
+}
+
 .portada{
     background: url("../images/backg2.jpg");
     -webkit-background-size: cover;
@@ -23,13 +27,6 @@ body{
     border-radius: 10px;
 }
 
-/*
-.portada form{
-    margin: 0 auto;
-    width: 40%;
-}
-*/
-
 footer{
     margin-top: auto;
 }
@@ -44,10 +41,4 @@ footer{
 .download{
     margin-left: 45%;
     margin-top: 1%;
-}
-
-.more{
-    width: 18rem;
-    margin: 1.5% auto;
-    margin-bottom: 1.5% !important;
 }

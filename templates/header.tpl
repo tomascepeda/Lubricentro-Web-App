@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="./assets/css/catalogo.css">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-        <script src="./assets/main.js"></script>
+        <script src="./assets/js/pdf.js"></script>
     {/if}
     {if $current eq 'Administrar'}
         <link rel="stylesheet" href="./assets/css/administrar.css">
@@ -21,6 +21,10 @@
         <link rel="shortcut icon" href="../assets/images/logo.png" />
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/catalogo.css">
+        <link rel="stylesheet" href="../assets/css/showmore.css">
+        <link rel="stylesheet" href="../assets/css/five-stars.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="../assets/js/comentarios.js"></script>
     {/if}
     {if $current eq 'Iniciar Sesión' or $current eq 'Registrarse'}
         <link rel="stylesheet" href="./assets/css/log.css">

@@ -4,7 +4,7 @@
     require_once 'Controller/ProductoController.php';
     require_once 'Controller/MarcaController.php';
     require_once 'Controller/UsuarioController.php';
-    require_once 'RouterClass.php';
+    require_once 'libs/RouterClass.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -19,7 +19,7 @@
 
     // rutas
     $r->addRoute("home", "GET", "ViewController", "Home");
-    $r->addRoute("buscar", "POST", "ViewController", "Filtrar");
+    $r->addRoute("browse", "GET", "ViewController", "Buscar");
     $r->addRoute("catalogo", "GET", "ViewController", "Catalogo");
     $r->addRoute("administrar", "GET", "ViewController", "Administrar");
     $r->addRoute("editarproducto/:ID", "GET", "ViewController", "showEditarProducto");
@@ -41,7 +41,7 @@
     $r->addRoute("logout", "GET", "UsuarioController", "cerrarSesion");
 
     //Ruta por defecto.
-    $r->setDefaultRoute("Controller", "Home");
+    $r->setDefaultRoute("ViewController", "Home");
 
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

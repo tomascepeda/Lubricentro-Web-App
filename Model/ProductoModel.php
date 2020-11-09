@@ -49,7 +49,7 @@ class ProductoModel extends ModelAbs{
         $query->execute(array($producto_id));
     }
 
-    function editProducto($producto_id, $nombre, $marca, $detalle, $precio)
+    function editProducto($producto_id, $nombre, $detalle, $precio, $marca)
     {
         $query = $this->db->prepare("UPDATE producto SET nombre=?, descripcion=?, precio=?, id_marca=? WHERE id=?");
         $query->execute(array($nombre, $detalle, $precio, $marca, $producto_id));

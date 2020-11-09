@@ -26,23 +26,24 @@ class ViewController extends ControllerAbs
         }
     }
 
-    function Home($busqueda = null) //nombre de la busqueda
+    function Home()
     {
-        if ($busqueda == null) {
-            $busqueda = "";
-        }
-        $productos = $this->productoModel->getProductosPorNombre($busqueda);
-        $marcas = $this->marcaModel->getMarcas();
-        $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado);
+        $this->view->showHome(null, null, null, $this->user, $this->logueado);
     }
 
-    function Filtrar()
-    { //muestra la lista con las coincidencias de la busqueda
-        if (isset($_POST['input_buscar'])) {
-            $busqueda = $_POST['input_buscar'];
+    function Buscar()
+    {
+        if (isset($_GET["producto"])) {
+            $busqueda = $_GET["producto"];
             $productos = $this->productoModel->getProductosPorNombre($busqueda);
+            if(empty($productos)){
+                header("Location: " . HOME);
+                die();
+            }
             $marcas = $this->marcaModel->getMarcas();
             $this->view->showHome($productos, strtoupper($busqueda), $marcas, $this->user, $this->logueado);
+        } else {
+            header("Location: " . HOME);
         }
     }
 
@@ -103,7 +104,11 @@ class ViewController extends ControllerAbs
     {
         $producto_id = $params[':ID'];
         $producto = $this->productoModel->getProductoPorID($producto_id);
-        $marca = $this->marcaModel->getMarcaPorID($producto->id_marca);
-        $this->view->verMas($producto, $marca, $this->logueado, $this->user);
+        if (!empty($producto)) {
+            $marca = $this->marcaModel->getMarcaPorID($producto->id_marca);
+            $this->view->verMas($producto, $marca, $this->logueado, $this->user);
+        } else {
+            header("Location: " . CATALOGO);
+        }
     }
 }
