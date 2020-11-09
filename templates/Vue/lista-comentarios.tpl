@@ -3,7 +3,9 @@
 <section id="lista-comentarios-vue">
 
     <div class="comments-container">
-        <h1>Comentarios <button class="btn btn-primary"><img v-if="!loading" id="reload" src="../assets/images/reload.png"/>
+        <h1>Comentarios 
+                
+                <button class="btn btn-primary" id="btn-reload"><img v-if="!loading" id="reload" src="../assets/images/reload.png"/>
                 <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 <span v-if="loading" class="sr-only">Loading...</span>
         </button></h1>
