@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2020 a las 21:38:35
+-- Tiempo de generación: 11-11-2020 a las 03:47:50
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comentario` (
-  `id` int(11) NOT NULL,
+  `id_comentario` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,
   `texto` text NOT NULL,
@@ -40,10 +40,18 @@ CREATE TABLE `comentario` (
 -- Volcado de datos para la tabla `comentario`
 --
 
-INSERT INTO `comentario` (`id`, `usuario_id`, `producto_id`, `texto`, `puntaje`, `fecha`) VALUES
+INSERT INTO `comentario` (`id_comentario`, `usuario_id`, `producto_id`, `texto`, `puntaje`, `fecha`) VALUES
 (6, 7, 231, 'editado desde la api', 5, '2020-11-09 18:40:16'),
 (8, 7, 231, 'agregado desde la api', 5, '2020-11-09 18:40:32'),
-(9, 9, 44, 'nuevo', 1, '2020-11-05 22:26:08');
+(9, 9, 44, 'nuevo', 1, '2020-11-05 22:26:08'),
+(10, 7, 226, 'nuevo desde la api', 5, '2020-11-09 23:20:41'),
+(11, 7, 231, 'muy bueno', 3, '2020-11-09 23:25:02'),
+(12, 7, 231, 'comentado desde el formulario', 3, '2020-11-09 23:25:33'),
+(22, 7, 231, 'a', 3, '2020-11-11 01:06:59'),
+(23, 7, 28, 'subir promedio', 3, '2020-11-11 02:29:43'),
+(24, 7, 46, 'comentario', 3, '2020-11-11 02:44:02'),
+(25, 7, 46, 'otro', 3, '2020-11-11 02:44:21'),
+(26, 7, 51, 'aaaaaa', 5, '2020-11-11 02:45:45');
 
 -- --------------------------------------------------------
 
@@ -137,7 +145,7 @@ INSERT INTO `usuario` (`id`, `nombre`, `contraseña`, `admin`) VALUES
 -- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_comentario`),
   ADD KEY `producto_id` (`producto_id`),
   ADD KEY `usuario_id` (`usuario_id`);
 
@@ -169,7 +177,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
@@ -187,7 +195,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas

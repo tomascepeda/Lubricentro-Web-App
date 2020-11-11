@@ -39,6 +39,8 @@
     $r->addRoute("addusuario", "POST", "UsuarioController", "agregarUsuario");
     $r->addRoute("loguearse", "POST", "UsuarioController", "Loguearse");
     $r->addRoute("logout", "GET", "UsuarioController", "cerrarSesion");
+    $r->addRoute("eliminarusuario/:ID", "GET", "UsuarioController", "eliminarUsuario");
+    $r->addRoute("modificarpermisos/:ID", "GET", "UsuarioController", "modificarPermisos");
 
     //Ruta por defecto.
     $r->setDefaultRoute("ViewController", "Home");

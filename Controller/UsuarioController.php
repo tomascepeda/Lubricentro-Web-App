@@ -3,7 +3,8 @@
 require_once "ControllerAbs.php";
 require_once "./Helpers/AuthHelper.php";
 
-class UsuarioController{
+class UsuarioController
+{
 
     private $view;
     private $model;
@@ -27,6 +28,7 @@ class UsuarioController{
                 $password = $_POST['password'];
                 $contraseña = password_hash($password, PASSWORD_DEFAULT);
                 $this->model->addUsuario($nombre, $contraseña);
+                $this->helper->login($this->model->getUsuarioPorNombre($nombre));
                 header("Location: " . HOME);
             } else
                 $this->view->showRegister($this->logueado, true);
@@ -53,14 +55,36 @@ class UsuarioController{
                 }
             }
         } else {
-            header("Location " . LOGIN);
+            header("Location " . HOME);
         }
     }
 
     function cerrarSesion()
     {
         $this->helper->logout();
-       header("Location: " . HOME);
+        header("Location: " . LOGIN);
     }
 
+    function eliminarUsuario($params = null)
+    {
+        //compruebo que es el usuario logeado
+        $this->helper->checkLoggedIn();
+        $usuario_id = $params[':ID'];
+        $this->model->removeUsuario($usuario_id);
+        header("Location: " . ADMIN);
+    }
+
+    function modificarPermisos($params = null)
+    {
+        //compruebo que es el usuario logeado
+        $this->helper->checkLoggedIn();
+        $user = $params[':ID'];
+        $usuario = $this->model->getUsuarioPorNombre($user);
+        if($usuario->admin == 1){
+            $this->model->editUsuario(0, $usuario->id);
+        } else {
+            $this->model->editUsuario(1, $usuario->id);
+        }
+        header("Location: " . ADMIN);
+    }
 }

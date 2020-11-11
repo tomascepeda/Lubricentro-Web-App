@@ -2,7 +2,8 @@
 
 require_once "./Model/ModelAbs.php";
 
-class ComentarioModel extends ModelAbs{
+class ComentarioModel extends ModelAbs
+{
 
     function __construct()
     {
@@ -18,7 +19,7 @@ class ComentarioModel extends ModelAbs{
 
     function getComentarioPorID($id_comentario)
     {
-        $query = $this->db->prepare("SELECT * FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id && comentario.id=?");
+        $query = $this->db->prepare("SELECT * FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id && comentario.id_comentario=?");
         $query->execute(array($id_comentario));
         return $query->fetch(PDO::FETCH_OBJ);
     }
@@ -30,7 +31,8 @@ class ComentarioModel extends ModelAbs{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function addComentario($producto_id, $usuario_id, $texto, $puntaje){
+    function addComentario($producto_id, $usuario_id, $texto, $puntaje)
+    {
         $query = $this->db->prepare("INSERT INTO comentario (producto_id, usuario_id, texto, puntaje, fecha) VALUES (?,?,?,?,current_timestamp())");
         $query->execute(array($producto_id, $usuario_id, $texto, $puntaje));
     }
@@ -43,8 +45,8 @@ class ComentarioModel extends ModelAbs{
 
     function editComentario($producto_id, $usuario_id, $texto, $puntaje, $id_comentario)
     {
-        $query = $this->db->prepare("UPDATE comentario SET producto_id=?, usuario_id=?, texto=?, puntaje=?, fecha=current_timestamp() WHERE id=?");
+        $query = $this->db->prepare("UPDATE comentario SET producto_id=?, usuario_id=?, texto=?, puntaje=?, fecha=current_timestamp() WHERE id_comentario=?");
         $query->execute(array($producto_id, $usuario_id, $texto, $puntaje, $id_comentario));
     }
-
+    
 }

@@ -17,6 +17,7 @@
     <li class="list-group-item "><span class="bolder">Marca: </span>{$marca->nombre}</li>
     <li class="list-group-item "><span class="bolder">Origen: </span>{$marca->origen}</li>
     <li class="list-group-item "><span class="bolder">Precio: </span>${$producto->precio}</li>
+    <li class="list-group-item "><span class="bolder">Calificacion general: </span>{$promedio}</li>
   </ul>
   <div class="card-body">
     <button type="button" class="btn btn-primary" onclick="window.location='{$url}catalogo'">Volver</button>
@@ -24,6 +25,8 @@
 </div>
 
 {if $logueado}
+  <p id="usuario-id" class="oculto">{$usuario->id}</p>
+  <p id="usuario-admin" class="oculto">{$usuario->admin}</p>
   {include file="vue/form-comentarios.tpl"}
 {/if}
 

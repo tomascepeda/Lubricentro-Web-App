@@ -4,7 +4,7 @@
 
     <div class="comments-container">
         <h1>Comentarios 
-                
+
                 <button class="btn btn-primary" id="btn-reload"><img v-if="!loading" id="reload" src="../assets/images/reload.png"/>
                 <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 <span v-if="loading" class="sr-only">Loading...</span>
@@ -22,16 +22,17 @@
                     <!-- Contenedor del Comentario -->
                     <div class="comment-box shadow-lg">
                         <div class="comment-head">
+                            <p id="comentario-id" class="oculto">{{comentario.id_comentario}}</p>
                             <h6 v-if="comentario.admin == 1" class="comment-name by-author">{{comentario.nombre}}</h6>
                             <h6 v-else class="comment-name">{{comentario.nombre}}</h6>
                             <span>{{comentario.fecha}}</span>
+                            <div id="borrar-c"></div>
                             <i class="fa fa-reply"></i>
                             <i class="fa fa-heart"></i>
                         </div>
                         <div class="comment-content">
                             {{comentario.texto}}
                         </div>
-                    
                     </div>
                 </div>
             </li>

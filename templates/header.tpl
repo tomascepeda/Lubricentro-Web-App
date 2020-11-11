@@ -15,6 +15,7 @@
         <script src="./assets/js/pdf.js"></script>
     {/if}
     {if $current eq 'Administrar'}
+        <link rel="stylesheet" href="./assets/css/switch.css">
         <link rel="stylesheet" href="./assets/css/administrar.css">
     {/if}
     {if $current eq 'Ver Más'}

@@ -4,6 +4,8 @@ require_once "./View/View.php";
 require_once "ControllerAbs.php";
 require_once "./Model/ProductoModel.php";
 require_once "./Model/MarcaModel.php";
+require_once "./Model/UsuarioModel.php";
+require_once "./ApiREST/Model/ComentarioModel.php";
 
 class ViewController extends ControllerAbs
 {
@@ -13,6 +15,8 @@ class ViewController extends ControllerAbs
     private $user;
     private $productoModel;
     private $marcaModel;
+    private $userModel;
+    private $comentarioModel;
 
     function __construct()
     {
@@ -20,6 +24,8 @@ class ViewController extends ControllerAbs
         $this->view = new View();
         $this->productoModel = new ProductoModel();
         $this->marcaModel = new MarcaModel();
+        $this->userModel = new UsuarioModel();
+        $this->comentarioModel = new ComentarioModel();
         if ($this->helper->isLogged()) {
             $this->user = $this->helper->getLoggedUserName();
             $this->logueado = true;
@@ -36,7 +42,7 @@ class ViewController extends ControllerAbs
         if (isset($_GET["producto"])) {
             $busqueda = $_GET["producto"];
             $productos = $this->productoModel->getProductosPorNombre($busqueda);
-            if(empty($productos)){
+            if (empty($productos)) {
                 header("Location: " . HOME);
                 die();
             }
@@ -60,7 +66,9 @@ class ViewController extends ControllerAbs
         $this->helper->checkLoggedIn();
         $productos = $this->productoModel->getProductos();
         $marcas = $this->marcaModel->getMarcas();
-        $this->view->showAdministrator($productos, $marcas, $this->user, $this->logueado);
+        $usuarios = $this->userModel->getUsuarios($this->user);
+        $usuarioactual = $this->userModel->getUsuarioPorNombre($this->user);
+        $this->view->showAdministrator($productos, $marcas, $usuarios, $this->user, $this->logueado, $usuarioactual);
     }
 
     function showEditarProducto($params = null)
@@ -106,7 +114,19 @@ class ViewController extends ControllerAbs
         $producto = $this->productoModel->getProductoPorID($producto_id);
         if (!empty($producto)) {
             $marca = $this->marcaModel->getMarcaPorID($producto->id_marca);
-            $this->view->verMas($producto, $marca, $this->logueado, $this->user);
+            $usuario = $this->userModel->getUsuarioPorNombre($this->user);
+            $comentarios = $this->comentarioModel->getComentariosPorIdProducto($producto_id);
+            if (!empty($comentarios)) {
+                $suma = 0;
+                $cant = 0;
+                foreach ($comentarios as $i) {
+                    $suma += $i->puntaje;
+                    $cant++;
+                }
+                $promedio = $suma / $cant;
+            } else
+                $promedio = 0;
+            $this->view->verMas($producto, $marca, $this->logueado, $this->user, $usuario, round($promedio));
         } else {
             header("Location: " . CATALOGO);
         }
