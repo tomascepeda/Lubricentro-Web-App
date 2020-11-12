@@ -23,11 +23,7 @@ class ComentarioApiController extends ApiControllerAbs
         } else {
             $producto_id = $params[":ID"];
             $comentarios = $this->model->getComentariosPorIdProducto($producto_id);
-            if (!empty($comentarios)) {
-                return $this->view->response($comentarios, 200);
-            }else{
-                echo "no tenia nada";
-            }
+            return $this->view->response($comentarios, 200);
         }
     }
 
@@ -67,5 +63,4 @@ class ComentarioApiController extends ApiControllerAbs
         } else
             $this->view->response("Comentario id=$id_comentario not found", 404);
     }
-    
 }

@@ -26,7 +26,7 @@ class ComentarioModel extends ModelAbs
 
     function getComentariosPorIdProducto($producto_id)
     {
-        $query = $this->db->prepare("SELECT * FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id && producto_id=?");
+        $query = $this->db->prepare("SELECT comentario.*,producto.*,usuario.nombre,usuario.admin FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id && producto_id=? ORDER BY fecha DESC");
         $query->execute(array($producto_id));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
@@ -39,7 +39,7 @@ class ComentarioModel extends ModelAbs
 
     function removeComentario($id_comentario)
     {
-        $query = $this->db->prepare("DELETE FROM comentario WHERE id=?");
+        $query = $this->db->prepare("DELETE FROM comentario WHERE id_comentario=?");
         $query->execute(array($id_comentario));
     }
 

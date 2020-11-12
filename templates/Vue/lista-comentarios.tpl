@@ -4,13 +4,12 @@
 
     <div class="comments-container">
         <h1>Comentarios 
-
-                <button class="btn btn-primary" id="btn-reload"><img v-if="!loading" id="reload" src="../assets/images/reload.png"/>
-                <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                <span v-if="loading" class="sr-only">Loading...</span>
+            <button class="btn btn-primary" id="btn-reload"><img v-if="!loading" id="reload" src="../assets/images/reload.png"/>
+            <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span v-if="loading" class="sr-only">Loading...</span>
         </button></h1>
-        <p v-if="empty">Este producto no cuenta con comentarios.</p>
-        <ul v-if="!empty" id="comments-list" class="comments-list">
+        <p v-if="comentarios == null">Este producto no cuenta con comentarios.</p>
+        <ul v-if="comentarios != null" id="comments-list" class="comments-list">
 
             <li v-for="comentario in comentarios">
                 <div class="comment-main-level">
@@ -26,7 +25,7 @@
                             <h6 v-if="comentario.admin == 1" class="comment-name by-author">{{comentario.nombre}}</h6>
                             <h6 v-else class="comment-name">{{comentario.nombre}}</h6>
                             <span>{{comentario.fecha}}</span>
-                            <div id="borrar-c"></div>
+                            <button v-if="admin == true" type="button" class="btn btn-danger borrar-c" v-on:click="removeComentario(comentario.id_comentario)">Borrar</button>
                             <i class="fa fa-reply"></i>
                             <i class="fa fa-heart"></i>
                         </div>

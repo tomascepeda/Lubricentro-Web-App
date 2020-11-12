@@ -11,7 +11,7 @@ class UsuarioModel extends ModelAbs{
 
     function getUsuarios($exception)
     {
-        $query = $this->db->prepare("SELECT * FROM usuario WHERE nombre != ?");
+        $query = $this->db->prepare("SELECT id,nombre,usuario.admin FROM usuario WHERE nombre != ?");
         $query->execute(array($exception));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

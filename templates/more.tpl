@@ -17,7 +17,7 @@
     <li class="list-group-item "><span class="bolder">Marca: </span>{$marca->nombre}</li>
     <li class="list-group-item "><span class="bolder">Origen: </span>{$marca->origen}</li>
     <li class="list-group-item "><span class="bolder">Precio: </span>${$producto->precio}</li>
-    <li class="list-group-item "><span class="bolder">Calificacion general: </span>{$promedio}</li>
+    <li class="list-group-item " id="promedio"><span class="bolder">Calificacion general: </span>{$promedio}</li>
   </ul>
   <div class="card-body">
     <button type="button" class="btn btn-primary" onclick="window.location='{$url}catalogo'">Volver</button>

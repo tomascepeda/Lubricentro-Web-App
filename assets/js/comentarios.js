@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const ID = document.querySelector("#id").innerText.substring(4, 11);
-    const userId = document.querySelector("#usuario-id").innerText;
-    try {
-        if (document.querySelector("#usuario-admin").innerText == 1) {
-            let div_boton = document.querySelector("#borrar-c");
-            let boton = document.createElement("button");
-            boton.classList.add("btn");
-            boton.classList.add("btn-danger");
-            boton.classList.add("borrar-c");
-            boton.innerText = "Borrar";
-            //boton.addEventListener("click", removeComentario());
-            div_boton.appendChild(boton);
-        }
-    } catch (error) {/* usuario publico */ }
+    try{
+        const userId = document.querySelector("#usuario-id").innerText;
+    } catch{}
 
     const url = "http://localhost/web2/lubricentro/api/comentarios/";
 
     let app = new Vue({
         el: "#lista-comentarios-vue",
         data: {
-            empty: false,
+            admin: false,
             loading: false,
             comentarios: []
+        },
+        methods: {
+            removeComentario(id) {
+                fetch(url + id, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.text())
+                    .then(res => console.log(res));
+                getComentarios();
+            }
         }
     });
 
@@ -31,20 +31,65 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(url + ID)
             .then(response => response.json())
             .then(comentarios => {
-                app.comentarios = comentarios; // similar a $this->smarty->assign
+                if (comentarios == "") {
+                    app.comentarios = null;
+                } else {
+                    comentarios.forEach(i => {
+                        i.fecha = Math.round((new Date().getTime() - new Date(i.fecha).getTime()) / 1000);
+                        let minutos = Math.floor(i.fecha / 60);
+                        let horas = Math.floor(minutos / 60);
+                        let dias = Math.floor(horas / 24);
+                        let meses = Math.floor(dias / 31);
+                        let anios = Math.floor(meses / 12);
+                        if (i.fecha == 1 || i.fecha == 0) {
+                            i.fecha = "Hace un segundo";
+                        }
+                        else if (minutos < 1) {
+                            i.fecha = "Hace " + i.fecha + " segundos";
+                        } 
+                        else if (minutos == 1) {
+                            i.fecha = "Hace un minuto";
+                        }
+                        else if (minutos > 1 && minutos < 60) {
+                            i.fecha = "Hace " + minutos + " minutos";
+                        } 
+                        else if (horas == 1){
+                            i.fecha = "Hace una hora";
+                        }
+                        else if (horas > 1 && horas < 24) {
+                            i.fecha = "Hace " + horas + " horas";
+                        } 
+                        else if(dias == 1){
+                            i.fecha = "Hace un dia";
+                        }
+                        else if (dias > 1 && dias < 31) {
+                            i.fecha = "Hace " + dias + " dias";
+                        } else if(meses == 1){
+                            i.fecha = "Hace un mes";
+                        }
+                        else if (meses > 1 && meses < 12) {
+                            i.fecha = "Hace " + meses + " meses";
+                        } 
+                        else if(anios == 1){
+                            i.fecha = "Hace un año";
+                        }
+                        else if (anios > 1) {
+                            i.fecha = "Hace " + anios + " años";
+                        }
+                    });
+                    app.comentarios = comentarios;
+                }
                 app.loading = false;
+                getPromedio(comentarios);
             })
             .catch(error => {
                 console.log(error);
                 app.loading = false;
-                app.empty = true;
             });
     }
 
     function addComentario(e) {
         e.preventDefault();
-
-        console.log(userId);
         let data = {
             "producto_id": ID,
             "usuario_id": userId,
@@ -54,24 +99,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-            .catch(error => console.log(error))
-            .then(response => {
-                console.log('Success:', response);
-                getComentarios();
-            });
-        getComentarios();
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+            .then(r => getComentarios())
+            .catch(error => console.log("error"));
+
+        //reseteo el form     
+        document.querySelector("textarea").value = "";
     }
 
-    function removeComentario() {
+    function checkIsAdmin() {
+        try{
+            if (document.querySelector("#usuario-admin").innerText == 1)
+                app.admin = true;
+        }catch{}
+    }
 
-        let id = document.querySelector("#comentario-id").innerText;
-        console.log(id);
-
+    function removeComentario(id) {
         fetch(url + id, {
             method: 'DELETE',
         })
@@ -80,8 +125,24 @@ document.addEventListener("DOMContentLoaded", () => {
         getComentarios();
     }
 
+    function getPromedio(collection) {
+        let promedio = 0;
+        let suma = 0;
+        let cant = 0;
+        collection.forEach(i => {
+            suma += parseInt(i.puntaje, 10);
+            cant++;
+        });
+        promedio = suma / cant;
+        document.querySelector("#promedio").innerHTML = "<span class='bolder'>Calificacion general: </span>" + Math.round(promedio);
+    }
+
     getComentarios();
+    checkIsAdmin();
     document.querySelector("#btn-reload").addEventListener("click", getComentarios);
-    document.querySelector("#publicar").addEventListener("click", addComentario);
+    try {
+        document.querySelector("#publicar").addEventListener("click", addComentario);
+        
+    } catch {}
 
 });

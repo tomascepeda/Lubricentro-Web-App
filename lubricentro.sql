@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2020 a las 03:47:50
+-- Tiempo de generación: 12-11-2020 a las 01:07:12
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -41,17 +41,21 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `usuario_id`, `producto_id`, `texto`, `puntaje`, `fecha`) VALUES
-(6, 7, 231, 'editado desde la api', 5, '2020-11-09 18:40:16'),
-(8, 7, 231, 'agregado desde la api', 5, '2020-11-09 18:40:32'),
-(9, 9, 44, 'nuevo', 1, '2020-11-05 22:26:08'),
-(10, 7, 226, 'nuevo desde la api', 5, '2020-11-09 23:20:41'),
-(11, 7, 231, 'muy bueno', 3, '2020-11-09 23:25:02'),
-(12, 7, 231, 'comentado desde el formulario', 3, '2020-11-09 23:25:33'),
-(22, 7, 231, 'a', 3, '2020-11-11 01:06:59'),
-(23, 7, 28, 'subir promedio', 3, '2020-11-11 02:29:43'),
-(24, 7, 46, 'comentario', 3, '2020-11-11 02:44:02'),
-(25, 7, 46, 'otro', 3, '2020-11-11 02:44:21'),
-(26, 7, 51, 'aaaaaa', 5, '2020-11-11 02:45:45');
+(51, 7, 58, 'saddsad', 1, '2020-11-11 21:46:56'),
+(52, 7, 58, 'asas', 4, '2020-11-11 21:47:12'),
+(53, 7, 58, 'asssssssssss', 3, '2020-11-11 21:47:57'),
+(54, 7, 58, 'a', 5, '2020-11-11 21:48:00'),
+(61, 12, 231, 'awita gato', 3, '2020-11-11 23:19:10'),
+(62, 12, 209, 'swdfasdfdsa', 3, '2020-11-11 23:26:27'),
+(63, 12, 209, 'sdfsdfsd', 3, '2020-11-11 23:26:31'),
+(64, 12, 209, 'sadsa', 3, '2020-11-11 23:28:38'),
+(65, 12, 209, 's', 3, '2020-11-11 23:28:49'),
+(66, 12, 209, 'wedsads', 5, '2020-11-11 23:31:39'),
+(67, 12, 209, 'vzdzgvdvz', 5, '2020-11-11 23:32:08'),
+(68, 12, 209, 'una kk', 1, '2020-11-11 23:41:41'),
+(69, 12, 209, 'gfadgad', 3, '2020-11-11 23:42:00'),
+(70, 12, 209, 'dfasasdf', 3, '2020-11-11 23:42:56'),
+(71, 12, 209, 'gdfgsdfg', 1, '2020-11-11 23:43:03');
 
 -- --------------------------------------------------------
 
@@ -135,7 +139,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `contraseña`, `admin`) VALUES
 (7, 'tomas', '$2y$10$gTJSBhiaKzSR6lFg1mtXr...txpWL4y0cgdyti/GK4DWXz4SFBegW', 1),
 (8, 'admin', '$2y$10$EUaZKU4LGQDM6S2e0RukEui1wNi5umGsxF7P7hIeMvfqX/v8xhRn6', 1),
-(9, 'yirrap', '$2y$10$C65jOXDDVKe/0wJ8aprFKuatypa7A4XwZKouAZxk0OLzT2zJ41Jf6', 0);
+(12, 'public', '$2y$10$tJf9JYqkMibJqqoko/GMeefmSNWcyoK.V4HEMGo/llx6WIV0af1Lm', 0);
 
 --
 -- Índices para tablas volcadas
@@ -177,7 +181,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
@@ -195,7 +199,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
