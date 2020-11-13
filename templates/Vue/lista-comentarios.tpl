@@ -16,7 +16,7 @@
                     
                     <!-- Avatar -->
                     <div class="comment-avatar shadow-lg"><img
-                            src="https://www.ibei.org/images/4611/person_box.png" alt=""></div>
+                            src="../assets/images/user.png" alt="user.png"></div>
                     
                     <!-- Contenedor del Comentario -->
                     <div class="comment-box shadow-lg">

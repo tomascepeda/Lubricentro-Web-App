@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-        {foreach from=$productos item=producto}
+        {foreach from=$allproductos item=producto}
             <tr>
                 {if $producto->id_marca eq $marca->id}
                     <td>{$producto->nombre}</td>

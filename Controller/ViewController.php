@@ -34,7 +34,9 @@ class ViewController extends ControllerAbs
         $this->npaginacion = 5; //es "constante", sirve para cambiar la cantidad de items que se muestran en la paginacion
     }
 
-    function default(){
+    function
+    default()
+    {
         //sirve para limpiar la url y redirigir a home en caso de encontrar una ruta sin setear
         header("Location: " . HOME);
     }
@@ -68,7 +70,8 @@ class ViewController extends ControllerAbs
         $fin = $this->npaginacion;
         //la consulta devuelve $npaginacion elementos, partiendo del elemento en la posicion $inicio de la db
         $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
-        $this->view->showCatalogo($productos, $inicio, $fin, true, false, $marcas, $this->user, $this->logueado);
+        $allproductos = $this->productoModel->getProductos();
+        $this->view->showCatalogo($productos, $allproductos, $inicio, $fin, true, false, $marcas, $this->user, $this->logueado);
     }
 
     function CatalogoPaginadoPrevious()
@@ -96,7 +99,8 @@ class ViewController extends ControllerAbs
         $top = false;
         if ($inicio == 0)
             $top = true; //se lo paso a smarty y este bloquea el boton
-        $this->view->showCatalogo($productos, $inicio, $fin, $top, false, $marcas, $this->user, $this->logueado);
+        $allproductos = $this->productoModel->getProductos();
+        $this->view->showCatalogo($productos, $allproductos, $inicio, $fin, $top, false, $marcas, $this->user, $this->logueado);
     }
 
     function CatalogoPaginadoNext()
@@ -125,7 +129,8 @@ class ViewController extends ControllerAbs
         $bottom = false;
         if (count($productos) < $this->npaginacion)
             $bottom = true; //se lo paso a smarty y este bloquea el boton
-        $this->view->showCatalogo($productos, $inicio, $fin, false, $bottom, $marcas, $this->user, $this->logueado);
+        $allproductos = $this->productoModel->getProductos();
+        $this->view->showCatalogo($productos, $allproductos, $inicio, $fin, false, $bottom, $marcas, $this->user, $this->logueado);
     }
 
     function Administrar()

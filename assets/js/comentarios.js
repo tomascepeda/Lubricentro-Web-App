@@ -18,8 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     method: 'DELETE',
                 })
                     .then(res => res.text())
-                    .then(res => console.log(res));
-                getComentarios();
+                    .then(res => {
+                        getComentarios();
+                        console.log(res)
+                    });
             }
         }
     });
@@ -88,23 +90,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addComentario(e) {
         e.preventDefault();
-        if (userId != "null") { //es una string se llama null solo por comodidad
-            let data = {
-                "producto_id": ID,
-                "usuario_id": userId,
-                "texto": document.querySelector("textarea").value,
-                "puntaje": document.querySelector("input:checked").value
-            };
+        if (document.querySelector("textarea").value != "") {
+            if (userId != "null") { //es una string se llama null solo por comodidad
+                let data = {
+                    "producto_id": ID,
+                    "usuario_id": userId,
+                    "texto": document.querySelector("textarea").value,
+                    "puntaje": document.querySelector("input:checked").value
+                };
 
-            fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-                .then(r => getComentarios())
-                .catch(error => console.log("error"));
+                fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                    .then(r => getComentarios())
+                    .catch(error => console.log("error"));
+            }
         }
-
         //reseteo el form     
         document.querySelector("textarea").value = "";
     }

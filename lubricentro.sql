@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2020 a las 03:16:40
+-- Tiempo de generación: 13-11-2020 a las 19:36:51
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -41,26 +41,11 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `usuario_id`, `producto_id`, `texto`, `puntaje`, `fecha`) VALUES
-(51, 7, 58, 'saddsad', 1, '2020-11-11 21:46:56'),
-(52, 7, 58, 'asas', 4, '2020-11-11 21:47:12'),
-(53, 7, 58, 'asssssssssss', 3, '2020-11-11 21:47:57'),
-(54, 7, 58, 'a', 5, '2020-11-11 21:48:00'),
-(62, 12, 209, 'swdfasdfdsa', 3, '2020-11-11 23:26:27'),
-(63, 12, 209, 'sdfsdfsd', 3, '2020-11-11 23:26:31'),
-(64, 12, 209, 'sadsa', 3, '2020-11-11 23:28:38'),
-(65, 12, 209, 's', 3, '2020-11-11 23:28:49'),
-(66, 12, 209, 'wedsads', 5, '2020-11-11 23:31:39'),
-(67, 12, 209, 'vzdzgvdvz', 5, '2020-11-11 23:32:08'),
-(68, 12, 209, 'una kk', 1, '2020-11-11 23:41:41'),
-(69, 12, 209, 'gfadgad', 3, '2020-11-11 23:42:00'),
-(70, 12, 209, 'dfasasdf', 3, '2020-11-11 23:42:56'),
-(71, 12, 209, 'gdfgsdfg', 1, '2020-11-11 23:43:03'),
-(97, 12, 231, 'estoy sin permisos', 3, '2020-11-12 16:34:30'),
-(98, 7, 231, 'yo si tengo\n', 3, '2020-11-12 16:35:55'),
 (101, 7, 209, 'test', 3, '2020-11-12 16:36:57'),
 (102, 7, 28, 'test', 3, '2020-11-12 16:37:09'),
 (103, 7, 226, 'test', 3, '2020-11-12 16:37:34'),
-(106, 7, 232, 'fixeado', 3, '2020-11-13 02:13:29');
+(113, 7, 209, 'test 2', 5, '2020-11-13 18:22:40'),
+(114, 7, 46, 'bueno', 5, '2020-11-13 18:24:40');
 
 -- --------------------------------------------------------
 
@@ -86,8 +71,7 @@ INSERT INTO `marca` (`id`, `nombre`, `origen`) VALUES
 (13, 'SHELL', 'ESTADOS UNIDOS'),
 (18, 'ELF', 'ESTADOS UNIDOS'),
 (19, 'PETRONAS', 'ITALIA'),
-(20, 'WEGA', 'ITALIA'),
-(50, 'YIRRAP', 'BOLIVIA');
+(20, 'WEGA', 'ITALIA');
 
 -- --------------------------------------------------------
 
@@ -123,14 +107,7 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `id_m
 (70, 'SELENIA K 15W40', '1L', 820, NULL, 19),
 (71, 'SELENIA K 15W40', '4L', 2430, NULL, 19),
 (209, 'AKX 1993', 'CHEVROLET S10', 570, NULL, 20),
-(226, 'WO 130', '1L', 530, NULL, 20),
-(231, 'AGREGADO DESDE LA API 2 XD', 'ASASASASAS', 140, NULL, 1),
-(232, 'AA CON IMAGEN 2 EDIT', 'SADSAD', 545454, NULL, 18),
-(233, 'AA CON IMAGEN EDIT NEW', '1L', 45454545, NULL, 18),
-(234, 'PEPE', 'ETE SECH', 54545454, NULL, 19),
-(235, 'ETE SECH 2.0', 'PPEE', 4545454, NULL, 19),
-(236, 'ETE SECH 2.0', 'PPEE', 4545454, NULL, 19),
-(237, 'AAA NUEVO', 'SADSA', 4545454, NULL, 18);
+(226, 'WO 130', '1L', 530, NULL, 20);
 
 -- --------------------------------------------------------
 
@@ -194,7 +171,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
