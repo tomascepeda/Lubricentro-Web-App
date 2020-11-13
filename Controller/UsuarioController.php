@@ -69,6 +69,8 @@ class UsuarioController
     {
         //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        //compruebo permisos
+        $this->helper->checkAdmin();
         $usuario_id = $params[':ID'];
         $this->model->removeUsuario($usuario_id);
         header("Location: " . ADMIN);
@@ -78,9 +80,11 @@ class UsuarioController
     {
         //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        //compruebo permisos
+        $this->helper->checkAdmin();
         $user = $params[':ID'];
         $usuario = $this->model->getUsuarioPorNombre($user);
-        if($usuario->admin == 1){
+        if ($usuario->admin == 1) {
             $this->model->editUsuario(0, $usuario->id);
         } else {
             $this->model->editUsuario(1, $usuario->id);

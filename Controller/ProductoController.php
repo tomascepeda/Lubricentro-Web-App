@@ -24,7 +24,15 @@ class ProductoController extends ControllerAbs
             $detalle = $_POST['descrip_prod'];
             $precio = $_POST['precio_prod'];
             $marca = $_POST['marca_prod'];
-            $this->model->addProducto(strtoupper($nombre), strtoupper($detalle), $precio, $marca);
+            if (
+                $_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg"
+                || $_FILES['input_name']['type'] == "image/png"
+            ) {
+                //como en la view el input esta oculto para el usuario sin permisos, compruebo que realmente es un usuario admin
+                $this->helper->checkAdmin();
+                $this->model->addProducto(strtoupper($nombre), strtoupper($detalle), $precio, $_FILES['input_name']['tmp_name'], $marca);
+            } else
+                $this->model->addProducto(strtoupper($nombre), strtoupper($detalle), $precio, null, $marca);
             header("Location: " . ADMIN);
         } else {
             header("Location: " . ADMIN);
@@ -40,6 +48,16 @@ class ProductoController extends ControllerAbs
         header("Location: " . ADMIN);
     }
 
+    function eliminarImagen($params = null)
+    {
+        //compruebo que es el usuario logeado
+        $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
+        $producto_id = $params[':ID'];
+        $this->model->removeImagen($producto_id);
+        header("Location: " . ADMIN);
+    }
+
     function editarProducto()
     {
         //compruebo que es el usuario logeado
@@ -50,7 +68,18 @@ class ProductoController extends ControllerAbs
             $precio = $_POST['edit_precio'];
             $marca = $_POST['edit_marca'];
             $producto_id = $_POST['id_producto'];
-            $this->model->editProducto($producto_id, strtoupper($nombre), $marca, strtoupper($detalle), $precio);
+            if (
+                $_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg"
+                || $_FILES['input_name']['type'] == "image/png"
+            ) {
+                //como en la view el input esta oculto para el usuario sin permisos, compruebo que realmente es un usuario admin
+                $this->helper->checkAdmin();
+                $this->model->editProducto($producto_id, strtoupper($nombre), strtoupper($detalle), $precio, $_FILES['input_name']['tmp_name'], $marca);
+            } else {
+                //si no me setea una imagen pero el producto ya tiene una, le paso la misma a la query
+                $imagen = $this->model->getProductoPorID($producto_id)->imagen;
+                $this->model->editProducto($producto_id, strtoupper($nombre), strtoupper($detalle), $precio, $imagen, $marca);
+            }
             header("Location: " . ADMIN);
         } else {
             header("Location: " . ADMIN);

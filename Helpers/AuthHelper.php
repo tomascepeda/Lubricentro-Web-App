@@ -12,6 +12,7 @@ class AuthHelper
     {
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['USERNAME'] = $user->nombre;
+        $_SESSION['ADMIN'] = $user->admin;
     }
 
     public function logout()
@@ -23,6 +24,13 @@ class AuthHelper
     {
         if (!isset($_SESSION["USERNAME"])) {
             header("Location:" . LOGIN);
+            die();
+        }
+    }
+
+    public function checkAdmin(){
+        if($_SESSION['ADMIN'] == 0){
+            header("Location:" . ADMIN);
             die();
         }
     }

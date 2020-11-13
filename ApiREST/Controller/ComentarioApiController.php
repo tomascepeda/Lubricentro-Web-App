@@ -29,6 +29,7 @@ class ComentarioApiController extends ApiControllerAbs
 
     public function addComentario()
     {
+        $this->helper->checkLoggedIn();
         $body = $this->getData();
         $producto_id = $body->producto_id;
         $usuario_id = $body->usuario_id;
@@ -39,6 +40,8 @@ class ComentarioApiController extends ApiControllerAbs
 
     public function removeComentario($params = [])
     {
+        $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $id_comentario = $params[':ID'];
         $comentario = $this->model->getComentarioPorID($id_comentario);
         if (!empty($comentario)) {
@@ -50,6 +53,8 @@ class ComentarioApiController extends ApiControllerAbs
 
     public function editComentario($params = [])
     {
+        $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $id_comentario = $params[':ID'];
         $producto = $this->model->getComentarioPorID($id_comentario);
         if (!empty($producto)) {

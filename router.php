@@ -21,6 +21,8 @@
     $r->addRoute("home", "GET", "ViewController", "Home");
     $r->addRoute("browse", "GET", "ViewController", "Buscar");
     $r->addRoute("catalogo", "GET", "ViewController", "Catalogo");
+    $r->addRoute("previous", "POST", "ViewController", "CatalogoPaginadoPrevious");
+    $r->addRoute("next", "POST", "ViewController", "CatalogoPaginadoNext");
     $r->addRoute("administrar", "GET", "ViewController", "Administrar");
     $r->addRoute("editarproducto/:ID", "GET", "ViewController", "showEditarProducto");
     $r->addRoute("editarmarca/:ID", "GET", "ViewController", "showEditarMarca");
@@ -29,6 +31,7 @@
     $r->addRoute("showmore/:ID", "GET", "ViewController", "showVerMas");
 
     $r->addRoute("eliminarproducto/:ID", "GET", "ProductoController", "eliminarProducto");
+    $r->addRoute("eliminarimagen/:ID", "GET", "ProductoController", "eliminarImagen");
     $r->addRoute("agregarproducto", "POST", "ProductoController", "agregarProducto");
     $r->addRoute("editarproducto/editar", "POST", "ProductoController", "editarProducto");
     
@@ -43,7 +46,7 @@
     $r->addRoute("modificarpermisos/:ID", "GET", "UsuarioController", "modificarPermisos");
 
     //Ruta por defecto.
-    $r->setDefaultRoute("ViewController", "Home");
+    $r->setDefaultRoute("ViewController", "default");
 
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

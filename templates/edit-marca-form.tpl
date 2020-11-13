@@ -19,5 +19,5 @@
     </div>
     <input type="number" class="oculto" name="id_marca" value="{$marca_id}">
     <button class="btn btn-primary" type="submit">Editar</button>
-    <button type="button" id="cancelar_edicion" class="btn btn-danger" onclick="window.location='{$url}administrar'">Cancelar</button>
+    <button type="button" id="cancelar_edicion" class="btn btn-danger" onclick="history.back()">Cancelar</button>
 </form>

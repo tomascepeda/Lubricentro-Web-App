@@ -38,7 +38,7 @@ class View
         $this->smarty->display('templates/home.tpl');
     }
 
-    function showCatalogo($productos, $marcas, $user, $logueado)
+    function showCatalogo($productos, $inicio, $fin, $top, $bottom, $marcas, $user, $logueado)
     {
         $this->title = "Catálogo | Lubricentro";
         $current = "Catálogo";
@@ -48,6 +48,10 @@ class View
         $link2 = HOME;
         $link3 = ADMIN;
         $this->smarty->assign('productos', $productos);
+        $this->smarty->assign('inicio', $inicio);
+        $this->smarty->assign('fin', $fin);
+        $this->smarty->assign('top', $top);
+        $this->smarty->assign('bottom', $bottom);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('user', $user);
@@ -86,7 +90,7 @@ class View
         $this->smarty->display('templates/admin.tpl');
     }
 
-    function showEditarProducto($producto_id, $marcas, $producto, $logueado)
+    function showEditarProducto($producto_id, $marcas, $producto, $logueado, $usuarioactual)
     {
         $this->title = "Editar Producto | Lubricentro";
         $current = "Administrar";
@@ -106,6 +110,7 @@ class View
         $this->smarty->assign('link1', $link1); 
         $this->smarty->assign('link2', $link2);
         $this->smarty->assign('link3', $link3);
+        $this->smarty->assign('usuarioactual', $usuarioactual);
         $this->smarty->display('templates/editar-producto.tpl');
     }
 

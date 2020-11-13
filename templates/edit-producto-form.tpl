@@ -3,7 +3,7 @@
     <h3>Editar</h3>
 
 </div>
-<form action="editar" class="editar shadow-lg p-3 mb-5 bg-white rounded" method="POST">
+<form action="editar" class="editar shadow-lg p-3 mb-5 bg-white rounded" method="POST" enctype="multipart/form-data">
     <h6>Editar Producto</h6>
     <div class="form-row">
         <div class="col-md-6 mb-3">
@@ -39,7 +39,28 @@
             </select>
         </div>
     </div>
+    {if $usuarioactual->admin == 1}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Subir Imagen</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" name="input_name" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" value="{$producto->imagen}">
+                <label class="custom-file-label" for="inputGroupFile01">Seleccionar Archivo</label>
+            </div>
+        </div>
+        {else}
+            <div class="input-group mb-3 oculto">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Subir Imagen</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="input_name" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" value="{$producto->imagen}">
+                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar Archivo</label>
+                </div>
+            </div>
+    {/if}
     <input type="number" class="oculto" name="id_producto" value="{$producto_id}">
     <button class="btn btn-primary" type="submit">Editar</button>
-    <button type="button" id="cancelar_edicion" class="btn btn-danger"  onclick="window.location='{$url}administrar'">Cancelar</button>
+    <button type="button" id="cancelar_edicion" class="btn btn-danger" onclick="history.back()">Cancelar</button>
 </form>

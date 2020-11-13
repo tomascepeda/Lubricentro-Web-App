@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("se cargo el script propio");
-
     $(function () {
         $('#download').click(function () {
             var options = {
@@ -14,5 +11,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-
 });

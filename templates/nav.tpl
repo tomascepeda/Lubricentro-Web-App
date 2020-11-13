@@ -20,10 +20,6 @@
           <li class="nav-item active">
               <a class="nav-link" href="{$link3}">{$current2}</a>
           </li>
-          {else}
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{$current2}</a>
-          </li>
           {/if}
         </ul>
         {if !$logueado}

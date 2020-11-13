@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const ID = document.querySelector("#id").innerText.substring(4, 11);
-    try{
-        const userId = document.querySelector("#usuario-id").innerText;
-    } catch{}
+    const userId = document.querySelector("#usuario-id").innerText;
 
     const url = "http://localhost/web2/lubricentro/api/comentarios/";
 
@@ -46,31 +44,31 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else if (minutos < 1) {
                             i.fecha = "Hace " + i.fecha + " segundos";
-                        } 
+                        }
                         else if (minutos == 1) {
                             i.fecha = "Hace un minuto";
                         }
                         else if (minutos > 1 && minutos < 60) {
                             i.fecha = "Hace " + minutos + " minutos";
-                        } 
-                        else if (horas == 1){
+                        }
+                        else if (horas == 1) {
                             i.fecha = "Hace una hora";
                         }
                         else if (horas > 1 && horas < 24) {
                             i.fecha = "Hace " + horas + " horas";
-                        } 
-                        else if(dias == 1){
+                        }
+                        else if (dias == 1) {
                             i.fecha = "Hace un dia";
                         }
                         else if (dias > 1 && dias < 31) {
                             i.fecha = "Hace " + dias + " dias";
-                        } else if(meses == 1){
+                        } else if (meses == 1) {
                             i.fecha = "Hace un mes";
                         }
                         else if (meses > 1 && meses < 12) {
                             i.fecha = "Hace " + meses + " meses";
-                        } 
-                        else if(anios == 1){
+                        }
+                        else if (anios == 1) {
                             i.fecha = "Hace un año";
                         }
                         else if (anios > 1) {
@@ -90,39 +88,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addComentario(e) {
         e.preventDefault();
-        let data = {
-            "producto_id": ID,
-            "usuario_id": userId,
-            "texto": document.querySelector("textarea").value,
-            "puntaje": document.querySelector("input:checked").value
-        };
+        if (userId != "null") { //es una string se llama null solo por comodidad
+            let data = {
+                "producto_id": ID,
+                "usuario_id": userId,
+                "texto": document.querySelector("textarea").value,
+                "puntaje": document.querySelector("input:checked").value
+            };
 
-        fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-            .then(r => getComentarios())
-            .catch(error => console.log("error"));
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(r => getComentarios())
+                .catch(error => console.log("error"));
+        }
 
         //reseteo el form     
         document.querySelector("textarea").value = "";
     }
 
     function checkIsAdmin() {
-        try{
-            if (document.querySelector("#usuario-admin").innerText == 1)
-                app.admin = true;
-        }catch{}
-    }
-
-    function removeComentario(id) {
-        fetch(url + id, {
-            method: 'DELETE',
-        })
-            .then(res => res.text())
-            .then(res => console.log(res));
-        getComentarios();
+        if (document.querySelector("#usuario-admin").innerText == 1)
+            app.admin = true;
     }
 
     function getPromedio(collection) {
@@ -142,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#btn-reload").addEventListener("click", getComentarios);
     try {
         document.querySelector("#publicar").addEventListener("click", addComentario);
-        
-    } catch {}
+    } catch {/*el usuario no tiene permiso para publicar comentarios*/ }
 
 });

@@ -17,6 +17,7 @@ class ViewController extends ControllerAbs
     private $marcaModel;
     private $userModel;
     private $comentarioModel;
+    private $npaginacion;
 
     function __construct()
     {
@@ -30,6 +31,12 @@ class ViewController extends ControllerAbs
             $this->user = $this->helper->getLoggedUserName();
             $this->logueado = true;
         }
+        $this->npaginacion = 5; //es "constante", sirve para cambiar la cantidad de items que se muestran en la paginacion
+    }
+
+    function default(){
+        //sirve para limpiar la url y redirigir a home en caso de encontrar una ruta sin setear
+        header("Location: " . HOME);
     }
 
     function Home()
@@ -43,21 +50,82 @@ class ViewController extends ControllerAbs
             $busqueda = $_GET["producto"];
             $productos = $this->productoModel->getProductosPorNombre($busqueda);
             if (empty($productos)) {
-                header("Location: " . HOME);
+                $this->default();
                 die();
             }
             $marcas = $this->marcaModel->getMarcas();
             $this->view->showHome($productos, strtoupper($busqueda), $marcas, $this->user, $this->logueado);
         } else {
-            header("Location: " . HOME);
+            $this->default();
         }
     }
 
     function Catalogo()
     {
-        $productos = $this->productoModel->getProductos();
         $marcas = $this->marcaModel->getMarcas();
-        $this->view->showCatalogo($productos, $marcas, $this->user, $this->logueado);
+        //valores default de la paginacion
+        $inicio = 0;
+        $fin = $this->npaginacion;
+        //la consulta devuelve $npaginacion elementos, partiendo del elemento en la posicion $inicio de la db
+        $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
+        $this->view->showCatalogo($productos, $inicio, $fin, true, false, $marcas, $this->user, $this->logueado);
+    }
+
+    function CatalogoPaginadoPrevious()
+    {
+        $marcas = $this->marcaModel->getMarcas();
+        if (isset($_POST["inicio"]) && isset($_POST["fin"])) {
+            $inicio = $_POST["inicio"];
+            $fin = $_POST["fin"];
+            //disminuyo los valores de inicio y fin
+            $inicio -= $this->npaginacion;;
+            $fin -= $this->npaginacion;;
+            //compruebo el rango, si se pasan los seteo en default
+            if (($inicio - $this->npaginacion) < 0)
+                $inicio = 0;
+            if (($fin - $this->npaginacion) < $this->npaginacion)
+                $fin = $this->npaginacion;
+        } else {
+            //si no estan seteados los seteo a default
+            $inicio = 0;
+            $fin = $this->npaginacion;
+        }
+        //la consulta devuelve $npaginacion elementos, partiendo del elemento en la posicion $inicio de la db
+        $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
+        //compruebo si es la primer pagina
+        $top = false;
+        if ($inicio == 0)
+            $top = true; //se lo paso a smarty y este bloquea el boton
+        $this->view->showCatalogo($productos, $inicio, $fin, $top, false, $marcas, $this->user, $this->logueado);
+    }
+
+    function CatalogoPaginadoNext()
+    {
+        $marcas = $this->marcaModel->getMarcas();
+        if (isset($_POST["inicio"]) && isset($_POST["fin"])) {
+            $inicio = $_POST["inicio"];
+            $fin = $_POST["fin"];
+            //aumento los indices 
+            $inicio += $this->npaginacion;
+            $fin += $this->npaginacion;
+        } else {
+            //si no estan seteados los seteo a default
+            $inicio = 0;
+            $fin = $this->npaginacion;
+        }
+        //la consulta devuelve $npaginacion elementos, partiendo del elemento en la posicion $inicio de la db
+        $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
+        //si no encontro elementos le paso la ultima pagina que visito
+        if (empty($productos)) {
+            $inicio -= $this->npaginacion;
+            $fin -= $this->npaginacion;
+            $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
+        }
+        //compruebo si es la ultima pagina
+        $bottom = false;
+        if (count($productos) < $this->npaginacion)
+            $bottom = true; //se lo paso a smarty y este bloquea el boton
+        $this->view->showCatalogo($productos, $inicio, $fin, false, $bottom, $marcas, $this->user, $this->logueado);
     }
 
     function Administrar()
@@ -78,7 +146,8 @@ class ViewController extends ControllerAbs
         $producto_id = $params[':ID'];
         $producto = $this->productoModel->getProductoPorID($producto_id);
         $marcas = $this->marcaModel->getMarcas();
-        $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado);
+        $usuarioactual = $this->userModel->getUsuarioPorNombre($this->user);
+        $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado, $usuarioactual);
     }
 
     function showEditarMarca($params = null)
@@ -95,7 +164,7 @@ class ViewController extends ControllerAbs
         if (!$this->logueado) {
             $this->view->showLogin($this->logueado, false);
         } else {
-            header("Location: " . HOME);
+            $this->default();
         }
     }
 
@@ -104,7 +173,7 @@ class ViewController extends ControllerAbs
         if (!$this->logueado) {
             $this->view->showRegister($this->logueado, false);
         } else {
-            header("Location: " . HOME);
+            $this->default();
         }
     }
 

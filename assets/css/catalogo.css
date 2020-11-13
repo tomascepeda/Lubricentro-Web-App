@@ -17,6 +17,10 @@ nav{
    align-items: center;
 }
 
+.gris{
+    color: gray;
+}
+
 .portada h3{
     margin: 8% auto;
     color: white !important;
@@ -41,4 +45,17 @@ footer{
 .download{
     margin-left: 45%;
     margin-top: 1%;
+}
+
+#paginacion{
+    width: 174px !important;
+    margin: 0 auto;
+}
+
+#paginacion ul{
+    width: 40px;
+}
+
+.oculto{
+    display: none;
 }
