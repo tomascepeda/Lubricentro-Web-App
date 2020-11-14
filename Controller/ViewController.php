@@ -119,16 +119,18 @@ class ViewController extends ControllerAbs
         }
         //la consulta devuelve $npaginacion elementos, partiendo del elemento en la posicion $inicio de la db
         $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
+        //compruebo si es la ultima pagina
+        $bottom = false;
+        if (count($productos) < $this->npaginacion)
+            $bottom = true; //se lo paso a smarty y este bloquea el boton
         //si no encontro elementos le paso la ultima pagina que visito
         if (empty($productos)) {
             $inicio -= $this->npaginacion;
             $fin -= $this->npaginacion;
             $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
+            //esta en la ultima pagina
+            $bottom = true;
         }
-        //compruebo si es la ultima pagina
-        $bottom = false;
-        if (count($productos) < $this->npaginacion)
-            $bottom = true; //se lo paso a smarty y este bloquea el boton
         $allproductos = $this->productoModel->getProductos();
         $this->view->showCatalogo($productos, $allproductos, $inicio, $fin, false, $bottom, $marcas, $this->user, $this->logueado);
     }

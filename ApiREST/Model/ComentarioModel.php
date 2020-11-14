@@ -12,14 +12,14 @@ class ComentarioModel extends ModelAbs
 
     function getComentarios()
     {
-        $query = $this->db->prepare("SELECT * FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id ORDER BY fecha DESC");
+        $query = $this->db->prepare("SELECT comentario.*,producto.*,usuario.nombre,usuario.admin FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id ORDER BY fecha DESC");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     function getComentarioPorID($id_comentario)
     {
-        $query = $this->db->prepare("SELECT * FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id && comentario.id_comentario=?");
+        $query = $this->db->prepare("SELECT comentario.*,producto.*,usuario.nombre,usuario.admin FROM comentario JOIN producto ON producto_id JOIN usuario ON usuario_id WHERE usuario_id=usuario.id && producto_id=producto.id && comentario.id_comentario=?");
         $query->execute(array($id_comentario));
         return $query->fetch(PDO::FETCH_OBJ);
     }

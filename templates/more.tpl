@@ -3,7 +3,7 @@
 
 <div class="portada">
 
-  <h3>{$producto->nombre}</h3>
+  <h3>{$marca->nombre} {$producto->nombre}</h3>
 
 </div>
 

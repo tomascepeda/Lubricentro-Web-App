@@ -35,7 +35,7 @@
               {if $producto->imagen ne null}
                 <td><button type="button" class="btn btn-danger" onclick="window.location='{$url}eliminarimagen/{$producto->id}'">Borrar</button></td>
                 {else}
-                <td><button type="button" class="btn btn-secondary" disabled>Borrar</button></td>
+                <td><button type="button" class="btn btn-secondary" disabled>N/A</button></td>
               {/if}
             {/if}
             {if $current ne "Administrar"}
