@@ -48,15 +48,20 @@ class ViewController extends ControllerAbs
 
     function Buscar()
     {
-        if (isset($_GET["producto"])) {
-            $busqueda = $_GET["producto"];
-            $productos = $this->productoModel->getProductosPorNombre($busqueda);
+        if (isset($_GET["busqueda"]) && isset($_GET["columna_db"])) {
+            $busqueda = $_GET["busqueda"];
+            $columna_db = $_GET["columna_db"];
+            $productos = $this->productoModel->getProductosFiltrados(strtolower($columna_db), $busqueda);
             if (empty($productos)) {
                 $this->default();
                 die();
             }
             $marcas = $this->marcaModel->getMarcas();
-            $this->view->showHome($productos, strtoupper($busqueda), $marcas, $this->user, $this->logueado);
+            if ($columna_db != "precio")
+                $busqueda = $columna_db . " " . strtoupper($busqueda);
+            else
+                $busqueda = $columna_db . " menor a " . strtoupper($busqueda);
+            $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado);
         } else {
             $this->default();
         }
@@ -133,6 +138,15 @@ class ViewController extends ControllerAbs
         }
         $allproductos = $this->productoModel->getProductos();
         $this->view->showCatalogo($productos, $allproductos, $inicio, $fin, false, $bottom, $marcas, $this->user, $this->logueado);
+    }
+
+    public function setNpaginacion($npaginacion = 5)
+    {
+        try {
+            $this->npaginacion = intval($npaginacion);
+        } catch (Exception $exc) {
+            //se esperaba un entero
+        }
     }
 
     function Administrar()

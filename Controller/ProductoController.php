@@ -48,12 +48,29 @@ class ProductoController extends ControllerAbs
         header("Location: " . ADMIN);
     }
 
+    function eliminarProductos()
+    {
+        //compruebo que es el usuario logeado
+        $this->helper->checkLoggedIn();
+        if (isset($_GET["mischecks"])) {
+            $valoresCheck = $_GET["mischecks"];
+            foreach ($valoresCheck as $i) {
+                $this->model->removeProducto($i);
+            }
+            header("Location: " . ADMIN);
+        } else
+            header("Location: " . ADMIN);
+    }
+
     function eliminarImagen($params = null)
     {
         //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
         $this->helper->checkAdmin();
         $producto_id = $params[':ID'];
+        $producto = $this->model->getProductoPorID($producto_id);
+        $path = $producto->imagen;
+        unlink($path);
         $this->model->removeImagen($producto_id);
         header("Location: " . ADMIN);
     }
@@ -80,6 +97,19 @@ class ProductoController extends ControllerAbs
                 $imagen = $this->model->getProductoPorID($producto_id)->imagen;
                 $this->model->editProducto($producto_id, strtoupper($nombre), strtoupper($detalle), $precio, $imagen, $marca);
             }
+            header("Location: " . ADMIN);
+        } else {
+            header("Location: " . ADMIN);
+        }
+    }
+
+    function aumentarProductos()
+    {
+        if (isset($_POST['marca_aumentar']) && isset($_POST['porcentaje_aumento'])) {
+            $marca_id = $_POST['marca_aumentar'];
+            $porcentaje = $_POST['porcentaje_aumento'];
+            $porcentaje = $porcentaje / 100;
+            $this->model->aumentarProductos($marca_id, $porcentaje);
             header("Location: " . ADMIN);
         } else {
             header("Location: " . ADMIN);

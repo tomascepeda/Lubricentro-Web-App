@@ -49,7 +49,7 @@ nav img{
     margin-left: 3%;
     padding: 3%;
     background-color: white;
-    width: 40%;
+    width: 47%;
     justify-content: space-around;
 }
 
@@ -57,8 +57,8 @@ nav img{
     margin: 0 !important;
 }
 
-.formulario-busqueda h6{
-    padding-right: 20px;
+.formulario-busqueda label, .formulario-busqueda select{
+    margin-right: 20px !important;
 }
 
 footer{

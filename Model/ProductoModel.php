@@ -26,10 +26,29 @@ class ProductoModel extends ModelAbs
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getProductosPorNombre($nombre)
+    function getProductosFiltrados($columna, $busqueda)
     {
-        $query = $this->db->prepare("SELECT * FROM producto WHERE nombre=?");
-        $query->execute(array($nombre));
+        switch ($columna) {
+            case 'nombre':
+                $busqueda = "%" . $busqueda . "%";
+                $query = $this->db->prepare("SELECT * FROM producto WHERE nombre LIKE ? ORDER BY nombre ASC");
+                break;
+            case 'descripcion':
+                $busqueda = "%" . $busqueda . "%";
+                $query = $this->db->prepare("SELECT * FROM producto WHERE descripcion LIKE ? ORDER BY nombre ASC");
+                break;
+            case 'precio':
+                $query = $this->db->prepare("SELECT * FROM producto WHERE precio<? ORDER BY precio DESC");
+                break;
+            case 'marca':
+                $busqueda = "%" . $busqueda . "%";
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE marca.nombre LIKE ? ORDER BY marca.nombre ASC");
+                break;
+            default:
+                return null;
+                break;
+        }
+        $query->execute(array($busqueda));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
@@ -87,5 +106,11 @@ class ProductoModel extends ModelAbs
         $target = 'assets/client/images/' . uniqid() . '.jpg';
         move_uploaded_file($image, $target);
         return $target;
+    }
+
+    function aumentarProductos($marca_id, $porcentaje)
+    {
+        $sentencia = $this->db->prepare("UPDATE producto SET precio=precio+(precio*?) WHERE id_marca=?");
+        $sentencia->execute(array($porcentaje, $marca_id));
     }
 }

@@ -13,23 +13,26 @@ class AuthHelper
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['USERNAME'] = $user->nombre;
         $_SESSION['ADMIN'] = $user->admin;
+        $_SESSION['LAST_ACTIVITY'] = time();
     }
 
     public function logout()
     {
         session_destroy();
+        header("Location:" . LOGIN);
     }
 
     public function checkLoggedIn()
     {
-        if (!isset($_SESSION["USERNAME"])) {
-            header("Location:" . LOGIN);
+        if (!$this->isLogged()) {
+            $this->logout();
             die();
         }
     }
 
-    public function checkAdmin(){
-        if($_SESSION['ADMIN'] == 0){
+    public function checkAdmin()
+    {
+        if ($_SESSION['ADMIN'] == 0) {
             header("Location:" . ADMIN);
             die();
         }
@@ -42,6 +45,18 @@ class AuthHelper
 
     public function isLogged()
     {
-        return isset($_SESSION['USERNAME']);
+        if (isset($_SESSION["USERNAME"])) {
+            if (
+                isset($_SESSION['LAST_ACTIVITY']) &&
+                (time() - $_SESSION['LAST_ACTIVITY'] > 1800)
+            ) {
+                $this->logout(); // destruye la sesión, y vuelve al login
+            }
+
+            $_SESSION['LAST_ACTIVITY'] = time(); // actualiza el último instante de actividad
+            return true;
+        } else
+            return false;
     }
+
 }

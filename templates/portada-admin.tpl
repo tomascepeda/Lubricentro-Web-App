@@ -65,4 +65,26 @@
             </form>
         </div>
 
+        <div class="formulario-aumentos">
+            <form action="aumentarProductos" class="shadow-lg p-3 mb-5 bg-white rounded" method="POST">
+                <h6>Aumentar Productos</h6>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="validationCustom04">Marca</label>
+                        <select name="marca_aumentar" class="custom-select" id="validationCustom04" required>
+                            <option selected disabled>Seleccionar</option>
+                            {foreach from=$marcas item=marca}
+                                <option value="{$marca->id}">{$marca->nombre}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">% Aumento</label>
+                    <input type="number" name="porcentaje_aumento" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Aumentar Precio</button>
+            </form>
+        </div>
+
     </div>

@@ -1,7 +1,7 @@
 {if $nombre ne ''}
 <div class="lista">
 
-    <h3>Buscando productos que coincidan con: <span>{$nombre}</span></h3>
+    <h3>Buscando productos que contengan: <span>{$nombre}</span></h3>
 
     <table class="table shadow-lg p-3 mb-5 bg-white rounded">
       <thead class="thead-dark">

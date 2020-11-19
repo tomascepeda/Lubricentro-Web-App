@@ -5,6 +5,9 @@
     <table class="table shadow-lg p-3 mb-5 bg-white rounded">
       <thead class="thead-dark">
         <tr>
+          {if $current eq "Administrar"}
+            <th></th>
+          {/if}
           <th scope="col">Nombre / Código</th>
           {if $current ne "Administrar"}
             <th scope="col">Marca</th>
@@ -22,8 +25,16 @@
         </tr>
       </thead>
       <tbody>
+        {if $current eq "Administrar"}
+          <form action="eliminarproductos" method="GET">
+        {/if}
         {foreach from=$productos item=producto}
           <tr>
+            {if $current eq "Administrar"}
+            <td><div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" name=mischecks[] value={$producto->id}>
+            </div></td>
+            {/if}
             <td>{$producto->nombre}</td>
             {foreach from=$marcas item=marca}
               {if $marca->id eq $producto->id_marca && $current ne "Administrar"}
@@ -77,5 +88,11 @@
           </form>
         </ul>
       </div>
+    {/if}
+    {if $current eq "Administrar"}
+    <h4>Para los productos seleccionados: 
+      <button type="submit" class="btn btn-danger">Borrar</button>
+    </h4>
+    </form>
     {/if}
   </div>
