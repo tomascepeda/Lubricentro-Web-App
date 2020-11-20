@@ -31,14 +31,14 @@ class ProductoModel extends ModelAbs
         switch ($columna) {
             case 'nombre':
                 $busqueda = "%" . $busqueda . "%";
-                $query = $this->db->prepare("SELECT * FROM producto WHERE nombre LIKE ? ORDER BY nombre ASC");
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE nombre LIKE ? && marca.id = producto.id_marca ORDER BY nombre ASC");
                 break;
             case 'descripcion':
                 $busqueda = "%" . $busqueda . "%";
-                $query = $this->db->prepare("SELECT * FROM producto WHERE descripcion LIKE ? ORDER BY nombre ASC");
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE descripcion LIKE ? && marca.id = producto.id_marca ORDER BY nombre ASC");
                 break;
             case 'precio':
-                $query = $this->db->prepare("SELECT * FROM producto WHERE precio<? ORDER BY precio DESC");
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE precio<? && marca.id = producto.id_marca ORDER BY precio DESC");
                 break;
             case 'marca':
                 $busqueda = "%" . $busqueda . "%";
