@@ -38,7 +38,7 @@ class View
         $this->smarty->display('templates/home.tpl');
     }
 
-    function showCatalogo($productos, $allproductos = null, $inicio, $fin, $top, $bottom, $marcas, $user, $logueado)
+    function showCatalogo($productos, $allproductos = null, $pagina, $cantpag, $marcas, $user, $logueado)
     {
         $this->title = "Catálogo | Lubricentro";
         $current = "Catálogo";
@@ -49,10 +49,8 @@ class View
         $link3 = ADMIN;
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('allproductos', $allproductos);
-        $this->smarty->assign('inicio', $inicio);
-        $this->smarty->assign('fin', $fin);
-        $this->smarty->assign('top', $top);
-        $this->smarty->assign('bottom', $bottom);
+        $this->smarty->assign('pagina', $pagina);
+        $this->smarty->assign('cantpag', $cantpag);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('user', $user);

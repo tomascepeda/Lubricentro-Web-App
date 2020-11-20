@@ -15,7 +15,7 @@
       <tbody>
         {foreach from=$marcas item=marca}
         <tr>
-          <td>{$marca->nombre}</td>
+          <td>{$marca->nombre_marca}</td>
           <td>{$marca->origen}</td>
           {if $logueado && $current eq "Administrar"}
             <td> <button type="button" id="editar_marca" class="btn btn-primary" onclick="window.location='{$url}editarmarca/{$marca->id}'">Editar</button> <button type="button"

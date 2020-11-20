@@ -42,7 +42,7 @@ class ProductoModel extends ModelAbs
                 break;
             case 'marca':
                 $busqueda = "%" . $busqueda . "%";
-                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE marca.nombre LIKE ? ORDER BY marca.nombre ASC");
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE marca.nombre_marca LIKE ? && marca.id = producto.id_marca ORDER BY marca.nombre_marca ASC");
                 break;
             default:
                 return null;

@@ -23,8 +23,7 @@
     $r->addRoute("home", "GET", "ViewController", "Home");
     $r->addRoute("browse", "GET", "ViewController", "Buscar");
     $r->addRoute("catalogo", "GET", "ViewController", "Catalogo");
-    $r->addRoute("previous", "POST", "ViewController", "CatalogoPaginadoPrevious");
-    $r->addRoute("next", "POST", "ViewController", "CatalogoPaginadoNext");
+    $r->addRoute("navigation", "GET", "ViewController", "navegacionCatalogo");
     $r->addRoute("administrar", "GET", "ViewController", "Administrar");
     $r->addRoute("editarproducto/:ID", "GET", "ViewController", "showEditarProducto");
     $r->addRoute("editarmarca/:ID", "GET", "ViewController", "showEditarMarca");

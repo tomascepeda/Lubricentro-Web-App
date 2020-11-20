@@ -17,10 +17,6 @@ nav{
    align-items: center;
 }
 
-.gris{
-    color: gray;
-}
-
 .portada h3{
     margin: 8% auto;
     color: white !important;
@@ -48,14 +44,20 @@ footer{
 }
 
 #paginacion{
-    width: 174px !important;
-    margin: 0 auto;
+    margin: 0 auto !important;
+    margin-bottom: 35px !important;
 }
 
 #paginacion ul{
-    width: 40px;
+    width: min-content;
+    margin: 0 auto !important;
 }
 
 .oculto{
     display: none;
+}
+
+.lista form button{
+    border-radius: 0px !important;
+    margin: 0px !important;
 }

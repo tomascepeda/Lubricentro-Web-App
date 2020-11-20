@@ -16,11 +16,7 @@
       {foreach from=$productos item=producto}
         <tr>
           <td>{$producto->nombre}</td>
-          {foreach from=$marcas item=marca}
-            {if $marca->id eq $producto->id_marca}
-              <td>{$marca->nombre}</td>
-            {/if}
-          {/foreach}
+          <td>{$producto->nombre_marca}</td>
           <td>{$producto->descripcion}</td>
           <th scope="col">{$producto->precio}</th>
         </tr>

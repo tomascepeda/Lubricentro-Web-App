@@ -3,7 +3,7 @@
 
 <div class="portada">
 
-  <h3>{$marca->nombre} {$producto->nombre}</h3>
+  <h3>{$marca->nombre_marca} {$producto->nombre}</h3>
 
 </div>
 
@@ -17,7 +17,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item oculto" id="id"><span class="bolder">ID: </span>{$producto->id}</li>
     <li class="list-group-item "><span class="bolder">Detalle: </span>{$producto->descripcion}</li>
-    <li class="list-group-item "><span class="bolder">Marca: </span>{$marca->nombre}</li>
+    <li class="list-group-item "><span class="bolder">Marca: </span>{$marca->nombre_marca}</li>
     <li class="list-group-item "><span class="bolder">Origen: </span>{$marca->origen}</li>
     <li class="list-group-item "><span class="bolder">Precio: </span>${$producto->precio}</li>
     <li class="list-group-item " id="promedio"><span class="bolder">Calificacion general: </span>{$promedio}</li>

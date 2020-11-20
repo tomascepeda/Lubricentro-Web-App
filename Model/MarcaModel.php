@@ -11,7 +11,7 @@ class MarcaModel extends ModelAbs{
 
     function getMarcas()
     {
-        $query = $this->db->prepare("SELECT * FROM marca ORDER BY `nombre` ASC");
+        $query = $this->db->prepare("SELECT * FROM marca ORDER BY `nombre_marca` ASC");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
@@ -25,7 +25,7 @@ class MarcaModel extends ModelAbs{
 
     function addMarca($nombre, $origen)
     {
-        $query = $this->db->prepare("INSERT INTO marca(nombre, origen) VALUES(?,?)");
+        $query = $this->db->prepare("INSERT INTO marca(nombre_marca, origen) VALUES(?,?)");
         $query->execute(array($nombre, $origen));
     }
 
@@ -37,7 +37,7 @@ class MarcaModel extends ModelAbs{
 
     function editMarca($marca_id, $nombre, $origen)
     {
-        $query = $this->db->prepare("UPDATE marca SET nombre=?, origen=? WHERE id=?");
+        $query = $this->db->prepare("UPDATE marca SET nombre_marca=?, origen=? WHERE id=?");
         $query->execute(array($nombre, $origen, $marca_id));
     }
 

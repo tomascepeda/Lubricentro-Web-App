@@ -38,7 +38,7 @@
             <td>{$producto->nombre}</td>
             {foreach from=$marcas item=marca}
               {if $marca->id eq $producto->id_marca && $current ne "Administrar"}
-                <td>{$marca->nombre}</td>
+                <td>{$marca->nombre_marca}</td>
               {/if}
             {/foreach}
             <td><button type="button" class="btn btn-primary" onclick="window.location='{$url}showmore/{$producto->id}'">Ver Más</button></td>
@@ -63,30 +63,31 @@
     </table>
     {if $current eq 'Catálogo'}
       <div id="paginacion" aria-label="Page navigation example">
-        <ul class="pagination">
-          <form action="previous" method="POST">
-            <input type="number" class="oculto" name="inicio" value="{$inicio}">
-            <input type="number" class="oculto" name="fin" value="{$fin}">
-            <li class="page-item">
-              {if !$top}
-                <button type="submit" class="page-link">Anterior</button>
+          <ul class="pagination">
+            <form action="navigation" method="GET">
+              {if $pagina <= 1}
+                <li class="page-item disabled"><button class="page-link" disabled>Anterior</button></li>
                 {else}
-                <button type="button" class="page-link gris" disabled>Anterior</button>
+                  <li class="page-item"><button class="page-link" type="submit"><input type="number" class="oculto" name="page" value="{$pagina-1}"/>Anterior</button></li>
               {/if}
-            </li>
-          </form>
-          <form action="next" method="POST">
-            <input type="number" class="oculto" name="inicio" value="{$inicio}">
-            <input type="number" class="oculto" name="fin" value="{$fin}">
-            <li class="page-item">
-              {if !$bottom}
-                <button type="submit" class="page-link">Siguiente</button>
-                {else}
-                <button type="button" class="page-link gris" disabled>Siguiente</button>
-              {/if}
-            </li>
-          </form>
-        </ul>
+            </form>
+            {for $i=1 to $cantpag}
+              <form action="navigation" method="GET">
+                {if $i eq $pagina}
+                  <li class="page-item active"><button class="page-link" type="submit"><input type="number" class="oculto" name="page" value="{$i}"/>{$i}</button></li>
+                  {else}
+                    <li class="page-item"><button class="page-link" type="submit"><input type="number" class="oculto" name="page" value="{$i}"/>{$i}</button></li>
+                {/if}
+              </form>
+            {/for}
+            <form action="navigation" method="GET">
+            {if $pagina >= $cantpag}
+              <li class="page-item disabled"><button class="page-link" disabled>Siguiente</button></li>
+              {else}
+                <li class="page-item"><button class="page-link" type="submit"><input type="number" class="oculto" name="page" value="{$pagina+1}"/>Siguiente</button></li>
+            {/if}
+            </form>
+          </ul>
       </div>
     {/if}
     {if $current eq "Administrar"}

@@ -22,7 +22,7 @@
                         <select class="custom-select" name="marca_prod" id="validationCustom04" required>
                             <option selected disabled>Seleccionar</option>
                             {foreach from=$marcas item=marca}
-                                <option value="{$marca->id}">{$marca->nombre}</option>
+                                <option value="{$marca->id}">{$marca->nombre_marca}</option>
                             {/foreach}
                         </select>
                     </div>
@@ -74,7 +74,7 @@
                         <select name="marca_aumentar" class="custom-select" id="validationCustom04" required>
                             <option selected disabled>Seleccionar</option>
                             {foreach from=$marcas item=marca}
-                                <option value="{$marca->id}">{$marca->nombre}</option>
+                                <option value="{$marca->id}">{$marca->nombre_marca}</option>
                             {/foreach}
                         </select>
                     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2020 a las 19:36:51
+-- Tiempo de generación: 20-11-2020 a las 03:43:57
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -55,7 +55,7 @@ INSERT INTO `comentario` (`id_comentario`, `usuario_id`, `producto_id`, `texto`,
 
 CREATE TABLE `marca` (
   `id` int(11) NOT NULL,
-  `nombre` text NOT NULL,
+  `nombre_marca` text NOT NULL,
   `origen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -63,7 +63,7 @@ CREATE TABLE `marca` (
 -- Volcado de datos para la tabla `marca`
 --
 
-INSERT INTO `marca` (`id`, `nombre`, `origen`) VALUES
+INSERT INTO `marca` (`id`, `nombre_marca`, `origen`) VALUES
 (1, 'CEPSA', 'ESPAÑA'),
 (4, 'ELAION', 'ARGENTINA'),
 (5, 'GULF', 'ESTADOS UNIDOS'),
@@ -96,18 +96,16 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `id_m
 (28, 'AVANT 5W30', '4L', 129, NULL, 1),
 (33, 'AVANT 15W40', '1L', 227, NULL, 1),
 (44, 'GULF MAX 15W40', '1L', 410, NULL, 5),
-(45, 'GULF MAX 15W40', '4L', 1350, NULL, 5),
 (46, 'GULF MAX  20W50', '1L', 390, NULL, 5),
-(47, 'GULF MAX  20W50', '4L', 1330, NULL, 5),
 (51, 'HELIX HX7', '4L', 2740, NULL, 13),
 (53, 'HELIX HX5', '4L', 2230, NULL, 13),
-(56, 'QUARTZ 9000', '1L', 1300, NULL, 7),
-(58, 'QUARTZ 7000', '1L', 860, NULL, 7),
+(56, 'QUARTZ 9000', '1L', 1352, NULL, 7),
+(58, 'QUARTZ 7000', '1L', 894, NULL, 7),
 (69, 'ELF 75W80', '1L', 630, NULL, 18),
-(70, 'SELENIA K 15W40', '1L', 820, NULL, 19),
-(71, 'SELENIA K 15W40', '4L', 2430, NULL, 19),
-(209, 'AKX 1993', 'CHEVROLET S10', 570, NULL, 20),
-(226, 'WO 130', '1L', 530, NULL, 20);
+(70, 'SELENIA K 15W40', '1L', 902, NULL, 19),
+(71, 'SELENIA K 15W40', '4L', 2673, NULL, 19),
+(209, 'AKX 1993', 'CHEVROLET S10', 600, NULL, 20),
+(226, 'WO 130', '1L', 610, NULL, 20);
 
 -- --------------------------------------------------------
 
@@ -129,7 +127,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `contraseña`, `admin`) VALUES
 (7, 'tomas', '$2y$10$gTJSBhiaKzSR6lFg1mtXr...txpWL4y0cgdyti/GK4DWXz4SFBegW', 1),
 (8, 'admin', '$2y$10$EUaZKU4LGQDM6S2e0RukEui1wNi5umGsxF7P7hIeMvfqX/v8xhRn6', 1),
-(12, 'public', '$2y$10$tJf9JYqkMibJqqoko/GMeefmSNWcyoK.V4HEMGo/llx6WIV0af1Lm', 0);
+(14, 'general', '$2y$10$cKazLaj8dPCL31BXpFRJzOa7YyJL1mB2R9DwrtobgyWzJuHwDfm42', 0);
 
 --
 -- Índices para tablas volcadas
@@ -171,25 +169,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

@@ -26,14 +26,14 @@
                 {$nombre_marca = null}
                 {foreach from=$marcas item=marca}
                     {if $marca->id eq $producto->id_marca}
-                        {$nombre_marca = $marca->nombre}
+                        {$nombre_marca = $marca->nombre_marca}
                         {break} 
                     {/if}
                 {/foreach}
                 <option value="{$producto->id_marca}">{$nombre_marca}</option>
                 {foreach from=$marcas item=marca}
                     {if $marca->nombre ne $nombre_marca}
-                        <option value="{$marca->id}">{$marca->nombre}</option>
+                        <option value="{$marca->id}">{$marca->nombre_marca}</option>
                     {/if}
                 {/foreach}
             </select>

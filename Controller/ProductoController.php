@@ -105,6 +105,8 @@ class ProductoController extends ControllerAbs
 
     function aumentarProductos()
     {
+        //compruebo que es el usuario logeado
+        $this->helper->checkLoggedIn();
         if (isset($_POST['marca_aumentar']) && isset($_POST['porcentaje_aumento'])) {
             $marca_id = $_POST['marca_aumentar'];
             $porcentaje = $_POST['porcentaje_aumento'];

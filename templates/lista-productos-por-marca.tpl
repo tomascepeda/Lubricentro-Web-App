@@ -5,7 +5,7 @@
         <table class="table shadow-lg p-3 mb-5 bg-white rounded">
         <thead class="thead-dark">
             <tr>
-            <th scope="col">{$marca->nombre}</th>
+            <th scope="col">{$marca->nombre_marca}</th>
             <th scope="col"></th>
             <th scope="col"></th>
             </tr>
