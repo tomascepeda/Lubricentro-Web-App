@@ -37,12 +37,19 @@ class ProductoModel extends ModelAbs
                 $busqueda = "%" . $busqueda . "%";
                 $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE descripcion LIKE ? && marca.id = producto.id_marca ORDER BY nombre ASC");
                 break;
-            case 'precio':
-                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE precio<? && marca.id = producto.id_marca ORDER BY precio DESC");
+            case 'precio menor a':
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE precio<=? && marca.id = producto.id_marca ORDER BY precio DESC");
+                break;
+            case 'precio mayor a':
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE precio>=? && marca.id = producto.id_marca ORDER BY precio ASC");
                 break;
             case 'marca':
                 $busqueda = "%" . $busqueda . "%";
                 $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE marca.nombre_marca LIKE ? && marca.id = producto.id_marca ORDER BY marca.nombre_marca ASC");
+                break;
+            case 'origen':
+                $busqueda = "%" . $busqueda . "%";
+                $query = $this->db->prepare("SELECT * FROM producto JOIN marca ON producto.id_marca WHERE marca.origen LIKE ? && marca.id = producto.id_marca ORDER BY marca.nombre_marca ASC");
                 break;
             default:
                 return null;

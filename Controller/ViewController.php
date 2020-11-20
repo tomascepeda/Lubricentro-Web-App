@@ -6,6 +6,7 @@ require_once "./Model/ProductoModel.php";
 require_once "./Model/MarcaModel.php";
 require_once "./Model/UsuarioModel.php";
 require_once "./ApiREST/Model/ComentarioModel.php";
+require_once "./Helpers/NavigationHelper.php";
 
 class ViewController extends ControllerAbs
 {
@@ -17,6 +18,7 @@ class ViewController extends ControllerAbs
     private $marcaModel;
     private $userModel;
     private $comentarioModel;
+    private $navigationHelper;
 
     //paginacion
     private $npaginacion;
@@ -30,11 +32,12 @@ class ViewController extends ControllerAbs
         $this->marcaModel = new MarcaModel();
         $this->userModel = new UsuarioModel();
         $this->comentarioModel = new ComentarioModel();
+        $this->navigationHelper = new NavigationHelper();
         if ($this->helper->isLogged()) {
             $this->user = $this->helper->getLoggedUserName();
             $this->logueado = true;
         }
-        $this->npaginacion = 5; //es "constante", sirve para cambiar la cantidad de items que se muestran en la paginacion
+        $this->npaginacion = $this->navigationHelper->getNpaginacion(); //sirve para cambiar la cantidad de items que se muestran en la paginacion
         $this->cantpag = 0; //se modifica dinamicamente
     }
 
@@ -52,19 +55,16 @@ class ViewController extends ControllerAbs
 
     function Buscar()
     {
-        if (isset($_GET["busqueda"]) && isset($_GET["columna_db"])) {
+        if (isset($_GET["busqueda"]) && isset($_GET["criterio"])) {
             $busqueda = $_GET["busqueda"];
-            $columna_db = $_GET["columna_db"];
-            $productos = $this->productoModel->getProductosFiltrados(strtolower($columna_db), $busqueda);
+            $criterio = $_GET["criterio"];
+            $productos = $this->productoModel->getProductosFiltrados(strtolower($criterio), $busqueda);
             if (empty($productos)) {
                 $this->default();
                 die();
             }
             $marcas = $this->marcaModel->getMarcas();
-            if ($columna_db != "precio")
-                $busqueda = $columna_db . " " . strtoupper($busqueda);
-            else
-                $busqueda = $columna_db . " menor a " . strtoupper($busqueda);
+            $busqueda = $criterio . " " . strtoupper($busqueda);
             $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado);
         } else {
             $this->default();
@@ -81,7 +81,7 @@ class ViewController extends ControllerAbs
         $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
         $allproductos = $this->productoModel->getProductos();
         $this->cantpag = floor(count($allproductos) / $this->npaginacion);
-        $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $marcas, $this->user, $this->logueado);
+        $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado);
     }
 
     function navegacionCatalogo()
@@ -104,18 +104,16 @@ class ViewController extends ControllerAbs
             } else
                 $inicio = $this->npaginacion * $pagina;
             $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
-            $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $marcas, $this->user, $this->logueado);
+            $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado);
         } else
             header("Location: " . CATALOGO);
     }
 
-    public function setNpaginacion($npaginacion = 5)
-    {
-        try {
-            $this->npaginacion = intval($npaginacion);
-        } catch (Exception $exc) {
-            //se esperaba un entero
+    function setNpaginacion(){
+        if(isset($_POST["cantpaginas"])){
+            $this->navigationHelper->setNpaginacion($_POST["cantpaginas"]);
         }
+        header("Location: " . CATALOGO);
     }
 
     function Administrar()

@@ -1,7 +1,14 @@
  <div class="lista">
 
     <h3>Lista de Productos:</h3>
-
+    {if $current eq "Catálogo"}
+    <form action="setnpaginacion" class="formpaginacion shadow-lg p-3 mb-5 bg-white rounded" method="POST">
+      <h5>Mostrando</h5>
+      <input type="number" class="form-control" name="cantpaginas" value="{$npaginacion}">
+      <h5> productos por pagina </h5>
+      <button class="btn btn-primary" type="submit">OK</button>
+    </form>
+    {/if}
     <table class="table shadow-lg p-3 mb-5 bg-white rounded">
       <thead class="thead-dark">
         <tr>

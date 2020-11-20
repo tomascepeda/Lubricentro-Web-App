@@ -58,6 +58,26 @@ footer{
 }
 
 .lista form button{
-    border-radius: 0px !important;
     margin: 0px !important;
+}
+
+.formpaginacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.formpaginacion input{
+    width: 15%;
+}
+
+.formpaginacion button{
+    border-radius: 5px !important;
+}
+
+.formpaginacion h5{
+    margin-top: 6px;
 }

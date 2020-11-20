@@ -30,6 +30,7 @@
     $r->addRoute("login", "GET", "ViewController", "iniciarSesion");
     $r->addRoute("registrarse", "GET", "ViewController", "Registrarse");
     $r->addRoute("showmore/:ID", "GET", "ViewController", "showVerMas");
+    $r->addRoute("setnpaginacion", "POST", "ViewController", "setNpaginacion");
 
     //                                ProductoController
     $r->addRoute("eliminarproducto/:ID", "GET", "ProductoController", "eliminarProducto");
