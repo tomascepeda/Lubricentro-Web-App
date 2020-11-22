@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ID = document.querySelector("#id").innerText.substring(4, 11);
     const userId = document.querySelector("#usuario-id").innerText;
 
-    const url = "http://localhost/web2/lubricentro/api/comentarios/";
+    const url = "api/comentarios/";
 
     let app = new Vue({
         el: "#lista-comentarios-vue",

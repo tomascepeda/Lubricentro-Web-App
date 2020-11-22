@@ -91,7 +91,7 @@ class ViewController extends ControllerAbs
             $allproductos = $this->productoModel->getProductos();
             $this->cantpag = floor(count($allproductos) / $this->npaginacion);
             $pagina = $_GET["page"];
-            if ($pagina == null)
+            if ($pagina == null || !is_numeric($pagina))
                 $pagina = 1;
             else
                 $pagina = intval($pagina);
@@ -109,9 +109,13 @@ class ViewController extends ControllerAbs
             header("Location: " . CATALOGO);
     }
 
-    function setNpaginacion(){
-        if(isset($_POST["cantpaginas"])){
-            $this->navigationHelper->setNpaginacion($_POST["cantpaginas"]);
+    function setNpaginacion()
+    {
+        if (isset($_POST["cantpaginas"])) {
+            if ($_POST["cantpaginas"] <= 0 || !is_numeric($_POST["cantpaginas"])) {
+                $_POST["cantpaginas"] = 5;
+            }
+            $this->navigationHelper->setNpaginacion(floor($_POST["cantpaginas"]));
         }
         header("Location: " . CATALOGO);
     }

@@ -41,16 +41,16 @@
     $r->addRoute("aumentarProductos", "POST", "ProductoController", "aumentarProductos");
     
     //                                MarcaController
+    $r->addRoute("eliminarmarca/:ID", "GET", "MarcaController", "eliminarMarca");
     $r->addRoute("editarmarca/editar", "POST", "MarcaController", "editarMarca");
     $r->addRoute("agregarmarca", "POST", "MarcaController", "agregarMarca");
-    $r->addRoute("eliminarmarca/:ID", "GET", "MarcaController", "eliminarMarca");
 
     //                                UsuarioController
-    $r->addRoute("addusuario", "POST", "UsuarioController", "agregarUsuario");
-    $r->addRoute("loguearse", "POST", "UsuarioController", "Loguearse");
     $r->addRoute("logout", "GET", "UsuarioController", "cerrarSesion");
     $r->addRoute("eliminarusuario/:ID", "GET", "UsuarioController", "eliminarUsuario");
     $r->addRoute("modificarpermisos/:ID", "GET", "UsuarioController", "modificarPermisos");
+    $r->addRoute("addusuario", "POST", "UsuarioController", "agregarUsuario");
+    $r->addRoute("loguearse", "POST", "UsuarioController", "Loguearse");
 
     //Ruta por defecto.
     $r->setDefaultRoute("ViewController", "default");
