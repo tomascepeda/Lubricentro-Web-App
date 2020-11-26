@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2020 a las 03:43:57
+-- Tiempo de generación: 26-11-2020 a las 13:53:42
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -41,11 +41,12 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `usuario_id`, `producto_id`, `texto`, `puntaje`, `fecha`) VALUES
-(101, 7, 209, 'test', 3, '2020-11-12 16:36:57'),
 (102, 7, 28, 'test', 3, '2020-11-12 16:37:09'),
-(103, 7, 226, 'test', 3, '2020-11-12 16:37:34'),
-(113, 7, 209, 'test 2', 5, '2020-11-13 18:22:40'),
-(114, 7, 46, 'bueno', 5, '2020-11-13 18:24:40');
+(114, 7, 46, 'bueno', 5, '2020-11-13 18:24:40'),
+(122, 7, 69, 'test', 5, '2020-11-21 03:12:11'),
+(123, 15, 28, 'test', 3, '2020-11-21 03:17:50'),
+(125, 15, 69, 'test\n', 3, '2020-11-21 03:18:32'),
+(126, 15, 58, 'test\n', 3, '2020-11-21 03:23:23');
 
 -- --------------------------------------------------------
 
@@ -104,8 +105,14 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `id_m
 (69, 'ELF 75W80', '1L', 630, NULL, 18),
 (70, 'SELENIA K 15W40', '1L', 902, NULL, 19),
 (71, 'SELENIA K 15W40', '4L', 2673, NULL, 19),
-(209, 'AKX 1993', 'CHEVROLET S10', 600, NULL, 20),
-(226, 'WO 130', '1L', 610, NULL, 20);
+(260, 'WO 440', 'FORD 250, 350 (PERKINS 6)', 1213, NULL, 20),
+(261, 'WO 460', 'DODGE 1500 - FIAT DUNA, TIPO, FIORINO - RENAULT 18', 898, NULL, 20),
+(262, 'WO 490', 'RENAULT CLIO DIESEL 1.9, EXPRESS', 1143, NULL, 20),
+(263, 'WO 500', 'RENAULT 18, 19 DIESEL, TRAFIC', 828, NULL, 20),
+(264, 'WO 540', 'CHEVROLET S10 MWM 2.8 DIESEL', 2065, NULL, 20),
+(265, 'WO 541', 'FORD RANGER 3.0 TDI 2008+', 805, NULL, 20),
+(266, 'WO 570', 'RENAULT', 921, NULL, 20),
+(409, 'F50E', '4L', 2430, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -127,7 +134,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `contraseña`, `admin`) VALUES
 (7, 'tomas', '$2y$10$gTJSBhiaKzSR6lFg1mtXr...txpWL4y0cgdyti/GK4DWXz4SFBegW', 1),
 (8, 'admin', '$2y$10$EUaZKU4LGQDM6S2e0RukEui1wNi5umGsxF7P7hIeMvfqX/v8xhRn6', 1),
-(14, 'general', '$2y$10$cKazLaj8dPCL31BXpFRJzOa7YyJL1mB2R9DwrtobgyWzJuHwDfm42', 0);
+(14, 'general', '$2y$10$cKazLaj8dPCL31BXpFRJzOa7YyJL1mB2R9DwrtobgyWzJuHwDfm42', 0),
+(15, 'invitado', '$2y$10$1Uf/Ln.vLTMNlNLqAnHueu/NNZyoFSOwTOxPv.MBYqouh5gbHEAwy', 0),
+(16, 'root', '$2y$10$KVeSVnjPdbMFcQ6F7EGjIuEdoFfNNs8FaZ31VJtI.gh1JX8hpyqxS', 1);
 
 --
 -- Índices para tablas volcadas
@@ -169,25 +178,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=412;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas

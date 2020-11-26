@@ -81,6 +81,10 @@ class ViewController extends ControllerAbs
         $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
         $allproductos = $this->productoModel->getProductos();
         $this->cantpag = floor(count($allproductos) / $this->npaginacion);
+        if ($this->cantpag > 12) {
+            $this->setNpaginacionPrivate(floor(count($allproductos) / 12));
+            $this->cantpag = floor(count($allproductos) / $this->npaginacion);
+        }
         $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado);
     }
 
@@ -90,6 +94,10 @@ class ViewController extends ControllerAbs
             $marcas = $this->marcaModel->getMarcas();
             $allproductos = $this->productoModel->getProductos();
             $this->cantpag = floor(count($allproductos) / $this->npaginacion);
+            if ($this->cantpag > 12) {
+                $this->setNpaginacionPrivate(floor(count($allproductos) / 12));
+                $this->cantpag = floor(count($allproductos) / $this->npaginacion);
+            }
             $pagina = $_GET["page"];
             if ($pagina == null || !is_numeric($pagina))
                 $pagina = 1;
@@ -117,6 +125,12 @@ class ViewController extends ControllerAbs
             }
             $this->navigationHelper->setNpaginacion(floor($_POST["cantpaginas"]));
         }
+        header("Location: " . CATALOGO);
+    }
+
+    private function setNpaginacionPrivate($paginas)
+    {
+        $this->navigationHelper->setNpaginacion(floor($paginas));
         header("Location: " . CATALOGO);
     }
 
