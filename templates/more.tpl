@@ -21,10 +21,10 @@
     <li class="list-group-item "><span class="bolder">Origen: </span>{$marca->origen}</li>
     <li class="list-group-item "><span class="bolder">Precio: </span>${$producto->precio}</li>
     <li class="list-group-item " id="promedio"><span class="bolder">Calificacion general: </span>{$promedio}</li>
+    <li class="list-group-item ">
+      <button type="button" class="btn btn-primary" onclick="history.back()">Volver</button>
+    </li>
   </ul>
-  <div class="card-body">
-    <button type="button" class="btn btn-primary" onclick="history.back()">Volver</button>
-  </div>
 </div>
 
 {if $logueado}

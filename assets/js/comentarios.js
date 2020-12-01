@@ -3,7 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const ID = document.querySelector("#id").innerText.substring(4, 11);
     const userId = document.querySelector("#usuario-id").innerText;
 
-    const url = "api/comentarios/";
+    function getBaseUrl() {
+        let base_url = "" + window.location.origin + "/";
+        const path_collection = window.location.pathname.split("/");
+        let i = 1;
+        while (path_collection[i] != "showmore") {
+            base_url += path_collection[i] + "/";
+            i++;
+        }
+        return base_url;
+    }
+
+    const url = getBaseUrl() + "api/comentarios/";
 
     let app = new Vue({
         el: "#lista-comentarios-vue",
