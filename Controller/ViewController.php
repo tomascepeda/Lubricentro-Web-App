@@ -13,6 +13,7 @@ class ViewController extends ControllerAbs
 
     private $view;
     private $logueado;
+    private $admin;
     private $user;
     private $productoModel;
     private $marcaModel;
@@ -36,6 +37,7 @@ class ViewController extends ControllerAbs
         if ($this->helper->isLogged()) {
             $this->user = $this->helper->getLoggedUserName();
             $this->logueado = true;
+            $this->admin = $this->helper->isAdmin();
         }
         $this->npaginacion = $this->navigationHelper->getNpaginacion(); //sirve para cambiar la cantidad de items que se muestran en la paginacion
         $this->cantpag = 0; //se modifica dinamicamente
@@ -50,7 +52,7 @@ class ViewController extends ControllerAbs
 
     function Home()
     {
-        $this->view->showHome(null, null, null, $this->user, $this->logueado);
+        $this->view->showHome(null, null, null, $this->user, $this->logueado, $this->admin);
     }
 
     function Buscar()
@@ -65,7 +67,7 @@ class ViewController extends ControllerAbs
             }
             $marcas = $this->marcaModel->getMarcas();
             $busqueda = $criterio . " " . strtoupper($busqueda);
-            $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado);
+            $this->view->showHome($productos, $busqueda, $marcas, $this->user, $this->logueado, $this->admin);
         } else {
             $this->default();
         }
@@ -85,7 +87,7 @@ class ViewController extends ControllerAbs
             $this->setNpaginacionPrivate(floor(count($allproductos) / 12));
             $this->cantpag = floor(count($allproductos) / $this->npaginacion);
         }
-        $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado);
+        $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado, $this->admin);
     }
 
     function navegacionCatalogo()
@@ -112,7 +114,7 @@ class ViewController extends ControllerAbs
             } else
                 $inicio = $this->npaginacion * $pagina;
             $productos = $this->productoModel->getProductosLimitados($inicio, $this->npaginacion);
-            $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado);
+            $this->view->showCatalogo($productos, $allproductos, $pagina, $this->cantpag, $this->npaginacion, $marcas, $this->user, $this->logueado, $this->admin);
         } else
             header("Location: " . CATALOGO);
     }
@@ -136,39 +138,39 @@ class ViewController extends ControllerAbs
 
     function Administrar()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $productos = $this->productoModel->getProductos();
         $marcas = $this->marcaModel->getMarcas();
         $usuarios = $this->userModel->getUsuarios($this->user);
         $usuarioactual = $this->userModel->getUsuarioPorNombre($this->user);
-        $this->view->showAdministrator($productos, $marcas, $usuarios, $this->user, $this->logueado, $usuarioactual);
+        $this->view->showAdministrator($productos, $marcas, $usuarios, $this->user, $this->logueado, $this->admin, $usuarioactual);
     }
 
     function showEditarProducto($params = null)
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $producto_id = $params[':ID'];
         $producto = $this->productoModel->getProductoPorID($producto_id);
         $marcas = $this->marcaModel->getMarcas();
         $usuarioactual = $this->userModel->getUsuarioPorNombre($this->user);
-        $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado, $usuarioactual);
+        $this->view->showEditarProducto($producto_id, $marcas, $producto, $this->logueado, $this->admin, $usuarioactual);
     }
 
     function showEditarMarca($params = null)
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $marca_id = $params[':ID'];
         $marca = $this->marcaModel->getMarcaPorID($marca_id);
-        $this->view->showEditarMarca($marca_id, $marca, $this->logueado);
+        $this->view->showEditarMarca($marca_id, $marca, $this->logueado, $this->admin);
     }
 
     function iniciarSesion()
     {
         if (!$this->logueado) {
-            $this->view->showLogin($this->logueado, false);
+            $this->view->showLogin($this->logueado, $this->admin, false);
         } else {
             $this->default();
         }
@@ -177,7 +179,7 @@ class ViewController extends ControllerAbs
     function Registrarse()
     {
         if (!$this->logueado) {
-            $this->view->showRegister($this->logueado, false);
+            $this->view->showRegister($this->logueado, $this->admin, false);
         } else {
             $this->default();
         }
@@ -201,7 +203,7 @@ class ViewController extends ControllerAbs
                 $promedio = $suma / $cant;
             } else
                 $promedio = 0;
-            $this->view->verMas($producto, $marca, $this->logueado, $this->user, $usuario, round($promedio));
+            $this->view->verMas($producto, $marca, $this->logueado, $this->admin, $this->user, $usuario, round($promedio));
         } else {
             header("Location: " . CATALOGO);
         }

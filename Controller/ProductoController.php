@@ -17,8 +17,8 @@ class ProductoController extends ControllerAbs
 
     function agregarProducto()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         if (isset($_POST['nombre_prod']) && isset($_POST['descrip_prod']) && isset($_POST['precio_prod']) && isset($_POST['marca_prod'])) {
             $nombre = $_POST['nombre_prod'];
             $detalle = $_POST['descrip_prod'];
@@ -41,8 +41,8 @@ class ProductoController extends ControllerAbs
 
     function eliminarProducto($params = null)
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $producto_id = $params[':ID'];
         $this->model->removeProducto($producto_id);
         header("Location: " . ADMIN);
@@ -50,8 +50,8 @@ class ProductoController extends ControllerAbs
 
     function eliminarProductos()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         if (isset($_GET["mischecks"])) {
             $valoresCheck = $_GET["mischecks"];
             foreach ($valoresCheck as $i) {
@@ -64,7 +64,6 @@ class ProductoController extends ControllerAbs
 
     function eliminarImagen($params = null)
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
         $this->helper->checkAdmin();
         $producto_id = $params[':ID'];
@@ -77,8 +76,8 @@ class ProductoController extends ControllerAbs
 
     function editarProducto()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         if (isset($_POST['edit_nombre']) && isset($_POST['edit_descrip']) && isset($_POST['edit_precio']) && isset($_POST['edit_marca']) && isset($_POST['id_producto'])) {
             $nombre = $_POST['edit_nombre'];
             $detalle = $_POST['edit_descrip'];
@@ -105,8 +104,8 @@ class ProductoController extends ControllerAbs
 
     function aumentarProductos()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         if (isset($_POST['marca_aumentar']) && isset($_POST['porcentaje_aumento'])) {
             $marca_id = $_POST['marca_aumentar'];
             $porcentaje = $_POST['porcentaje_aumento'];

@@ -33,7 +33,7 @@ class AuthHelper
     public function checkAdmin()
     {
         if ($_SESSION['ADMIN'] == 0) {
-            header("Location:" . ADMIN);
+            header("Location:" . HOME);
             die();
         }
     }
@@ -57,6 +57,10 @@ class AuthHelper
             return true;
         } else
             return false;
+    }
+
+    public function isAdmin(){
+        return $_SESSION["ADMIN"];
     }
 
 }

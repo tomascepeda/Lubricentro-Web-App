@@ -16,7 +16,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="{$link2}">{$current1}</a>
           </li>
-          {if $logueado or ($current eq "Iniciar Sesión") or ($current eq "Registrarse") or ($current eq "Ver Más")}
+          {if ($logueado && $admin eq 1) or ($current eq "Iniciar Sesión") or ($current eq "Registrarse") or ($current eq "Ver Más")}
           <li class="nav-item active">
               <a class="nav-link" href="{$link3}">{$current2}</a>
           </li>

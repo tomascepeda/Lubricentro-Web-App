@@ -9,6 +9,7 @@ class UsuarioController
     private $view;
     private $model;
     private $logueado;
+    private $admin;
     private $helper;
 
     function __construct()
@@ -17,6 +18,7 @@ class UsuarioController
         $this->model = new UsuarioModel();
         $this->helper = new AuthHelper();
         $this->logueado = $this->helper->isLogged();
+        $this->admin = $this->helper->isAdmin();
     }
 
     function agregarUsuario()
@@ -31,7 +33,7 @@ class UsuarioController
                 $this->helper->login($this->model->getUsuarioPorNombre($nombre));
                 header("Location: " . HOME);
             } else
-                $this->view->showRegister($this->logueado, true);
+                $this->view->showRegister($this->logueado, $this->admin, true);
         } else {
             header("Location: " . REGISTER);
         }
@@ -49,9 +51,9 @@ class UsuarioController
                         $this->helper->login($user);
                         header("Location: " . HOME);
                     } else
-                        $this->view->showLogin($this->logueado, true);
+                        $this->view->showLogin($this->logueado, $this->admin, true);
                 } else {
-                    $this->view->showLogin($this->logueado, true);
+                    $this->view->showLogin($this->logueado, $this->admin, true);
                 }
             }
         } else {

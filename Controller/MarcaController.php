@@ -18,8 +18,8 @@ class MarcaController extends ControllerAbs
 
     function agregarMarca()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         if (isset($_POST['nombre_marca']) && isset($_POST['origen_marca'])) {
             $nombre = $_POST['nombre_marca'];
             $origen = $_POST['origen_marca'];
@@ -30,8 +30,8 @@ class MarcaController extends ControllerAbs
 
     function eliminarMarca($params = null)
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         $marca_id = $params[':ID'];
         $this->model->removeMarca($marca_id);
         header("Location: " . ADMIN);
@@ -39,8 +39,8 @@ class MarcaController extends ControllerAbs
 
     function editarMarca()
     {
-        //compruebo que es el usuario logeado
         $this->helper->checkLoggedIn();
+        $this->helper->checkAdmin();
         if (isset($_POST['nombre_marca']) && isset($_POST['origen_marca']) && isset($_POST['id_marca'])) {
             $nombre = $_POST['nombre_marca'];
             $origen = $_POST['origen_marca'];

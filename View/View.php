@@ -14,7 +14,7 @@ class View
         $this->smarty->assign('url', BASE_URL);
     }
 
-    function showHome($productos, $nombre, $marcas, $user, $logueado)
+    function showHome($productos, $nombre, $marcas, $user, $logueado, $admin)
     {
         $this->title = "Lubricentro";
         $current = "Inicio";
@@ -35,10 +35,11 @@ class View
         $this->smarty->assign('link3', $link3);
         $this->smarty->assign('user', $user);
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->display('templates/home.tpl');
     }
 
-    function showCatalogo($productos, $allproductos = null, $pagina, $cantpag, $npaginacion, $marcas, $user, $logueado)
+    function showCatalogo($productos, $allproductos = null, $pagina, $cantpag, $npaginacion, $marcas, $user, $logueado, $admin)
     {
         $this->title = "Catálogo | Lubricentro";
         $current = "Catálogo";
@@ -56,6 +57,7 @@ class View
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('user', $user);
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
@@ -65,7 +67,7 @@ class View
         $this->smarty->display('templates/catalogo.tpl');
     }
 
-    function showAdministrator($productos, $marcas, $usuarios, $user, $logueado, $usuarioactual)
+    function showAdministrator($productos, $marcas, $usuarios, $user, $logueado, $admin, $usuarioactual)
     {
         $this->title = "Administrar | Lubricentro";
         $current = "Administrar";
@@ -81,6 +83,7 @@ class View
         $this->smarty->assign('user', $user);
         $this->smarty->assign('usuarioactual', $usuarioactual);
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
         $this->smarty->assign('current2', $current2);
@@ -90,7 +93,7 @@ class View
         $this->smarty->display('templates/admin.tpl');
     }
 
-    function showEditarProducto($producto_id, $marcas, $producto, $logueado, $usuarioactual)
+    function showEditarProducto($producto_id, $marcas, $producto, $logueado, $admin, $usuarioactual)
     {
         $this->title = "Editar Producto | Lubricentro";
         $current = "Administrar";
@@ -101,6 +104,7 @@ class View
         $link3 = CATALOGO;
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('producto', $producto);
         $this->smarty->assign('marcas', $marcas);
         $this->smarty->assign('current', $current);
@@ -114,7 +118,7 @@ class View
         $this->smarty->display('templates/editar-producto.tpl');
     }
 
-    function showEditarMarca($marca_id, $marca, $logueado)
+    function showEditarMarca($marca_id, $marca, $logueado, $admin)
     {
         $this->title = "Editar Marca | Lubricentro";
         $current = "Administrar";
@@ -125,6 +129,7 @@ class View
         $link3 = CATALOGO;
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('marca', $marca);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -136,7 +141,7 @@ class View
         $this->smarty->display('templates/editar-marca.tpl');
     }
 
-    function showLogin($logueado, $error)
+    function showLogin($logueado, $admin, $error)
     {
         $this->title = "Iniciar Sesión | Lubricentro";
         $current = "Iniciar Sesión";
@@ -146,6 +151,7 @@ class View
         $link2 = HOME;
         $link3 = CATALOGO;
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -157,7 +163,7 @@ class View
         $this->smarty->display('templates/login.tpl');
     }
 
-    function showRegister($logueado, $error)
+    function showRegister($logueado, $admin, $error)
     {
         $this->title = "Registrarse | Lubricentro";
         $current = "Registrarse";
@@ -167,6 +173,7 @@ class View
         $link2 = HOME;
         $link3 = CATALOGO;
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('current', $current);
         $this->smarty->assign('current1', $current1);
@@ -178,7 +185,7 @@ class View
         $this->smarty->display('templates/register.tpl');
     }
 
-    function verMas($producto, $marca, $logueado, $user, $usuario, $promedio)
+    function verMas($producto, $marca, $logueado, $admin, $user, $usuario, $promedio)
     {
         $this->title = "Ver Producto | Lubricentro";
         $current = "Ver Más";
@@ -189,6 +196,7 @@ class View
         $link3 = CATALOGO;
         $this->smarty->assign('titulo', $this->title);
         $this->smarty->assign('logueado', $logueado);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('producto', $producto);
         $this->smarty->assign('marca', $marca);
         $this->smarty->assign('current', $current);
